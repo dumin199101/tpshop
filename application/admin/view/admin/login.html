@@ -64,15 +64,6 @@ if(!$.cookie('tpshopActionParam') && $.cookie('admin_type') != 1){
                             <input type="text" name="vertify" autocomplete="off" class="input-text chick_ue" value="" placeholder="验证码" />
                             <img src="{:U('Admin/vertify')}" class="chicuele" id="imgVerify" alt="" onclick="fleshVerify()">
                         </div>
-                        <div class="formText">
-                        	<div class="checkbox">
-                            	<div class="cur">
-                                    <input type="hidden" value="1" name="remember"/>
-                                </div>
-                            </div>
-                           <span class="span">保存信息</span>
-                            <a href="{:U('Admin/forget_pwd')}" class="forget_pwd">忘记密码？</a>
-                        </div>
 						<div class="formText submitDiv">
                           <span class="submit_span">
                           	<input type="button" name="submit" class="sub" value="登录">

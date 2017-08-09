@@ -15,6 +15,91 @@ use think\Db;
 use think\Session;
 
 class Admin extends Base {
+
+	/*
+     * 管理员登陆
+     */
+	public function login(){
+		if(session('?admin_id') && session('admin_id')>0){
+			$this->error("您已登录",U('Admin/Index/index'));
+		}
+		if(IS_POST){
+			$verify = new Verify();
+			if (!$verify->check(I('post.vertify'), "admin_login")) {
+				exit(json_encode(array('status'=>0,'msg'=>'验证码错误')));
+			}
+			$condition['user_name'] = I('post.username/s');
+			$condition['password'] = I('post.password/s');
+			if(!empty($condition['user_name']) && !empty($condition['password'])){
+				$condition['password'] = encrypt($condition['password']);
+				$admin_info = M('admin')->join(PREFIX.'admin_role', PREFIX.'admin.role_id='.PREFIX.'admin_role.role_id','INNER')->where($condition)->find();
+				if(is_array($admin_info)){
+					session('admin_id',$admin_info['admin_id']);
+					//缓存权限列表到session
+					session('act_list',$admin_info['act_list']);
+					M('admin')->where("admin_id = ".$admin_info['admin_id'])->save(array('last_login'=>time(),'last_ip'=>  getIP()));
+					session('last_login_time',$admin_info['last_login']);
+					session('last_login_ip',$admin_info['last_ip']);
+					adminLog('后台登录');
+					$url = session('from_url') ? session('from_url') : U('Admin/Index/index');
+					exit(json_encode(array('status'=>1,'url'=>$url)));
+				}else{
+					exit(json_encode(array('status'=>0,'msg'=>'账号密码不正确')));
+				}
+			}else{
+				exit(json_encode(array('status'=>0,'msg'=>'请填写账号密码')));
+			}
+		}
+		return $this->fetch();
+	}
+
+	/**
+	 * 退出登陆
+	 */
+	public function logout(){
+		session_unset();
+		session_destroy();
+		session::clear();
+		$this->success("退出成功",U('Admin/Admin/login'));
+	}
+
+	/**
+	 * 修改管理员密码
+	 * @return \think\mixed
+	 */
+	public function modify_pwd(){
+		$admin_id = I('admin_id/d',0);
+		$oldPwd = I('old_pw/s');
+		$newPwd = I('new_pw/s');
+		$new2Pwd = I('new_pw2/s');
+
+		if($admin_id){
+			$info = D('admin')->where("admin_id", $admin_id)->find();
+			$info['password'] =  "";
+			$this->assign('info',$info);
+		}
+
+		if(IS_POST){
+			//修改密码
+			$enOldPwd = encrypt($oldPwd);
+			$enNewPwd = encrypt($newPwd);
+			$admin = M('admin')->where('admin_id' , $admin_id)->find();
+			if(!$admin || $admin['password'] != $enOldPwd){
+				exit(json_encode(array('status'=>-1,'msg'=>'旧密码不正确')));
+			}else if($newPwd != $new2Pwd){
+				exit(json_encode(array('status'=>-1,'msg'=>'两次密码不一致')));
+			}else{
+				$row = M('admin')->where('admin_id' , $admin_id)->save(array('password' => $enNewPwd));
+				if($row){
+					exit(json_encode(array('status'=>1,'msg'=>'修改成功')));
+				}else{
+					exit(json_encode(array('status'=>-1,'msg'=>'修改失败')));
+				}
+			}
+		}
+		return $this->fetch();
+	}
+
     /**
      * 管理员列表
      * @return mixed
@@ -39,42 +124,7 @@ class Admin extends Base {
         return $this->fetch();
     }
     
-    /**
-     * 修改管理员密码
-     * @return \think\mixed
-     */
-    public function modify_pwd(){
-        $admin_id = I('admin_id/d',0);
-        $oldPwd = I('old_pw/s');
-        $newPwd = I('new_pw/s');
-        $new2Pwd = I('new_pw2/s');
-       
-        if($admin_id){
-            $info = D('admin')->where("admin_id", $admin_id)->find();
-            $info['password'] =  "";
-            $this->assign('info',$info);
-        }
-        
-         if(IS_POST){
-            //修改密码
-            $enOldPwd = encrypt($oldPwd);
-            $enNewPwd = encrypt($newPwd);
-            $admin = M('admin')->where('admin_id' , $admin_id)->find();
-            if(!$admin || $admin['password'] != $enOldPwd){
-                exit(json_encode(array('status'=>-1,'msg'=>'旧密码不正确')));
-            }else if($newPwd != $new2Pwd){
-                exit(json_encode(array('status'=>-1,'msg'=>'两次密码不一致')));
-            }else{
-                $row = M('admin')->where('admin_id' , $admin_id)->save(array('password' => $enNewPwd));
-                if($row){
-                    exit(json_encode(array('status'=>1,'msg'=>'修改成功')));
-                }else{
-                    exit(json_encode(array('status'=>-1,'msg'=>'修改失败')));
-                }
-            }
-        }
-        return $this->fetch();
-    }
+
 
     /**
      * 编辑|添加管理员信息表单
@@ -131,54 +181,7 @@ class Admin extends Base {
     }
     
     
-    /*
-     * 管理员登陆
-     */
-    public function login(){
-        if(session('?admin_id') && session('admin_id')>0){
-             $this->error("您已登录",U('Admin/Index/index'));
-        }
-      
-        if(IS_POST){
-            $verify = new Verify();
-            if (!$verify->check(I('post.vertify'), "admin_login")) {
-            	exit(json_encode(array('status'=>0,'msg'=>'验证码错误')));
-            }
-            $condition['user_name'] = I('post.username/s');
-            $condition['password'] = I('post.password/s');
-            if(!empty($condition['user_name']) && !empty($condition['password'])){
-                $condition['password'] = encrypt($condition['password']);
-               	$admin_info = M('admin')->join(PREFIX.'admin_role', PREFIX.'admin.role_id='.PREFIX.'admin_role.role_id','INNER')->where($condition)->find();
-                if(is_array($admin_info)){
-                    session('admin_id',$admin_info['admin_id']);
-                    //缓存权限列表到session
-                    session('act_list',$admin_info['act_list']);
-                    M('admin')->where("admin_id = ".$admin_info['admin_id'])->save(array('last_login'=>time(),'last_ip'=>  getIP()));
-                    session('last_login_time',$admin_info['last_login']);
-                    session('last_login_ip',$admin_info['last_ip']);
-                    adminLog('后台登录');
-                    $url = session('from_url') ? session('from_url') : U('Admin/Index/index');
-                    exit(json_encode(array('status'=>1,'url'=>$url)));
-                }else{
-                    exit(json_encode(array('status'=>0,'msg'=>'账号密码不正确')));
-                }
-            }else{
-                exit(json_encode(array('status'=>0,'msg'=>'请填写账号密码')));
-            }
-        }
-        
-       return $this->fetch();
-    }
-    
-    /**
-     * 退出登陆
-     */
-    public function logout(){
-        session_unset();
-        session_destroy();
-		session::clear();
-        $this->success("退出成功",U('Admin/Admin/login'));
-    }
+
     
     /**
      * 验证码获取

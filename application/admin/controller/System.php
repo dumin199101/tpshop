@@ -144,47 +144,11 @@ class System extends Base{
         /**
          * 清空系统缓存
          */
-        public function cleanCache(){              
-                              
-            if(IS_POST)
-            {
-
-//                 in_array('cache',$_POST['clear']) && delFile('./Application/Runtime/Cache');// 模板缓存
-//                 in_array('data',$_POST['clear'])  && delFile('./Application/Runtime/Data');// 项目数据
-//                 in_array('logs',$_POST['clear'])  && delFile('./Application/Runtime/Logs');// logs日志
-//                 in_array('temp',$_POST['clear'])  && delFile('./Application/Runtime/Temp');// 临时数据
-//                 in_array('cacheAll',$_POST['clear'])  && delFile('./Application/Runtime');// 清除所有
-//                 //in_array('goods_thumb',$_POST['clear'])  && delFile('./public/upload/goods/thumb'); // 删除缩略图
-//
-//                // 删除静态文件
-//                $html_arr = glob("./Application/Runtime/Html/*.html");
-//                foreach ($html_arr as $key => $val)
-//                {
-//
-//                    in_array('index',$_POST['clear']) && strstr($val,'Home_Index_index.html') && unlink($val); // 首页
-//                    in_array('goodsList',$_POST['clear']) && strstr($val,'Home_Goods_goodsList') && unlink($val); // 列表页
-//                    in_array('channel',$_POST['clear']) && strstr($val,'Home_Channel_index') && unlink($val);  // 频道页
-//
-//                    in_array('articleList',$_POST['clear']) && strstr($val,'Index_Article_articleList') && unlink($val);  // 文章列表页
-//                    in_array('detail',$_POST['clear']) && strstr($val,'Index_Article_detail') && unlink($val);  // 文章详情
-//                    in_array('articleList',$_POST['clear']) && strstr($val,'Doc_Index_index_') && unlink($val);  // 文章列表页
-//                    in_array('detail',$_POST['clear']) && strstr($val,'Doc_Index_article_') && unlink($val);  // 文章详情
-//
-//                    // 详情页
-//                    if(in_array('goodsInfo',$_POST['clear']))
-//                    {
-//                        if(strstr($val,'Home_Goods_goodsInfo') || strstr($val,'Home_Goods_ajaxComment') || strstr($val,'Home_Goods_ajax_consult'))
-//                            unlink($val);
-//                    }
-//                }
-//                $this->error("操作完成!!!");
-//                exit;
-            }
+        public function cleanCache(){
 			delFile(RUNTIME_PATH);
 			Cache::clear(); 
             $this->success("操作完成!!!",U('Admin/Admin/index'));
             exit();
-            return $this->fetch();
         }
 	    
     /**
@@ -242,41 +206,6 @@ class System extends Base{
         	$res = send_email($param['test_eamil'],'后台测试','测试发送验证码:'.mt_rand(1000,9999));
         	exit(json_encode($res));
       }
-	        
-    /**
-     *  管理员登录后 处理相关操作
-     */        
-     public function login_task()
-     {
-         
-        /*** 随机清空购物车的垃圾数据*/                     
-        $time = time() - 3600; // 删除购物车数据  1小时以前的
-        M("Cart")->where("user_id = 0 and  add_time < $time")->delete();            
-        $today_time = time();
-		
-		// 删除 cart表垃圾数据 删除一个月以前的 
-		$time = time() - 2592000; 
-        M("cart")->where("add_time < $time")->delete();		
-		// 删除 tp_sms_log表垃圾数据 删除一个月以前的短信
-        M("sms_log")->where("add_time < $time")->delete();				
-        
-        // 发货后满多少天自动收货确认
-        $auto_confirm_date = tpCache('shopping.auto_confirm_date');
-        $auto_confirm_date = $auto_confirm_date * (60 * 60 * 24); // 7天的时间戳
-		$time = time() - $auto_confirm_date; // 比如7天以前的可用自动确认收货
-        $order_id_arr = M('order')->where("order_status = 1 and shipping_status = 1 and shipping_time < $time")->getField('order_id',true);       
-        foreach($order_id_arr as $k => $v)
-        {
-            confirm_order($v);
-        }      
-        
-        // 多少天后自动分销记录自动分成
-         $switch = tpCache('distribut.switch');         
-         if($switch == 1 && file_exists(APP_PATH.'common/logic/DistributLogic.php')){
-            $distributLogic = new \app\common\logic\DistributLogic();
-            $distributLogic->auto_confirm(); // 自动确认分成
-         }         
-     }
 
     /**
      * 取得控制器下的方法列表

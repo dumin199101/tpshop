@@ -1,51 +1,34 @@
 <?php
 /**
- * tpshop
  * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 如果商业用途务必到官方购买正版授权, 以免引起不必要的法律纠纷.
+    后台首页
  * ============================================================================
- * Author: 当燃      
- * Date: 2015-09-09
+ * Author: lieyan123091
+ * Date: 2017-07-20
  */
-namespace app\admin\controller; 
-use think\AjaxPage;
+namespace app\admin\controller;
 use think\Controller;
-use think\Url;
-use think\Config;
-use think\Page;
-use think\Verify;
 use think\Db;
 class Index extends Base {
 
+	/**
+	 * 后台首页
+	 * @return mixed
+	 */
     public function index(){
-        $act_list = session('act_list');
-        $menu_list = getMenuList($act_list);         
-        $this->assign('menu_list',$menu_list);
         $admin_info = getAdminInfo(session('admin_id'));
-        $order_amount = M('order')->where("order_status=0 and (pay_status=1 or pay_code='cod')")->count();
-        $this->assign('order_amount',$order_amount);
-        $this->assign('admin_info',$admin_info);             
+        $this->assign('admin_info',$admin_info);
         $this->assign('menu',getMenuArr());   
         return $this->fetch();
     }
-   
+
+	/**
+	 * 欢迎页信息
+	 * @return mixed
+	 */
     public function welcome(){
     	$this->assign('sys_info',$this->get_sys_info());
-//    	$today = strtotime("-1 day");
-    	$today = strtotime(date("Y-m-d"));
-    	$count['handle_order'] = M('order')->where("order_status=0 and (pay_status=1 or pay_code='cod')")->count();//待处理订单
-    	$count['new_order'] = M('order')->where("add_time>=$today")->count();//今天新增订单
-    	$count['goods'] =  M('goods')->where("1=1")->count();//商品总数
-    	$count['article'] =  M('article')->where("1=1")->count();//文章总数
-    	$count['users'] = M('users')->where("1=1")->count();//会员总数
-    	$count['today_login'] = M('users')->where("last_login>=$today")->count();//今日访问
-    	$count['new_users'] = M('users')->where("reg_time>=$today")->count();//新增会员
-    	$count['comment'] = M('comment')->where("is_show=0")->count();//最新评论
+    	$count['goods'] =  M('goods')->where("1=1")->count();//品牌总数
     	$this->assign('count',$count);
         return $this->fetch();
     }
@@ -79,9 +62,7 @@ class Index extends Base {
 		}
 		return $sys_info;
     }
-    
 
-    
     /**
      * ajax 修改指定表数据字段  一般修改状态 比如 是否推荐 是否开启 等 图标切换的
      * table,id_name,id_value,field,value

@@ -108,26 +108,6 @@ function getRegionName($regionId){
     return $data['name'];
 }
 
-function getMenuList($act_list){
-	//根据角色权限过滤菜单
-	$menu_list = getAllMenu();
-	if($act_list != 'all'){
-		$right = M('system_menu')->where("id", "in", $act_list)->cache(true)->getField('right',true);
-		foreach ($right as $val){
-			$role_right .= $val.',';
-		}
-		$role_right = explode(',', $role_right);		
-		foreach($menu_list as $k=>$mrr){
-			foreach ($mrr['sub_menu'] as $j=>$v){
-				if(!in_array($v['control'].'@'.$v['act'], $role_right)){
-					unset($menu_list[$k]['sub_menu'][$j]);//过滤菜单
-				}
-			}
-		}
-	}
-	return $menu_list;
-}
-
 function getAllMenu(){
 	return	array(
 			'system' => array('name'=>'系统设置','icon'=>'fa-cog','sub_menu'=>array(

@@ -50,15 +50,6 @@ var SITEURL = window.location.host +'/index.php/admin';
   </div>
   <div class="admincp-header-r">
     <div class="manager">
-      <!--服务器升级-->
-      <textarea id="textarea_upgrade" style="display:none;">{$upgradeMsg.1}</textarea>    
-      <if condition="$upgradeMsg[0] neq null">
-      <dl style="text-align:left; font-size:15px;">
-        <dd class="group"><a href="javascript:void(0);" id="a_upgrade" style="color:#FF0;">{$upgradeMsg.0}</a></dd>
-      </dl>
-      </if>
-      <!--服务器升级 end-->
-      
       <dl>
         <dt class="name"></dt>
         <dd class="group">ThinkPHP5框架开发</dd>
@@ -76,14 +67,13 @@ var SITEURL = window.location.host +'/index.php/admin';
         <div class="login-date"> <?php echo date('Y-m-d H:i:s',session('last_login_time'));?> <span>(IP: <?php echo session('last_login_ip');?> )</span> </div>
         <div class="title">
           <h4>常用操作</h4>
-          <a href="javascript:void(0)" class="add-menu">添加菜单</a> </div>
+        </div>
                 <ul class="nc-row" tptype="quick_link">
                 <li><a href="javascript:void(0);" onClick="openItem('index|System')">站点设置</a></li>
                   </ul>
       </div>
     </div>
     <ul class="operate nc-row">
-      <li style="display: none !important;" tptype="pending_matters"><a class="toast show-option" href="javascript:void(0);" onClick="$.cookie('commonPendingMatters', 0, {expires : -1});ajax_form('pending_matters', '待处理事项', 'http://www.tpshop.cn/admin/index.php?act=common&op=pending_matters', '480');" title="查看待处理事项">&nbsp;<em>0</em></a></li>
         <li><a class="sitemap show-option" id="trace_show" href="{:U('System/cleanCache')}" target="workspace" title="更新缓存">&nbsp;</a></li>
       <li><a class="homepage show-option" target="_blank" href="/" title="新窗口打开网站首页">&nbsp;</a></li>
       <li><a class="login-out show-option" href="{:U('Admin/logout')}" title="安全退出管理中心">&nbsp;</a></li>
@@ -99,17 +89,4 @@ var SITEURL = window.location.host +'/index.php/admin';
   </div>
 </div>
 </body>
-<script type="text/javascript"> 
-	// 没有点击收货确定的按钮让他自己收货确定    
-	var timestamp = Date.parse(new Date());
-	$.ajax({
-        type:'post',
-        url:"{:U('Admin/System/login_task')}",
-        data:{timestamp:timestamp},
-        timeout : 100000000, //超时时间设置，单位毫秒
-        success:function(){
-            // 执行定时任务
-        }
-	});
-</script>
 </html>
