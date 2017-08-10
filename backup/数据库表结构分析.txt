@@ -12,12 +12,14 @@
    system_menu
    goods
    article
+   region
+
 
 没用到的表：
    users:会员
    comment:评论
    order:订单表
-
+   pickup:自提点管理
 
 
 方法列表：
@@ -38,6 +40,9 @@
          ajax 修改指定表数据字段  一般修改状态 比如 是否推荐 是否开启 等 图标切换的:admin/Index/changeTableVal
          修改管理员密码：admin/Admin/modify_pwd
          更新缓存：admin/System/cleanCache
+    3）网站设置
+          网站信息：admin/System/index
+          网站信息更新：admin/System/handle
 
 
 
