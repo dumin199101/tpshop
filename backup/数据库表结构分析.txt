@@ -13,13 +13,35 @@
    goods
    article
    region
-
+   admin_log
+   navigation
 
 没用到的表：
    users:会员
    comment:评论
    order:订单表
    pickup:自提点管理
+   user_address:用户收货地址
+   account_log:用户账户资金记录
+   recharge:充值记录
+   user_level:用户等级
+   message:消息表
+   user_message:用户消息表
+   withdraws:用户提现记录
+   remittance:转账汇款
+   wx_开头
+   order_goods
+   plugin:插件表
+   shipping:物流
+   shipping_area:配送区域
+   area_region:配送地区跟区域关联表
+   coupon:优惠券
+   order_action
+   delivery_doc:发货
+   return_goods:退货
+   spec:属性相关
+   group_buy
+
 
 
 方法列表：
@@ -29,12 +51,17 @@
   delFile:删除文件
 
 
+左侧菜单列表：admin/conf/menu.php
+
+
+
 功能测试：
     1）登录模块：
          1.登录系统  admin/Admin/login
          2.退出系统  admin/Admin/logout
     2) 后台首页
          后台首页：admin/Index/index
+         左侧导航：public/left
          欢迎页：admin/Index/welcome(订单数据待定)
          获取系统服务器配置信息：admin/Index/get_sys_info
          ajax 修改指定表数据字段  一般修改状态 比如 是否推荐 是否开启 等 图标切换的:admin/Index/changeTableVal
@@ -43,400 +70,16 @@
     3）网站设置
           网站信息：admin/System/index
           网站信息更新：admin/System/handle
+          地区列表：admin/Tools/region
+          添加删除地区：admin/Tools/regionHandle
+          导航设置：admin/System/navigationList
+          添加编辑导航：admin/System/addEditNav
+          删除导航：admin/System/delNav
+          链接管理：admin/Article/linkList
+          增删改友情链接： admin/Article/linkHandle
+          增加链接表单：admin/Article/link
 
 
-
-array(14) {
-  ["system"] => array(3) {
-    ["name"] => string(12) "系统设置"
-    ["icon"] => string(6) "fa-cog"
-    ["sub_menu"] => array(5) {
-      [0] => array(3) {
-        ["name"] => string(12) "网站设置"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "System"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "友情链接"
-        ["act"] => string(8) "linkList"
-        ["control"] => string(7) "Article"
-      }
-      [2] => array(3) {
-        ["name"] => string(15) "自定义导航"
-        ["act"] => string(14) "navigationList"
-        ["control"] => string(6) "System"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "区域管理"
-        ["act"] => string(6) "region"
-        ["control"] => string(5) "Tools"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "短信模板"
-        ["act"] => string(5) "index"
-        ["control"] => string(11) "SmsTemplate"
-      }
-    }
-  }
-  ["access"] => array(3) {
-    ["name"] => string(12) "权限管理"
-    ["icon"] => string(8) "fa-gears"
-    ["sub_menu"] => array(5) {
-      [0] => array(3) {
-        ["name"] => string(18) "权限资源列表"
-        ["act"] => string(10) "right_list"
-        ["control"] => string(6) "System"
-      }
-      [1] => array(3) {
-        ["name"] => string(15) "管理员列表"
-        ["act"] => string(5) "index"
-        ["control"] => string(5) "Admin"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "角色管理"
-        ["act"] => string(4) "role"
-        ["control"] => string(5) "Admin"
-      }
-      [3] => array(3) {
-        ["name"] => string(15) "供应商管理"
-        ["act"] => string(8) "supplier"
-        ["control"] => string(5) "Admin"
-      }
-      [4] => array(3) {
-        ["name"] => string(15) "管理员日志"
-        ["act"] => string(3) "log"
-        ["control"] => string(5) "Admin"
-      }
-    }
-  }
-  ["member"] => array(3) {
-    ["name"] => string(12) "会员管理"
-    ["icon"] => string(7) "fa-user"
-    ["sub_menu"] => array(5) {
-      [0] => array(3) {
-        ["name"] => string(12) "会员列表"
-        ["act"] => string(5) "index"
-        ["control"] => string(4) "User"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "会员等级"
-        ["act"] => string(9) "levelList"
-        ["control"] => string(4) "User"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "充值记录"
-        ["act"] => string(8) "recharge"
-        ["control"] => string(4) "User"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "提现申请"
-        ["act"] => string(11) "withdrawals"
-        ["control"] => string(4) "User"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "汇款记录"
-        ["act"] => string(10) "remittance"
-        ["control"] => string(4) "User"
-      }
-    }
-  }
-  ["goods"] => array(3) {
-    ["name"] => string(12) "商品管理"
-    ["icon"] => string(7) "fa-book"
-    ["sub_menu"] => array(8) {
-      [0] => array(3) {
-        ["name"] => string(12) "商品分类"
-        ["act"] => string(12) "categoryList"
-        ["control"] => string(5) "Goods"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "商品列表"
-        ["act"] => string(9) "goodsList"
-        ["control"] => string(5) "Goods"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "商品模型"
-        ["act"] => string(13) "goodsTypeList"
-        ["control"] => string(5) "Goods"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "商品规格"
-        ["act"] => string(8) "specList"
-        ["control"] => string(5) "Goods"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "商品属性"
-        ["act"] => string(18) "goodsAttributeList"
-        ["control"] => string(5) "Goods"
-      }
-      [5] => array(3) {
-        ["name"] => string(12) "品牌列表"
-        ["act"] => string(9) "brandList"
-        ["control"] => string(5) "Goods"
-      }
-      [6] => array(3) {
-        ["name"] => string(12) "商品评论"
-        ["act"] => string(5) "index"
-        ["control"] => string(7) "Comment"
-      }
-      [7] => array(3) {
-        ["name"] => string(12) "商品咨询"
-        ["act"] => string(8) "ask_list"
-        ["control"] => string(7) "Comment"
-      }
-    }
-  }
-  ["order"] => array(3) {
-    ["name"] => string(12) "订单管理"
-    ["icon"] => string(8) "fa-money"
-    ["sub_menu"] => array(5) {
-      [0] => array(3) {
-        ["name"] => string(12) "订单列表"
-        ["act"] => string(5) "index"
-        ["control"] => string(5) "Order"
-      }
-      [1] => array(3) {
-        ["name"] => string(9) "发货单"
-        ["act"] => string(13) "delivery_list"
-        ["control"] => string(5) "Order"
-      }
-      [2] => array(3) {
-        ["name"] => string(9) "退货单"
-        ["act"] => string(11) "return_list"
-        ["control"] => string(5) "Order"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "添加订单"
-        ["act"] => string(9) "add_order"
-        ["control"] => string(5) "Order"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "订单日志"
-        ["act"] => string(9) "order_log"
-        ["control"] => string(5) "Order"
-      }
-    }
-  }
-  ["promotion"] => array(3) {
-    ["name"] => string(12) "促销管理"
-    ["icon"] => string(7) "fa-bell"
-    ["sub_menu"] => array(6) {
-      [0] => array(3) {
-        ["name"] => string(12) "抢购管理"
-        ["act"] => string(10) "flash_sale"
-        ["control"] => string(9) "Promotion"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "团购管理"
-        ["act"] => string(14) "group_buy_list"
-        ["control"] => string(9) "Promotion"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "商品促销"
-        ["act"] => string(15) "prom_goods_list"
-        ["control"] => string(9) "Promotion"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "订单促销"
-        ["act"] => string(15) "prom_order_list"
-        ["control"] => string(9) "Promotion"
-      }
-      [4] => array(3) {
-        ["name"] => string(15) "代金券管理"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "Coupon"
-      }
-      [5] => array(3) {
-        ["name"] => string(12) "预售管理"
-        ["act"] => string(13) "pre_sell_list"
-        ["control"] => string(9) "Promotion"
-      }
-    }
-  }
-  ["Ad"] => array(3) {
-    ["name"] => string(12) "广告管理"
-    ["icon"] => string(7) "fa-flag"
-    ["sub_menu"] => array(2) {
-      [0] => array(3) {
-        ["name"] => string(12) "广告列表"
-        ["act"] => string(6) "adList"
-        ["control"] => string(2) "Ad"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "广告位置"
-        ["act"] => string(12) "positionList"
-        ["control"] => string(2) "Ad"
-      }
-    }
-  }
-  ["content"] => array(3) {
-    ["name"] => string(12) "内容管理"
-    ["icon"] => string(11) "fa-comments"
-    ["sub_menu"] => array(3) {
-      [0] => array(3) {
-        ["name"] => string(12) "文章列表"
-        ["act"] => string(11) "articleList"
-        ["control"] => string(7) "Article"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "文章分类"
-        ["act"] => string(12) "categoryList"
-        ["control"] => string(7) "Article"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "专题列表"
-        ["act"] => string(9) "topicList"
-        ["control"] => string(5) "Topic"
-      }
-    }
-  }
-  ["weixin"] => array(3) {
-    ["name"] => string(12) "微信管理"
-    ["icon"] => string(9) "fa-weixin"
-    ["sub_menu"] => array(4) {
-      [0] => array(3) {
-        ["name"] => string(15) "公众号管理"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "Wechat"
-      }
-      [1] => array(3) {
-        ["name"] => string(18) "微信菜单管理"
-        ["act"] => string(4) "menu"
-        ["control"] => string(6) "Wechat"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "文本回复"
-        ["act"] => string(4) "text"
-        ["control"] => string(6) "Wechat"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "图文回复"
-        ["act"] => string(3) "img"
-        ["control"] => string(6) "Wechat"
-      }
-    }
-  }
-  ["theme"] => array(3) {
-    ["name"] => string(12) "模板管理"
-    ["icon"] => string(9) "fa-adjust"
-    ["sub_menu"] => array(2) {
-      [0] => array(3) {
-        ["name"] => string(11) "PC端模板"
-        ["act"] => string(17) "templateList?t=pc"
-        ["control"] => string(8) "Template"
-      }
-      [1] => array(3) {
-        ["name"] => string(15) "手机端模板"
-        ["act"] => string(21) "templateList?t=mobile"
-        ["control"] => string(8) "Template"
-      }
-    }
-  }
-  ["distribut"] => array(3) {
-    ["name"] => string(12) "分销管理"
-    ["icon"] => string(8) "fa-cubes"
-    ["sub_menu"] => array(5) {
-      [0] => array(3) {
-        ["name"] => string(18) "分销商品列表"
-        ["act"] => string(10) "goods_list"
-        ["control"] => string(9) "Distribut"
-      }
-      [1] => array(3) {
-        ["name"] => string(15) "分销商列表"
-        ["act"] => string(16) "distributor_list"
-        ["control"] => string(9) "Distribut"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "分销关系"
-        ["act"] => string(4) "tree"
-        ["control"] => string(9) "Distribut"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "分销设置"
-        ["act"] => string(3) "set"
-        ["control"] => string(9) "Distribut"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "分成日志"
-        ["act"] => string(10) "rebate_log"
-        ["control"] => string(9) "Distribut"
-      }
-    }
-  }
-  ["tools"] => array(3) {
-    ["name"] => string(12) "插件工具"
-    ["icon"] => string(7) "fa-plug"
-    ["sub_menu"] => array(3) {
-      [0] => array(3) {
-        ["name"] => string(12) "插件列表"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "Plugin"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "数据备份"
-        ["act"] => string(5) "index"
-        ["control"] => string(5) "Tools"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "数据还原"
-        ["act"] => string(7) "restore"
-        ["control"] => string(5) "Tools"
-      }
-    }
-  }
-  ["count"] => array(3) {
-    ["name"] => string(12) "统计报表"
-    ["icon"] => string(9) "fa-signal"
-    ["sub_menu"] => array(6) {
-      [0] => array(3) {
-        ["name"] => string(12) "销售概况"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "Report"
-      }
-      [1] => array(3) {
-        ["name"] => string(12) "销售排行"
-        ["act"] => string(7) "saleTop"
-        ["control"] => string(6) "Report"
-      }
-      [2] => array(3) {
-        ["name"] => string(12) "会员排行"
-        ["act"] => string(7) "userTop"
-        ["control"] => string(6) "Report"
-      }
-      [3] => array(3) {
-        ["name"] => string(12) "销售明细"
-        ["act"] => string(8) "saleList"
-        ["control"] => string(6) "Report"
-      }
-      [4] => array(3) {
-        ["name"] => string(12) "会员统计"
-        ["act"] => string(4) "user"
-        ["control"] => string(6) "Report"
-      }
-      [5] => array(3) {
-        ["name"] => string(12) "财务统计"
-        ["act"] => string(7) "finance"
-        ["control"] => string(6) "Report"
-      }
-    }
-  }
-  ["pickup"] => array(3) {
-    ["name"] => string(15) "自提点管理"
-    ["icon"] => string(9) "fa-anchor"
-    ["sub_menu"] => array(2) {
-      [0] => array(3) {
-        ["name"] => string(15) "自提点列表"
-        ["act"] => string(5) "index"
-        ["control"] => string(6) "Pickup"
-      }
-      [1] => array(3) {
-        ["name"] => string(15) "添加自提点"
-        ["act"] => string(3) "add"
-        ["control"] => string(6) "Pickup"
-      }
-    }
-  }
-}
 
 ----------------------------------------------------------------
 

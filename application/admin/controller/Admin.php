@@ -1,7 +1,8 @@
 <?php
 /**
  * ============================================================================
-    权限管理模块：完成后台系统的权限管理
+
+ *  权限管理模块：完成后台系统的权限管理
  * ============================================================================
  * Author: lieyan123091
  * Date: 2017-07-20
@@ -290,7 +291,7 @@ class Admin extends Base {
     }
 
     /**
-     * 管理员日志
+     * 管理员日志:对后台的一系列增删改
      * @return mixed
      */
     public function log(){
@@ -305,89 +306,4 @@ class Admin extends Base {
     	return $this->fetch();
     }
 
-
-	/**
-	 * 供应商列表
-	 */
-	public function supplier()
-	{
-		$supplier_count = DB::name('suppliers')->count();
-		$page = new Page($supplier_count, 10);
-		$show = $page->show();
-		$supplier_list = DB::name('suppliers')
-				->alias('s')
-				->field('s.*,a.admin_id,a.user_name')
-				->join('__ADMIN__ a','a.suppliers_id = s.suppliers_id','LEFT')
-				->limit($page->firstRow, $page->listRows)
-				->select();
-		$this->assign('list', $supplier_list);
-		$this->assign('page', $show);
-		return $this->fetch();
-	}
-
-	/**
-	 * 供应商资料
-	 */
-	public function supplier_info()
-	{
-		$suppliers_id = I('get.suppliers_id/d', 0);
-		if ($suppliers_id) {
-			$info = DB::name('suppliers')
-					->alias('s')
-					->field('s.*,a.admin_id,a.user_name')
-					->join('__ADMIN__ a','a.suppliers_id = s.suppliers_id','LEFT')
-					->where(array('s.suppliers_id' => $suppliers_id))
-					->find();
-			$this->assign('info', $info);
-		}
-		$act = empty($suppliers_id) ? 'add' : 'edit';
-		$this->assign('act', $act);
-		$admin = M('admin')->field('admin_id,user_name')->select();
-		$this->assign('admin', $admin);
-		return $this->fetch();
-	}
-
-	/**
-	 * 供应商增删改
-	 */
-	public function supplierHandle()
-	{
-		$data = I('post.');
-		$suppliers_model = M('suppliers');
-		//增
-		if ($data['act'] == 'add') {
-			unset($data['suppliers_id']);
-			$count = $suppliers_model->where("suppliers_name", $data['suppliers_name'])->count();
-			if ($count) {
-				$this->error("此供应商名称已被注册，请更换", U('Admin/Admin/supplier_info'));
-			} else {
-				$r = $suppliers_model->insertGetId($data);
-				if (!empty($data['admin_id'])) {
-					$admin_data['suppliers_id'] = $r;
-					M('admin')->where(array('suppliers_id' => $admin_data['suppliers_id']))->save(array('suppliers_id' => 0));
-					M('admin')->where(array('admin_id' => $data['admin_id']))->save($admin_data);
-				}
-			}
-		}
-		//改
-		if ($data['act'] == 'edit' && $data['suppliers_id'] > 0) {
-			$r = $suppliers_model->where('suppliers_id',$data['suppliers_id'])->save($data);
-			if (!empty($data['admin_id'])) {
-				$admin_data['suppliers_id'] = $data['suppliers_id'];
-				M('admin')->where(array('suppliers_id' => $admin_data['suppliers_id']))->save(array('suppliers_id' => 0));
-				M('admin')->where(array('admin_id' => $data['admin_id']))->save($admin_data);
-			}
-		}
-		//删
-		if ($data['act'] == 'del' && $data['suppliers_id'] > 0) {
-			$r = $suppliers_model->where('suppliers_id', $data['suppliers_id'])->delete();
-			M('admin')->where(array('suppliers_id' => $data['suppliers_id']))->save(array('suppliers_id' => 0));
-		}
-
-		if ($r !== false) {
-			$this->success("操作成功", U('Admin/Admin/supplier'));
-		} else {
-			$this->error("操作失败", U('Admin/Admin/supplier'));
-		}
-	}
 }

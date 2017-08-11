@@ -1,17 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 如果商业用途务必到官方购买正版授权, 以免引起不必要的法律纠纷.
- * ============================================================================
- * Author: 当燃      
- * Date: 2015-09-09
- */
+
 namespace app\admin\controller;
 
 use think\Page;
@@ -33,6 +21,69 @@ class Article extends Base {
         $this->assign('article_main_system_id', $this->article_main_system_id);
         $this->assign('article_able_id',$this->article_able_id);
     }
+
+    /*添加友情链接模板*/
+    public function link(){
+        $act = I('get.act','add');
+        $this->assign('act',$act);
+        $link_id = I('get.link_id/d');
+        $link_info = array();
+        if($link_id){
+            $link_info = D('friend_link')->where('link_id', $link_id)->find();
+        }
+        $this->assign('info',$link_info);
+        return $this->fetch();
+    }
+
+    /**
+     * 友情链接列表
+     * @return mixed
+     */
+    public function linkList(){
+        $Ad =  M('friend_link');
+        $p = $this->request->param('p');
+        $res = $Ad->order('orderby')->page($p.',10')->select();
+        if($res){
+            foreach ($res as $val){
+                $val['target'] = $val['target']>0 ? '开启' : '关闭';
+                $list[] = $val;
+            }
+        }
+        $this->assign('list',$list);// 赋值数据集
+        $count = $Ad->count();// 查询满足要求的总记录数
+        $Page = new Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+        $show = $Page->show();// 分页显示输出
+        $this->assign('pager',$Page);// 赋值分页输出
+        $this->assign('page',$show);// 赋值分页输出
+        return $this->fetch();
+    }
+
+    /**
+     * 增删改友情链接
+     */
+    public function linkHandle(){
+        $data = I('post.');
+        if($data['act'] == 'add'){
+            stream_context_set_default(array('http'=>array('timeout' =>2)));
+//            send_http_status('311');
+            $r = D('friend_link')->insert($data);
+        }
+        if($data['act'] == 'edit'){
+            $r = D('friend_link')->where('link_id', $data['link_id'])->save($data);
+        }
+
+        if($data['act'] == 'del'){
+            $r = D('friend_link')->where('link_id', $data['link_id'])->delete();
+            if($r) exit(json_encode(1));
+        }
+
+        if($r){
+            $this->success("操作成功",U('Admin/Article/linkList'));
+        }else{
+            $this->error("操作失败",U('Admin/Article/linkList'));
+        }
+    }
+
 
     public function categoryList(){
         $ArticleCat = new ArticleCatLogic(); 
@@ -211,58 +262,6 @@ class Article extends Base {
     }
     
     
-    public function link(){
-    	$act = I('get.act','add');
-    	$this->assign('act',$act);
-    	$link_id = I('get.link_id/d');
-    	$link_info = array();
-    	if($link_id){
-    		$link_info = D('friend_link')->where('link_id', $link_id)->find();
-    	}
-        $this->assign('info',$link_info);
-    	return $this->fetch();
-    }
-    
-    public function linkList(){
-    	$Ad =  M('friend_link');
-        $p = $this->request->param('p');
-    	$res = $Ad->order('orderby')->page($p.',10')->select();
-    	if($res){
-    		foreach ($res as $val){
-    			$val['target'] = $val['target']>0 ? '开启' : '关闭';
-    			$list[] = $val;
-    		}
-    	}
-    	$this->assign('list',$list);// 赋值数据集
-    	$count = $Ad->count();// 查询满足要求的总记录数
-    	$Page = new Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
-    	$show = $Page->show();// 分页显示输出
-        $this->assign('pager',$Page);// 赋值分页输出
-    	$this->assign('page',$show);// 赋值分页输出
-    	return $this->fetch();
-    }
-    
-    public function linkHandle(){
-        $data = I('post.');
-    	if($data['act'] == 'add'){
-    		stream_context_set_default(array('http'=>array('timeout' =>2)));
-//            send_http_status('311');
-    		$r = D('friend_link')->insert($data);
-    	}
-    	if($data['act'] == 'edit'){
-    		$r = D('friend_link')->where('link_id', $data['link_id'])->save($data);
-    	}
-    	
-    	if($data['act'] == 'del'){
-    		$r = D('friend_link')->where('link_id', $data['link_id'])->delete();
-    		if($r) exit(json_encode(1));
-    	}
-    	
-    	if($r){
-    		$this->success("操作成功",U('Admin/Article/linkList'));
-    	}else{
-    		$this->error("操作失败",U('Admin/Article/linkList'));
-    	}
-    }
+
 
 }

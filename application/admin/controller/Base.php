@@ -33,7 +33,6 @@ class Base extends Controller {
         //用户中心面包屑导航
         $navigate_admin = navigate_admin();
         $this->assign('navigate_admin',$navigate_admin);
-        tpversion();        
    }    
     
     /*
@@ -74,6 +73,7 @@ class Base extends Controller {
      */
     public function check_priv()
     {
+        $role_right = '';
     	$ctl = CONTROLLER_NAME;
     	$act = ACTION_NAME;
         $act_list = session('act_list');

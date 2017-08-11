@@ -62,11 +62,11 @@ class System extends Base{
 		unset($param['inc_type']);
 		tpCache($inc_type,$param);
 		$this->success("操作成功",U('System/index',array('inc_type'=>$inc_type)));
-	}        
-        
-       /**
-        * 自定义导航
-        */
+	}
+
+    /**
+     * 自定义导航
+     */
     public function navigationList(){
            $model = M("Navigation");
            $navigationList = $model->order("id desc")->select();            
@@ -92,28 +92,6 @@ class System extends Base{
         // 点击过来编辑时
         $id = I('id',0);
         $navigation = DB::name('navigation')->where('id',$id)->find();
-        // 系统菜单
-        $GoodsLogic = new GoodsLogic();
-        $cat_list = $GoodsLogic->goods_cat_list();
-        $select_option = array();
-        if(!empty($cat_list))
-        {        
-            foreach ($cat_list AS $key => $value) {
-                $strpad_count = $value['level'] * 4;
-                $select_val = U("/Home/Goods/goodsList", array('id' => $key));
-                $select_option[$select_val] = str_pad('', $strpad_count, "-", STR_PAD_LEFT) . $value['name'];
-            }
-        }    
-        $system_nav = array(
-            'http://www.tp-shop.cn' => 'tpshop官网',
-            'http://www.99soubao.com' => '搜豹公司',
-            '/index.php?m=Home&c=activity&a=promoteList' => '限时抢购',
-            '/index.php?m=Home&c=Activity&a=group_list' => '团购',
-            '/index.php?m=Home&c=Goods&a=integralMall' => '积分商城',
-        );
-        $system_nav = array_merge($system_nav, $select_option);
-        $this->assign('system_nav', $system_nav);
-
         $this->assign('navigation', $navigation);
         return $this->fetch('_navigation');
     }   
@@ -127,7 +105,16 @@ class System extends Base{
         M('Navigation')->where("id",I('id'))->delete();
         $this->success("操作成功!!!",U('Admin/System/navigationList'));
     }
-	
+
+
+
+
+
+
+
+
+
+
 	public function refreshMenu(){
 		$pmenu = $arr = array();
 		$rs = M('system_module')->where('level>1 AND visible=1')->order('mod_id ASC')->select();
@@ -198,14 +185,7 @@ class System extends Base{
             $json_str = json_encode($json_arr);            
             exit($json_str);            
       }
-      
-	//发送测试邮件
-	public function send_email(){
-		$param = I('post.');
-		tpCache($param['inc_type'],$param);
-        	$res = send_email($param['test_eamil'],'后台测试','测试发送验证码:'.mt_rand(1000,9999));
-        	exit(json_encode($res));
-      }
+
 
     /**
      * 取得控制器下的方法列表
