@@ -58,38 +58,6 @@ function getAdminInfo($admin_id){
 	return D('admin')->where("admin_id", $admin_id)->find();
 }
 
- 
-/**
- * 面包屑导航  用于后台管理
- * 根据当前的控制器名称 和 action 方法
- */
-function navigate_admin()
-{            
-    $navigate = include APP_PATH.'admin/conf/navigate.php';
-    $location = strtolower('Admin/'.CONTROLLER_NAME);
-    $arr = array(
-        '后台首页'=>'javascript:void();',
-        $navigate[$location]['name']=>'javascript:void();',
-        $navigate[$location]['action'][ACTION_NAME]=>'javascript:void();',
-    );
-    return $arr;
-}
-
-/**
- * 导出excel
- * @param $strTable	表格内容
- * @param $filename 文件名
- */
-function downloadExcel($strTable,$filename)
-{
-	header("Content-type: application/vnd.ms-excel");
-	header("Content-Type: application/force-download");
-	header("Content-Disposition: attachment; filename=".$filename."_".date('Y-m-d').".xls");
-	header('Expires:0');
-	header('Pragma:public');
-	echo '<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'.$strTable.'</html>';
-}
-
 /**
  * 格式化字节大小
  * @param  number $size      字节数

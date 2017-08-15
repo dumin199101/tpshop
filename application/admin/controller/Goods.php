@@ -1,17 +1,5 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 如果商业用途务必到官方购买正版授权, 以免引起不必要的法律纠纷.
- * ============================================================================
- * Author: IT宇宙人     
- * Date: 2015-09-09
- */
+
 namespace app\admin\controller;
 use app\admin\logic\GoodsLogic;
 use app\admin\logic\SearchWordLogic;
@@ -370,133 +358,8 @@ class Goods extends Base {
         $this->initEditor(); // 编辑器
         return $this->fetch('_goods');
     } 
-          
-    /**
-     * 商品类型  用于设置商品的属性
-     */
-    public function goodsTypeList(){
-        $model = M("GoodsType");                
-        $count = $model->count();        
-        $Page = $pager = new Page($count,14);
-        $show  = $Page->show();
-        $goodsTypeList = $model->order("id desc")->limit($Page->firstRow.','.$Page->listRows)->select();
-        $this->assign('pager',$pager);
-        $this->assign('show',$show);
-        $this->assign('goodsTypeList',$goodsTypeList);
-        return $this->fetch('goodsTypeList');
-    }
-    
-    
-    /**
-     * 添加修改编辑  商品属性类型
-     */
-    public function addEditGoodsType()
-    {
-        $id = $this->request->param('id', 0);
-        $model = M("GoodsType");
-        if (IS_POST) {
-            $data = $this->request->post();
-            if ($id)
-                DB::name('GoodsType')->update($data);
-            else
-                DB::name('GoodsType')->insert($data);
 
-            $this->success("操作成功!!!", U('Admin/Goods/goodsTypeList'));
-            exit;
-        }
-        $goodsType = $model->find($id);
-        $this->assign('goodsType', $goodsType);
-        return $this->fetch('_goodsType');
-    }
-    
-    /**
-     * 商品属性列表
-     */
-    public function goodsAttributeList(){       
-        $goodsTypeList = M("GoodsType")->select();
-        $this->assign('goodsTypeList',$goodsTypeList);
-        return $this->fetch();
-    }   
-    
-    /**
-     *  商品属性列表
-     */
-    public function ajaxGoodsAttributeList(){            
-        //ob_start('ob_gzhandler'); // 页面压缩输出
-        $where = ' 1 = 1 '; // 搜索条件                        
-        I('type_id')   && $where = "$where and type_id = ".I('type_id') ;                
-        // 关键词搜索               
-        $model = M('GoodsAttribute');
-        $count = $model->where($where)->count();
-        $Page       = new AjaxPage($count,13);
-        $show = $Page->show();
-        $goodsAttributeList = $model->where($where)->order('`order` desc,attr_id DESC')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $goodsTypeList = M("GoodsType")->getField('id,name');
-        $attr_input_type = array(0=>'手工录入',1=>' 从列表中选择',2=>' 多行文本框');
-        $this->assign('attr_input_type',$attr_input_type);
-        $this->assign('goodsTypeList',$goodsTypeList);        
-        $this->assign('goodsAttributeList',$goodsAttributeList);
-        $this->assign('page',$show);// 赋值分页输出
-        return $this->fetch();
-    }   
-    
-    /**
-     * 添加修改编辑  商品属性
-     */
-    public  function addEditGoodsAttribute(){
-                        
-            $model = D("GoodsAttribute");                      
-            $type = I('attr_id') > 0 ? 2 : 1; // 标识自动验证时的 场景 1 表示插入 2 表示更新         
-            $attr_values = str_replace('_', '', I('attr_values')); // 替换特殊字符
-            $attr_values = str_replace('@', '', $attr_values); // 替换特殊字符            
-            $attr_values = trim($attr_values);
-            
-            $post_data = input('post.');
-            $post_data['attr_values'] = $attr_values;
-            
-            if((I('is_ajax') == 1) && IS_POST)//ajax提交验证
-            {                                
-                    // 数据验证            
-                    $validate = \think\Loader::validate('GoodsAttribute');
-                    if(!$validate->batch()->check($post_data))
-                    {                          
-                        $error = $validate->getError();
-                        $error_msg = array_values($error);
-                        $return_arr = array(
-                            'status' => -1,
-                            'msg' => $error_msg[0],
-                            'data' => $error,
-                        );
-                        $this->ajaxReturn($return_arr);
-                    } else {     
-                             $model->data($post_data,true); // 收集数据
-                            
-                             if ($type == 2)
-                             {                                 
-                                 $model->isUpdate(true)->save(); // 写入数据到数据库                         
-                             }
-                             else
-                             {
-                                 $model->save(); // 写入数据到数据库
-                                 $insert_id = $model->getLastInsID();                        
-                             }
-                             $return_arr = array(
-                                 'status' => 1,
-                                 'msg'   => '操作成功',                        
-                                 'data'  => array('url'=>U('Admin/Goods/goodsAttributeList')),
-                             );
-                             $this->ajaxReturn($return_arr);
-                }  
-            }                
-           // 点击过来编辑时                 
-           $attr_id = I('attr_id/d',0);  
-           $goodsTypeList = M("GoodsType")->select();           
-           $goodsAttribute = $model->find($attr_id);           
-           $this->assign('goodsTypeList',$goodsTypeList);                   
-           $this->assign('goodsAttribute',$goodsAttribute);
-           return $this->fetch('_goodsAttribute');
-    }  
-    
+
     /**
      * 更改指定表的指定字段
      */
@@ -506,7 +369,7 @@ class Goods extends Base {
                 'goods_category' => 'id',
                 'brand' => 'id',            
                 'goods_attribute' => 'attr_id',
-        		'ad' =>'ad_id',            
+        		'banner' =>'ad_id',
         );        
         $model = D($_POST['table']);
         $model->$primary[$_POST['table']] = $_POST['id'];
@@ -570,51 +433,9 @@ class Goods extends Base {
         $this->ajaxReturn($return_arr);
     }
     
-    /**
-     * 删除商品类型 
-     */
-    public function delGoodsType()
-    {
-        // 判断 商品规格
-        $id = $this->request->param('id');
-        $count = M("Spec")->where("type_id = {$id}")->count("1");
-        $count > 0 && $this->error('该类型下有商品规格不得删除!',U('Admin/Goods/goodsTypeList'));
-        // 判断 商品属性        
-        $count = M("GoodsAttribute")->where("type_id = {$id}")->count("1");
-        $count > 0 && $this->error('该类型下有商品属性不得删除!',U('Admin/Goods/goodsTypeList'));        
-        // 删除分类
-        M('GoodsType')->where("id = {$id}")->delete();
-        $this->success("操作成功!!!",U('Admin/Goods/goodsTypeList'));
-    }    
 
-    /**
-     * 删除商品属性
-     */
-    public function delGoodsAttribute()
-    {
-        $id = input('id');
-        // 判断 有无商品使用该属性
-        $count = M("GoodsAttr")->where("attr_id = {$id}")->count("1");
-        $count > 0 && $this->error('有商品使用该属性,不得删除!',U('Admin/Goods/goodsAttributeList'));
-        // 删除 属性
-        M('GoodsAttribute')->where("attr_id = {$id}")->delete();
-        $this->success("操作成功!!!",U('Admin/Goods/goodsAttributeList'));
-    }            
-    
-    /**
-     * 删除商品规格
-     */
-    public function delGoodsSpec()
-    {
-        $id = input('id');
-        // 判断 商品规格项
-        $count = M("SpecItem")->where("spec_id = {$id}")->count("1");
-        $count > 0 && $this->error('清空规格项后才可以删除!',U('Admin/Goods/specList'));
-        // 删除分类
-        M('Spec')->where("id = {$id}")->delete();
-        $this->success("操作成功!!!",U('Admin/Goods/specList'));
-    } 
-    
+
+
     /**
      * 品牌列表
      */
@@ -696,155 +517,5 @@ class Goods extends Base {
         $this->assign("URL_getMovie", U('admin/Ueditor/getMovie',array('savepath'=>'article'))); // 视频上传
         $this->assign("URL_Home", "");
     }    
-    
-    
-    
-    /**
-     * 商品规格列表    
-     */
-    public function specList(){       
-        $goodsTypeList = M("GoodsType")->select();
-        $this->assign('goodsTypeList',$goodsTypeList);
-        return $this->fetch();
-    }
-    
-    
-    /**
-     *  商品规格列表
-     */
-    public function ajaxSpecList(){ 
-        //ob_start('ob_gzhandler'); // 页面压缩输出
-        $where = ' 1 = 1 '; // 搜索条件                        
-        I('type_id')   && $where = "$where and type_id = ".I('type_id') ;        
-        // 关键词搜索               
-        $model = D('spec');
-        $count = $model->where($where)->count();
-        $Page       = new AjaxPage($count,13);
-        $show = $Page->show();
-        $specList = $model->where($where)->order('`type_id` desc')->limit($Page->firstRow.','.$Page->listRows)->select();        
-        $GoodsLogic = new GoodsLogic();        
-        foreach($specList as $k => $v)
-        {       // 获取规格项     
-                $arr = $GoodsLogic->getSpecItem($v['id']);
-                $specList[$k]['spec_item'] = implode(' , ', $arr);
-        }
-        
-        $this->assign('specList',$specList);
-        $this->assign('page',$show);// 赋值分页输出
-        $goodsTypeList = M("GoodsType")->select(); // 规格分类
-        $goodsTypeList = convert_arr_key($goodsTypeList, 'id');
-        $this->assign('goodsTypeList',$goodsTypeList);        
-        return $this->fetch();
-    }      
-    /**
-     * 添加修改编辑  商品规格
-     */
-    public  function addEditSpec(){
-                        
-            $model = D("spec");                      
-            $type = I('id') > 0 ? 2 : 1; // 标识自动验证时的 场景 1 表示插入 2 表示更新             
-            if((I('is_ajax') == 1) && IS_POST)//ajax提交验证
-            {                
-                // 数据验证
-                $validate = \think\Loader::validate('Spec');
-                $post_data = input('post.');
-                if ($type == 2) {
-                    //更新数据
-                    $check = $validate->scene('edit')->batch()->check($post_data);
-                } else {
-                    //插入数据
-                    $check = $validate->batch()->check($post_data);
-                }
-                if (!$check) {
-                    $error = $validate->getError();
-                    $error_msg = array_values($error);
-                    $return_arr = array(
-                        'status' => -1,
-                        'msg' => $error_msg[0],
-                        'data' => $error,
-                    );
-                    $this->ajaxReturn($return_arr);
-                }
-                $model->data($post_data, true); // 收集数据
-                if ($type == 2) {
-                    $model->isUpdate(true)->save(); // 写入数据到数据库
-                    $model->afterSave(I('id'));
-                } else {
-                    $model->save(); // 写入数据到数据库
-                    $insert_id = $model->getLastInsID();
-                    $model->afterSave($insert_id);
-                }
-                $return_arr = array(
-                    'status' => 1,
-                    'msg' => '操作成功',
-                    'data' => array('url' => U('Admin/Goods/specList')),
-                );
-                $this->ajaxReturn($return_arr);
-            }                
-           // 点击过来编辑时                 
-           $id = I('id/d',0);
-           $spec = $model->find($id);
-           $GoodsLogic = new GoodsLogic();  
-           $items = $GoodsLogic->getSpecItem($id);
-           $spec[items] = implode(PHP_EOL, $items); 
-           $this->assign('spec',$spec);
-           
-           $goodsTypeList = M("GoodsType")->select();           
-           $this->assign('goodsTypeList',$goodsTypeList);           
-           return $this->fetch('_spec');
-    }  
-    
-    
-    /**
-     * 动态获取商品规格选择框 根据不同的数据返回不同的选择框
-     */
-    public function ajaxGetSpecSelect(){
-        $goods_id = I('get.goods_id/d') ? I('get.goods_id/d') : 0;        
-        $GoodsLogic = new GoodsLogic();
-        //$_GET['spec_type'] =  13;
-        $specList = M('Spec')->where("type_id = ".I('get.spec_type/d'))->order('`order` desc')->select();
-        foreach($specList as $k => $v)        
-            $specList[$k]['spec_item'] = M('SpecItem')->where("spec_id = ".$v['id'])->order('id')->getField('id,item'); // 获取规格项                
-        
-        $items_id = M('SpecGoodsPrice')->where('goods_id = '.$goods_id)->getField("GROUP_CONCAT(`key` SEPARATOR '_') AS items_id");
-        $items_ids = explode('_', $items_id);       
-        
-        // 获取商品规格图片                
-        if($goods_id)
-        {
-           $specImageList = M('SpecImage')->where("goods_id = $goods_id")->getField('spec_image_id,src');                 
-        }        
-        $this->assign('specImageList',$specImageList);
-        
-        $this->assign('items_ids',$items_ids);
-        $this->assign('specList',$specList);
-        return $this->fetch('ajax_spec_select');        
-    }    
-    
-    /**
-     * 动态获取商品规格输入框 根据不同的数据返回不同的输入框
-     */    
-    public function ajaxGetSpecInput(){
-         $GoodsLogic = new GoodsLogic();
-         $goods_id = I('goods_id/d') ? I('goods_id/d') : 0;
-         $str = $GoodsLogic->getSpecInput($goods_id ,I('post.spec_arr/a',[[]]));
-         exit($str);   
-    }
-    
-    /**
-     * 删除商品相册图
-     */
-    public function del_goods_images()
-    {
-        $path = I('filename','');
-        M('goods_images')->where("image_url = '$path'")->delete();
-    }
 
-    /**
-     * 初始化商品关键词搜索
-     */
-    public function initGoodsSearchWord(){
-        $searchWordLogic = new SearchWordLogic();
-        $searchWordLogic->initGoodsSearchWord();
-    }
 }

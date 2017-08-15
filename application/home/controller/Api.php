@@ -263,8 +263,8 @@ class Api extends Controller {
             'start_time'=>array('lt',strtotime(date('Y-m-d H:00:00'))),
             'end_time'=>array('gt',strtotime(date('Y-m-d H:00:00'))),
         );
-        $ad = D("ad")->where($where)->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->find();
-        $this->assign('ad',$ad);
+        $ad = D("banner")->where($where)->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->find();
+        $this->assign('banner',$ad);
         return $this->fetch();
     }
     /**

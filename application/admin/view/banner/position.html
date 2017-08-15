@@ -5,46 +5,46 @@
   <div class="fixed-bar">
     <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
       <div class="subject">
-        <h3> 广告详情</h3>
-        <h5>广告添加与管理</h5>
+        <h3> 轮播位置详情</h3>
+        <h5>轮播位置添加与管理</h5>
       </div>
     </div>
   </div>
     <!--表单数据-->
-    <form method="post" id="handleposition" action="{:U('Admin/Ad/positionHandle')}">
+    <form method="post" id="handleposition" action="{:U('Admin/Banner/positionHandle')}">
     <div class="ncap-form-default">
       <dl class="row">
         <dt class="tit">
-          <label for="ac_name"><em>*</em>广告位名称：：</label>
+          <label for="ac_name"><em>*</em>轮播位置名称：</label>
         </dt>
         <dd class="opt">
-          <input type="text" placeholder="广告位名称" class="input-txt" name="position_name" value="{$info.position_name}" >
-		  <span class="err" id="err_ad_name" style="color:#F00; display:none;">广告名称不能为空</span>                                                  
+          <input type="text" placeholder="轮播位置名称" class="input-txt" name="position_name" value="{$info.position_name}" >
+		  <span class="err" id="err_ad_name" style="color:#F00; display:none;">轮播位置名称不能为空</span>
           <p class="notic"></p>
         </dd>
       </dl>	   
 	  
 	  <dl class="row">
         <dt class="tit" colspan="2">
-          <label class="" for="s_sort">广告位宽度：</label>
+          <label class="" for="s_sort">轮播位置宽度：</label>
         </dt>
         <dd class="opt">
-            <input type="text" class="input-txt" name="ad_width" value="{$info.ad_width}" > px
+            <input type="text" class="input-txt" name="banner_width" value="{$info.banner_width}" > px
             <span id="err_ad_width" class="err"  style="color:#F00; display:none;"></span>            
         </dd>
       </dl>       
 	  <dl class="row">
         <dt class="tit" colspan="2">
-          <label class="" for="s_sort">广告位高度：</label>
+          <label class="" for="s_sort">轮播位置高度：</label>
         </dt>
         <dd class="opt">
-            <input type="text" class="input-txt"  name="ad_height" value="{$info.ad_height}" > px
+            <input type="text" class="input-txt"  name="banner_height" value="{$info.banner_height}" > px
             <span id="err_ad_height" class="err"  style="color:#F00; display:none;"></span>            
         </dd>
       </dl>          
       <dl class="row">
         <dt class="tit">
-          <label for="ac_name">广告位描述：</label>
+          <label for="ac_name">轮播位置描述：</label>
         </dt>
         <dd class="opt">
           <input type="text" class="input-txt" name="position_desc" value="{$info.position_desc}" >

@@ -110,7 +110,7 @@ class Cx extends Taglib
         $str = '<?php ';
         $str .= '$pid ='.$pid.';';
         $str .= '$ad_position = M("ad_position")->cache(true,TPSHOP_CACHE_TIME)->column("position_id,position_name,ad_width,ad_height","position_id");';
-        $str .= '$result = M("ad")->where("pid=$pid  and enabled = 1 and start_time < '.strtotime(date('Y-m-d H:00:00')).' and end_time > '.strtotime(date('Y-m-d H:00:00')).' ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("'.$limit.'")->select();';
+        $str .= '$result = M("banner")->where("pid=$pid  and enabled = 1 and start_time < '.strtotime(date('Y-m-d H:00:00')).' and end_time > '.strtotime(date('Y-m-d H:00:00')).' ")->order("orderby desc")->cache(true,TPSHOP_CACHE_TIME)->limit("'.$limit.'")->select();';
         $str .= '
 if(!in_array($pid,array_keys($ad_position)) && $pid)
 {
@@ -132,7 +132,7 @@ if($c > 0 && I("get.edit_ad"))
     {
       $result[] = array(
           "ad_code" => "/public/images/not_adv.jpg",
-          "ad_link" => "/index.php?m=Admin&c=Ad&a=ad&pid=$pid",
+          "ad_link" => "/index.php?m=Admin&c=Ad&a=banner&pid=$pid",
           "title"   =>"暂无广告图片",
           "not_adv" => 1,
           "target" => 0,
@@ -145,7 +145,7 @@ foreach($result as $'.$key.'=>$'.$item.'):
     if(I("get.edit_ad") && $'.$item.'[not_adv] == 0 )
     {
         $'.$item.'[style] = "filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5"; // 广告半透明的样式
-        $'.$item.'[ad_link] = "/index.php?m=Admin&c=Ad&a=ad&act=edit&ad_id=$'.$item.'[ad_id]";        
+        $'.$item.'[ad_link] = "/index.php?m=Admin&c=Ad&a=banner&act=edit&ad_id=$'.$item.'[ad_id]";
         $'.$item.'[title] = $ad_position[$'.$item.'[pid]][position_name]."===".$'.$item.'[ad_name];
         $'.$item.'[target] = 0;
     }

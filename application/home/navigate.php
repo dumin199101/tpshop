@@ -72,12 +72,12 @@
                      'level'=>'添加等级',                    
          	      )
                ),        
-              'admin/ad'=>array(
+              'admin/banner'=>array(
                 'name' =>'广告管理',
                 'action'=>array(
                      'adList'=>'广告列表',
                      'edit'=>'编辑广告',
-                     'ad'=>'新增广告',
+                     'banner'=>'新增广告',
                      'adList'=>'广告列表',
                      'positionList'=>'广告位置',
                      'position'=>'编辑广告位',                     
