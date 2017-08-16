@@ -19,7 +19,6 @@ return	array(
 				array('name' => '文章','child'=>array(
 						array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
 						array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
-						array('name' => '专题列表', 'act'=>'topicList', 'op'=>'Topic'),
 				)),
 				array('name' => '权限','child'=>array(
 						array('name' => '管理员列表', 'act'=>'index', 'op'=>'Admin'),
@@ -41,7 +40,7 @@ return	array(
 					array('name' => '品牌列表', 'act'=>'brandList', 'op'=>'Goods'),
 			)),
 			array('name' => '活动','child' => array(
-					array('name' => '最新活动', 'act'=>'prom_goods_list', 'op'=>'Promotion'),
+					array('name' => '最新活动', 'act'=>'activityList', 'op'=>'Activity'),
 			)),
 	)),
 );
