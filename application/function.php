@@ -1,17 +1,52 @@
 <?php
 /**
- * tpshop
  * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * 如果商业用途务必到官方购买正版授权, 以免引起不必要的法律纠纷.
+ *   功能函数
  * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
+ * Author: lieyan123091
+ * Date: 2017-07-20
  */
- 
+
+//php获取中文字符拼音首字母
+function getFirstCharter($str){
+    if(empty($str))
+    {
+        return '';
+    }
+    $fchar=ord($str{0});
+    if($fchar>=ord('A')&&$fchar<=ord('z')) return strtoupper($str{0});
+    $s1=iconv('UTF-8','gb2312',$str);
+    $s2=iconv('gb2312','UTF-8',$s1);
+    $s=$s2==$str?$s1:$str;
+    $asc=ord($s{0})*256+ord($s{1})-65536;
+    if($asc>=-20319&&$asc<=-20284) return 'A';
+    if($asc>=-20283&&$asc<=-19776) return 'B';
+    if($asc>=-19775&&$asc<=-19219) return 'C';
+    if($asc>=-19218&&$asc<=-18711) return 'D';
+    if($asc>=-18710&&$asc<=-18527) return 'E';
+    if($asc>=-18526&&$asc<=-18240) return 'F';
+    if($asc>=-18239&&$asc<=-17923) return 'G';
+    if($asc>=-17922&&$asc<=-17418) return 'H';
+    if($asc>=-17417&&$asc<=-16475) return 'J';
+    if($asc>=-16474&&$asc<=-16213) return 'K';
+    if($asc>=-16212&&$asc<=-15641) return 'L';
+    if($asc>=-15640&&$asc<=-15166) return 'M';
+    if($asc>=-15165&&$asc<=-14923) return 'N';
+    if($asc>=-14922&&$asc<=-14915) return 'O';
+    if($asc>=-14914&&$asc<=-14631) return 'P';
+    if($asc>=-14630&&$asc<=-14150) return 'Q';
+    if($asc>=-14149&&$asc<=-14091) return 'R';
+    if($asc>=-14090&&$asc<=-13319) return 'S';
+    if($asc>=-13318&&$asc<=-12839) return 'T';
+    if($asc>=-12838&&$asc<=-12557) return 'W';
+    if($asc>=-12556&&$asc<=-11848) return 'X';
+    if($asc>=-11847&&$asc<=-11056) return 'Y';
+    if($asc>=-11055&&$asc<=-10247) return 'Z';
+    return null;
+}
+
+
+
  
 /**
  * @param $arr
@@ -536,43 +571,7 @@ function is_alipay() {
     } return false;
 }
 
-//php获取中文字符拼音首字母
-function getFirstCharter($str){
-      if(empty($str))
-      {
-            return '';          
-      }
-      $fchar=ord($str{0});
-      if($fchar>=ord('A')&&$fchar<=ord('z')) return strtoupper($str{0});
-      $s1=iconv('UTF-8','gb2312',$str);
-      $s2=iconv('gb2312','UTF-8',$s1);
-      $s=$s2==$str?$s1:$str;
-      $asc=ord($s{0})*256+ord($s{1})-65536;
-     if($asc>=-20319&&$asc<=-20284) return 'A';
-     if($asc>=-20283&&$asc<=-19776) return 'B';
-     if($asc>=-19775&&$asc<=-19219) return 'C';
-     if($asc>=-19218&&$asc<=-18711) return 'D';
-     if($asc>=-18710&&$asc<=-18527) return 'E';
-     if($asc>=-18526&&$asc<=-18240) return 'F';
-     if($asc>=-18239&&$asc<=-17923) return 'G';
-     if($asc>=-17922&&$asc<=-17418) return 'H';
-     if($asc>=-17417&&$asc<=-16475) return 'J';
-     if($asc>=-16474&&$asc<=-16213) return 'K';
-     if($asc>=-16212&&$asc<=-15641) return 'L';
-     if($asc>=-15640&&$asc<=-15166) return 'M';
-     if($asc>=-15165&&$asc<=-14923) return 'N';
-     if($asc>=-14922&&$asc<=-14915) return 'O';
-     if($asc>=-14914&&$asc<=-14631) return 'P';
-     if($asc>=-14630&&$asc<=-14150) return 'Q';
-     if($asc>=-14149&&$asc<=-14091) return 'R';
-     if($asc>=-14090&&$asc<=-13319) return 'S';
-     if($asc>=-13318&&$asc<=-12839) return 'T';
-     if($asc>=-12838&&$asc<=-12557) return 'W';
-     if($asc>=-12556&&$asc<=-11848) return 'X';
-     if($asc>=-11847&&$asc<=-11056) return 'Y';
-     if($asc>=-11055&&$asc<=-10247) return 'Z';
-     return null;
-}
+
 
 /**
  * 获取整条字符串汉字拼音首字母

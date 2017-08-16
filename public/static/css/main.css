@@ -216,7 +216,7 @@ input[type="text"],
 input[type="password"] { line-height: 20px; white-space: nowrap; display: inline-block; height: 20px; overflow: hidden; cursor: text; }
 .editable-tarea,
 .editable-tarea2,
-textarea { line-height: 18px; display: inline-block; height: 36px; cursor: text; overflow: auto; }
+textarea {line-height: 18px; display: inline-block; height: 200px;width:500px; cursor: text; overflow: auto; }
 .tarea { height: 75px; width: 400px; }
 .txt,
 select,

@@ -32,24 +32,7 @@
           <p class="notic"></p>
         </dd>
       </dl>      
-	  <dl class="row">
-        <dt class="tit" colspan="2">
-          <label class="" for="s_sort">所属分类</label>
-        </dt>
-        <dd class="opt">
-          <div id="gcategory">
-           <select name="parent_cat_id" id="parent_id_1" onchange="get_category(this.value,'parent_id_2','0');" class="form-control" >
-                <option value="0">请选择分类</option> 
-                <foreach name="cat_list" item="v" >	                                                                                    
-                    <option value="{$v[id]}"  <if condition="$v[id] eq $brand[parent_cat_id]"> selected="selected" </if>>{$v[name]}</option>
-                </foreach>                                            
-            </select>
-          <select name="cat_id" id="parent_id_2"  class="form-control" style="width:250px;">
-            <option value="0">请选择分类</option>
-          </select>
-          </div>
-        </dd>
-      </dl>
+
 
       <dl class="row">
         <dt class="tit">
@@ -89,8 +72,7 @@
           <label for="ac_sort">品牌描述</label>
         </dt>
         <dd class="opt">
-          
-          <textarea rows="4" cols="60" name="desc" class="input-txt">{$brand.desc}</textarea>
+          <textarea  name="desc" >{$brand.desc}</textarea>
           <span class="err" id="err_desc" style="color:#F00; display:none;"></span>                
           <p class="notic"></p>
         </dd>
@@ -103,16 +85,6 @@
   </form>
 </div>
 <script>
-// 判断输入框是否为空
-//function checkName(){
-//	var name = $("#addEditBrandForm").find("input[name='name']").val();
-//    if($.trim(name) == '')
-//	{
-//		$("#err_name").show();
-//		return false;
-//	}
-//	return true;
-//}
 
 function verifyForm(){
     $('span.err').show();
@@ -138,13 +110,6 @@ function verifyForm(){
     });
 }
 
-
-window.onload = function(){
-    var brand_cat_id = parseInt('{$brand.cat_id}');
-	if(brand_cat_id > 0 ){
-		get_category($("#parent_id_1").val(),'parent_id_2',brand_cat_id);	 
-	}		
-}
 function img_call_back(fileurl_tmp)
 {
   $("#logo").val(fileurl_tmp);

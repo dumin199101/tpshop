@@ -7,7 +7,7 @@
     <div class="item-title">
       <div class="subject">
         <h3>品牌列表</h3>
-        <h5>网站系统文章索引与管理</h5>
+        <h5>网站商品品牌索引与管理</h5>
       </div>
     </div>
   </div>
@@ -18,8 +18,7 @@
       <span title="收起提示" id="explanationZoom" style="display: block;"></span>
     </div>
     <ul>
-      <li>同一个品牌可以添加多次.</li>
-      <li>比如卖笔记本下面一个苹果品牌. 卖手机下面也有苹果牌,卖箱包下面也有苹果牌.</li>      
+      <li>品牌首字母根据输入品牌名称自动获取</li>
     </ul>
   </div>
   <div class="flexigrid">
@@ -53,7 +52,10 @@
                 <div style="text-align: left; width: 100px;" class="">Logo</div>
               </th>
               <th align="center" abbr="article_show" axis="col5" class="">
-                <div style="text-align: center; width: 200px;" class="">品牌分类</div>
+                <div style="text-align: center; width: 300px;" class="">品牌描述</div>
+              </th>
+              <th align="center" abbr="article_link" axis="col5" class="">
+                <div style="text-align: center; width: 200px;" class="">品牌链接</div>
               </th>
               <th align="center" abbr="article_time" axis="col6" class="">
                 <div style="text-align: center; width: 100px;" class="">是否推荐</div>
@@ -101,8 +103,11 @@
                   </div>
                 </td>
                 <td align="center" class="">
-                  <div style="text-align: center; width: 200px;">{$cat_list[$list[parent_cat_id]]} {$cat_list[$list[cat_id]]}</div>
-                </td>                
+                  <div style="text-align: center; width: 300px;">{$list.desc}</div>
+                </td>
+                <td align="center" class="">
+                  <div style="text-align: center; width: 200px;">{$list.url}</div>
+                </td>
                 <td align="center" class="">
                   <div style="text-align: center; width: 100px;">
                     <if condition='$list[is_hot] eq 1'>

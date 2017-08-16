@@ -1,5 +1,12 @@
 <?php
+/**
+ * ============================================================================
 
+ *  商品管理模块：完成后台系统的商品管理
+ * ============================================================================
+ * Author: lieyan123091
+ * Date: 2017-07-20
+ */
 namespace app\admin\controller;
 use app\admin\logic\GoodsLogic;
 use app\admin\logic\SearchWordLogic;
@@ -9,7 +16,67 @@ use think\Page;
 use think\Db;
 
 class Goods extends Base {
-    
+
+    /**
+     * 品牌列表
+     */
+    public function brandList(){
+        $model = M("Brand");
+        $where = "";
+        $keyword = I('keyword');
+        $where = $keyword ? " name like '%$keyword%' " : "";
+        $count = $model->where($where)->count();
+        $Page = $pager = new Page($count,10);
+        $brandList = $model->where($where)->order("`sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
+        $show  = $Page->show();
+        $this->assign('pager',$pager);
+        $this->assign('show',$show);
+        $this->assign('brandList',$brandList);
+        return $this->fetch('brandList');
+    }
+
+    /**
+     * 添加修改编辑  商品品牌
+     */
+    public  function addEditBrand(){
+        $id = I('id');
+        if(IS_POST)
+        {
+            $data = I('post.');
+            $brandVilidate = Loader::validate('Brand');
+            if(!$brandVilidate->batch()->check($data)){
+                $return = ['status'=>0,'msg'=>'操作失败','result'=>$brandVilidate->getError()];
+                $this->ajaxReturn($return);
+            }
+            if($id){
+                M("Brand")->update($data);
+            }else{
+                M("Brand")->insert($data);
+            }
+            $this->ajaxReturn(['status'=>1,'msg'=>'操作成功','result'=>'']);
+        }
+        $brand = M("Brand")->find($id);
+        $this->assign('brand',$brand);
+        return $this->fetch('_brand');
+    }
+
+    /**
+     * 删除品牌
+     */
+    public function delBrand()
+    {
+        $model = M("Brand");
+        $model->where('id ='.$_GET['id'])->delete();
+        $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);
+        $this->ajaxReturn($return_arr);
+    }
+
+
+
+
+
+
+
     /**
      *  商品分类列表
      */
@@ -436,71 +503,7 @@ class Goods extends Base {
 
 
 
-    /**
-     * 品牌列表
-     */
-    public function brandList(){  
-        $model = M("Brand"); 
-        $where = "";
-        $keyword = I('keyword');
-        $where = $keyword ? " name like '%$keyword%' " : "";
-        $count = $model->where($where)->count();
-        $Page = $pager = new Page($count,10);        
-        $brandList = $model->where($where)->order("`sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
-        $show  = $Page->show(); 
-        $cat_list = M('goods_category')->where("parent_id = 0")->getField('id,name'); // 已经改成联动菜单
-        $this->assign('cat_list',$cat_list);       
-        $this->assign('pager',$pager);
-        $this->assign('show',$show);
-        $this->assign('brandList',$brandList);
-        return $this->fetch('brandList');
-    }
-    
-    /**
-     * 添加修改编辑  商品品牌
-     */
-    public  function addEditBrand(){
-            $id = I('id');            
-            if(IS_POST)
-            {
-               	$data = I('post.');
-                $brandVilidate = Loader::validate('Brand');
-                if(!$brandVilidate->batch()->check($data)){
-                    $return = ['status'=>0,'msg'=>'操作失败','result'=>$brandVilidate->getError()];
-                    $this->ajaxReturn($return);
-                }
-                if($id){
-                	M("Brand")->update($data);
-                }else{
-                	M("Brand")->insert($data);
-                }
-                $this->ajaxReturn(['status'=>1,'msg'=>'操作成功','result'=>'']);
-            }           
-           $cat_list = M('goods_category')->where("parent_id = 0")->select(); // 已经改成联动菜单
-           $this->assign('cat_list',$cat_list);           
-           $brand = M("Brand")->find($id);             
-           $this->assign('brand',$brand);
-           return $this->fetch('_brand');
-    }    
-    
-    /**
-     * 删除品牌
-     */
-    public function delBrand()
-    {        
-        // 判断此品牌是否有商品在使用
-        $goods_count = M('Goods')->where("brand_id = {$_GET['id']}")->count('1');
-        if($goods_count)
-        {
-            $return_arr = array('status' => -1,'msg' => '此品牌有商品在用不得删除!','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);        
-            $this->ajaxReturn($return_arr);
-        }
-        
-        $model = M("Brand"); 
-        $model->where('id ='.$_GET['id'])->delete(); 
-        $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);   //$return_arr = array('status' => -1,'msg' => '删除失败','data'  =>'',);        
-        $this->ajaxReturn($return_arr);
-    }      
+
     
     /**
      * 初始化编辑器链接     
