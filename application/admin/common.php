@@ -17,7 +17,7 @@ function getMenuArr(){
         foreach($menuArr as $k=>$val){
             foreach ($val['child'] as $j=>$v){
                 foreach ($v['child'] as $s=>$son){
-                    if(!strpos($role_right,$son['op'].'@'.$son['act'])){
+                    if(FALSE===strpos($role_right,$son['op'].'@'.$son['act'])){
                         unset($menuArr[$k]['child'][$j]['child'][$s]);//过滤菜单
                     }
                 }
