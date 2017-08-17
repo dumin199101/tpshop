@@ -25,13 +25,16 @@ class Banner extends Base
 
         if ($data['act'] == 'add') {
             $r = D('banner')->add($data);
+            adminLog("添加轮播");
         }
         if ($data['act'] == 'edit') {
             $r = D('banner')->where('banner_id', $data['ad_id'])->save($data);
+            adminLog("修改轮播");
         }
 
         if ($data['act'] == 'del') {
             $r = D('banner')->where('banner_id', $data['del_id'])->delete();
+            adminLog("删除轮播");
             if ($r) exit(json_encode(1));
         }
         $referurl = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : U('Admin/Banner/bannerList');
@@ -54,10 +57,12 @@ class Banner extends Base
         $data = I('post.');
         if ($data['act'] == 'add') {
             $r = M('banner_position')->add($data);
+            adminLog("添加轮播位置");
         }
 
         if ($data['act'] == 'edit') {
             $r = M('banner_position')->where('position_id', $data['position_id'])->save($data);
+            adminLog("修改轮播位置");
         }
 
         if ($data['act'] == 'del') {
@@ -65,6 +70,7 @@ class Banner extends Base
                 $this->error("此位置下还有焦点图，请先清除", U('Admin/Banner/positionList'));
             } else {
                 $r = M('banner_position')->where('position_id', $data['del_id'])->delete();
+                adminLog("删除轮播位置");
                 if ($r) exit(json_encode(1));
             }
         }

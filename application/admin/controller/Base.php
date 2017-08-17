@@ -69,8 +69,8 @@ class Base extends Controller {
     	$act = ACTION_NAME;
         $act_list = session('act_list');
 		//无需验证的操作
-		$uneed_check = array('login','logout','vertifyHandle','vertify','imageUp','upload','login_task');
-                if($ctl == 'Index' || $act_list == 'all'){
+		$uneed_check = array('login','logout','vertify','imageUp','upload');
+        if($ctl == 'Index' || $act_list == 'all'){
     		//后台首页控制器无需验证,超级管理员无需验证
     		return true;
     	}elseif(strpos($act,'ajax') || in_array($act,$uneed_check)){

@@ -65,15 +65,17 @@ class Article extends Base {
         $data = I('post.');
         if($data['act'] == 'add'){
             stream_context_set_default(array('http'=>array('timeout' =>2)));
-//            send_http_status('311');
             $r = D('friend_link')->insert($data);
+            adminLog("添加友链");
         }
         if($data['act'] == 'edit'){
             $r = D('friend_link')->where('link_id', $data['link_id'])->save($data);
+            adminLog("编辑友链");
         }
 
         if($data['act'] == 'del'){
             $r = D('friend_link')->where('link_id', $data['link_id'])->delete();
+            adminLog("删除友链");
             if($r) exit(json_encode(1));
         }
 

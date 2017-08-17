@@ -99,6 +99,7 @@ class Tools extends Base {
 					session('backup_tables', null);
 					session('backup_file', null);
 					session('backup_config', null);
+					adminLog("数据库备份");
 					return json(array('info'=>'备份完成！', 'status'=>1, 'url'=>''));
 				}
 			} else {
@@ -197,6 +198,7 @@ class Tools extends Base {
                     return json(array('data'=>array('part' => $part, 'start' => 0), 'info'=>"正在还原...#{$part}", 'status'=>1, 'url'=>''));
                 } else {
                     session('backup_list', null);
+                    adminLog("数据库还原");
                     return json(array('info'=>'还原完成！', 'status'=>1, 'url'=>''));
                 }
             } else {
@@ -232,6 +234,7 @@ class Tools extends Base {
     	if (!DB::query("OPTIMIZE TABLE {$strTable} ")) {
     		$strTable = '';
     	}
+    	adminLog("数据库优化");
     	$this->success("优化表成功" . $strTable, U('Tools/index'));
     
     }
@@ -256,7 +259,9 @@ class Tools extends Base {
     	if (!DB::query("REPAIR TABLE {$strTable} ")) {
     		$strTable = '';
     	}
-    
+
+    	adminLog("数据库修复");
+
     	$this->success("修复表成功" . $strTable, U('Tools/index'));
   
     }
@@ -298,6 +303,7 @@ class Tools extends Base {
 			if(count(glob($path))){
 				$this->error('备份文件删除失败，请检查权限！');
 			} else {
+			    adminLog("删除备份文件");
 				$this->success('备份文件删除成功！');
 			}
 		} else {
@@ -362,6 +368,7 @@ class Tools extends Base {
     			$res = M('region')->where("parent_id = ".$data['parent_id']." and name='".$data['name']."'")->find();
     			if(empty($res)){
     				M('region')->add($data);
+    				adminLog("添加地区");
     				$this->success("操作成功", $referurl);
     			}else{
     				$this->error("该区域下已有该地区,请不要重复添加", $referurl);
@@ -369,6 +376,7 @@ class Tools extends Base {
     		}
     	}else{
     		M('region')->where("id=$id or parent_id=$id")->delete();
+    		adminLog("删除地区");
     		$this->success("操作成功", $referurl);
     	}
     }

@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================================
-
+    管理员登陆模块：完成管理员的登陆，退出系统，修改密码
  *  权限管理模块：完成后台系统的权限管理
  * ============================================================================
  * Author: lieyan123091
@@ -54,10 +54,28 @@ class Admin extends Base {
 		return $this->fetch();
 	}
 
+    /**
+     * 验证码获取
+     */
+    public function vertify()
+    {
+        $config = array(
+            'fontSize' => 30,
+            'length' => 4,
+            'useCurve' => true,
+            'useNoise' => false,
+            'reset' => false
+        );
+        $Verify = new Verify($config);
+        $Verify->entry("admin_login");
+        exit();
+    }
+
 	/**
 	 * 退出登陆
 	 */
 	public function logout(){
+	    adminLog("退出系统");
 		session_unset();
 		session_destroy();
 		session::clear();
@@ -91,6 +109,7 @@ class Admin extends Base {
 				exit(json_encode(array('status'=>-1,'msg'=>'两次密码不一致')));
 			}else{
 				$row = M('admin')->where('admin_id' , $admin_id)->save(array('password' => $enNewPwd));
+				adminLog("修改密码");
 				if($row){
 					exit(json_encode(array('status'=>1,'msg'=>'修改成功')));
 				}else{
@@ -126,7 +145,6 @@ class Admin extends Base {
     }
     
 
-
     /**
      * 编辑|添加管理员信息表单
      * @return mixed
@@ -161,15 +179,18 @@ class Admin extends Base {
     		if(D('admin')->where("user_name", $data['user_name'])->count()){
     			$this->error("此用户名已被注册，请更换",U('Admin/Admin/admin_info'));
     		}else{
+    		    adminLog("添加管理员:" . $data['user_name']);
     			$r = D('admin')->add($data);
     		}
     	}
     	
     	if($data['act'] == 'edit'){
+    	    adminLog("编辑管理员");
     		$r = D('admin')->where('admin_id', $data['admin_id'])->save($data);
     	}
     	
         if($data['act'] == 'del' && $data['admin_id']>1){
+    	    adminLog("删除管理员");
     		$r = D('admin')->where('admin_id', $data['admin_id'])->delete();
     		exit(json_encode(1));
     	}
@@ -181,25 +202,6 @@ class Admin extends Base {
     	}
     }
     
-    
-
-    
-    /**
-     * 验证码获取
-     */
-    public function vertify()
-    {
-        $config = array(
-            'fontSize' => 30,
-            'length' => 4,
-            'useCurve' => true,
-            'useNoise' => false,
-        	'reset' => false
-        );    
-        $Verify = new Verify($config);
-        $Verify->entry("admin_login");
-        exit();
-    }
 
     /**
      * 角色列表
@@ -232,9 +234,8 @@ class Admin extends Base {
 			$modules[$val['group']][] = $val; //按照group字段对权限进行分组
 		}
 		//权限组
-		$group = array('system'=>'系统设置','content'=>'内容管理','goods'=>'商品中心','member'=>'会员中心',
-				'order'=>'订单中心','marketing'=>'营销推广','tools'=>'插件工具','count'=>'统计报表'
-		);
+        $group = array('system'=>'系统设置','content'=>'内容管理','goods'=>'商品中心','marketing'=>'营销推广','tools'=>'插件工具');
+
 		$this->assign('group',$group);
 		$this->assign('modules',$modules);
     	return $this->fetch();
@@ -254,6 +255,7 @@ class Admin extends Base {
 			if($admin_role){
 				$this->error("已存在相同的角色名称!");
 			}else{
+                adminLog('添加角色');
 				$r = D('admin_role')->add($res);
 			}
     	}else{ //修改角色
@@ -261,11 +263,11 @@ class Admin extends Base {
 			if($admin_role){
 				$this->error("已存在相同的角色名称!");
 			}else{
+			    adminLog("修改角色");
 				$r = D('admin_role')->where('role_id', $data['role_id'])->save($res);
 			}
     	}
 		if($r){
-			adminLog('管理角色');
 			$this->success("操作成功!",U('Admin/Admin/role_info',array('role_id'=>$data['role_id'])));
 		}else{
 			$this->error("操作失败!",U('Admin/Admin/role'));
@@ -282,6 +284,7 @@ class Admin extends Base {
     	    return json(['status'=>0,'info'=>"请先清空所属该角色的管理员"]);
     	}else{
     		$d = M('admin_role')->where("role_id", $role_id)->delete();
+    		adminLog("删除角色");
     		if($d){
                 return json(['status'=>1,'info'=>"角色删除成功"]);
     		}else{

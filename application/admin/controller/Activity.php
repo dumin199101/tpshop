@@ -67,6 +67,7 @@ class Activity extends Base
     {
         $activity_id = I('id');
         M('activity')->where("act_id=$activity_id")->delete();
+        adminLog("删除活动");
         $this->success('删除活动成功', U('Activity/activityList'));
     }
 
