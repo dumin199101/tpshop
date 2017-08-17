@@ -45,9 +45,6 @@ function getFirstCharter($str){
     return null;
 }
 
-
-
- 
 /**
  * @param $arr
  * @param $key_name
@@ -624,25 +621,4 @@ function GetIpLookup($ip = ''){
         return false;
     }
     return $json;
-}
-
-function flash_sale_time_space()
-{
-    $now_day = date('Y-m-d');
-    $now_time = date('H');
-    if ($now_time % 2 == 0) {
-        $flash_now_time = $now_time;
-    } else {
-        $flash_now_time = $now_time - 1;
-    }
-    $flash_sale_time = strtotime($now_day . " " . $flash_now_time . ":00:00");
-    $space = 7200;
-    $time_space = array(
-        '1' => array('font' => date("H:i", $flash_sale_time), 'start_time' => $flash_sale_time, 'end_time' => $flash_sale_time + $space),
-        '2' => array('font' => date("H:i", $flash_sale_time + $space), 'start_time' => $flash_sale_time + $space, 'end_time' => $flash_sale_time + 2 * $space),
-        '3' => array('font' => date("H:i", $flash_sale_time + 2 * $space), 'start_time' => $flash_sale_time + 2 * $space, 'end_time' => $flash_sale_time + 3 * $space),
-        '4' => array('font' => date("H:i", $flash_sale_time + 3 * $space), 'start_time' => $flash_sale_time + 3 * $space, 'end_time' => $flash_sale_time + 4 * $space),
-        '5' => array('font' => date("H:i", $flash_sale_time + 4 * $space), 'start_time' => $flash_sale_time + 4 * $space, 'end_time' => $flash_sale_time + 5 * $space),
-    );
-    return $time_space;
 }
