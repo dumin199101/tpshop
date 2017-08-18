@@ -11,7 +11,6 @@
             </div>
             <ul class="tab-base nc-row">
                 <li><a href="{:U('Template/templateList',array('t'=>'pc'))}" <if condition="$Request.param.t neq 'mobile'">class="current"</if>><span>PC端模板</span></a></li>
-                <li><a href="{:U('Template/templateList',array('t'=>'mobile'))}" <if condition="$Request.param.t eq 'mobile'">class="current"</if>><span>手机端模板</span></a></li>
             </ul>
         </div>
     </div>
@@ -47,6 +46,12 @@
                         <th align="left" abbr="ac_id" axis="col4" class="">
                             <div style="text-align: left; width: 250px;" class="">模板备注</div>
                         </th>
+                        <th align="left" abbr="ac_id" axis="col4" class="">
+                            <div style="text-align: left; width: 120px;" class="">模板版本</div>
+                        </th>
+                        <th align="left" abbr="ac_id" axis="col4" class="">
+                            <div style="text-align: left; width: 120px;" class="">模板作者</div>
+                        </th>
                         <th align="left" abbr="article_show" axis="col5" class="">
                             <div style="text-align: center; width: 120px;" class="">模板图片</div>
                         </th>
@@ -75,6 +80,12 @@
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: left; width: 250px;">{$val['remark']}</div>
+                            </td>
+                            <td align="left" class="">
+                                <div style="text-align: left; width: 120px;">{$val['version']}</div>
+                            </td>
+                            <td align="left" class="">
+                                <div style="text-align: left; width: 120px;">{$val['author']}</div>
                             </td>
                             <td align="left" class="">
                                 <div style="text-align: center; width: 120px;">

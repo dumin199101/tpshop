@@ -27,7 +27,6 @@ class Template extends Base {
             $template_config[$val] = include "./template/$t/$val/config.php";
         }
         $this->assign('t', $t);
-        // $default_theme =  tpCache("hidden.{$t}_default_theme"); // //$default_theme = M('Config')->where("name='{$t}_default_theme'")->getField('value');
         $template_arr = include(APP_PATH."/$m/html.php");
         $this->assign('default_theme', $template_arr['template']['default_theme']);
         $this->assign('template_config', $template_config);
@@ -43,9 +42,6 @@ class Template extends Base {
         $t = I('t','pc'); // pc or  mobile        
         $m = ($t == 'pc') ? 'home' : 'mobile';
         $key = $this->request->param('key');
-        //$default_theme = tpCache("hidden.{$t}_default_theme"); // 获取原来的配置                
-        //tpCache("hidden.{$t}_default_theme",$_GET['key']);
-        //tpCache('hidden',array("{$t}_default_theme"=>$_GET['key']));                         
         // 修改文件配置  
          if(!is_writeable(APP_PATH."$m/html.php"))
             return "文件/".APP_PATH."$m/html.php不可写,不能启用魔板,请修改权限!!!";

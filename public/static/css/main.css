@@ -479,9 +479,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#19FFFFFF', endColorstr='#19FFFFFF'); background: rgba(255,255,255,0.1); }
 .unfold .nav-tabs dl dt span { background: url(../images/combine_img.png) no-repeat; display: block; width: 30px; height: 30px; position: absolute; z-index: 1; top: 14px; left: 19px; opacity: 0.5; }
 .unfold .nav-tabs dl dt span.ico-system-0 { background-position: -120px 0; }
-.unfold .nav-tabs dl dt span.ico-system-1 { background-position: -30px 0; }
-.unfold .nav-tabs dl dt span.ico-system-2 { background-position: -60px 0; }
-.unfold .nav-tabs dl dt span.ico-system-3 { background-position: -90px 0; }
+.unfold .nav-tabs dl dt span.ico-system-1 { background-position: -300px 0; }
+.unfold .nav-tabs dl dt span.ico-system-2 { background-position: -240px 0; }
+.unfold .nav-tabs dl dt span.ico-system-3 { background-position: -360px 0; }
 .unfold .nav-tabs dl dt span.ico-system-4 { background-position: 0 0; }
 .unfold .nav-tabs dl dt span.ico-system-5 { background-position: -180px 0; }
 .unfold .nav-tabs dl dt span.ico-system-6 { background-position: -300px 0; }
@@ -510,9 +510,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=
 .unfold .nav-tabs dl.active dt { padding-bottom: 0; }
 .unfold .nav-tabs dl.active dt span { opacity: 1; }
 .unfold .nav-tabs dl.active dt span.ico-system-0 { background-position: -120px 0; }
-.unfold .nav-tabs dl.active dt span.ico-system-1 { background-position: -30px 0; }
-.unfold .nav-tabs dl.active dt span.ico-system-2 { background-position: -60px 0; }
-.unfold .nav-tabs dl.active dt span.ico-system-3 { background-position: -90px 0; }
+.unfold .nav-tabs dl.active dt span.ico-system-1 { background-position: -300px 0; }
+.unfold .nav-tabs dl.active dt span.ico-system-2 { background-position: -240px 0; }
+.unfold .nav-tabs dl.active dt span.ico-system-3 { background-position: -360px 0; }
 .unfold .nav-tabs dl.active dt span.ico-shop-0 { background-position: -360px 0; }
 .unfold .nav-tabs dl.active dt span.ico-shop-1 { background-position: -150px 0; }
 .unfold .nav-tabs dl.active dt span.ico-shop-2 { background-position: -270px -30px; }
