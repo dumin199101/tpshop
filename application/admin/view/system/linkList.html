@@ -66,7 +66,7 @@
 		<div class="tDiv">
 			<div class="tDiv2">
 				<div class="fbutton">
-					<a href="{:U('Article/link')}">
+					<a href="{:U('System/link')}">
 						<div class="add" title="新增友情链接">
 							<span><i class="fa fa-plus"></i>新增友情链接</span>
 						</div>
@@ -119,8 +119,8 @@
 							</td>
 							<td align="center" class="handle">
 								<div style="text-align: center; width: 170px; max-width:170px;">
-									<a href="{:U('Article/link',array('act'=>'edit','link_id'=>$vo['link_id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
-									<a class="btn red"  href="javascript:void(0)" data-url="{:U('Article/linkHandle')}" data-id="{$vo.link_id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+									<a href="{:U('System/link',array('act'=>'edit','link_id'=>$vo['link_id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
+									<a class="btn red"  href="javascript:void(0)" data-url="{:U('Systen/linkHandle')}" data-id="{$vo.link_id}" onClick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
 								</div>
 							</td>
 							<td align="" class="" style="width: 100%;">

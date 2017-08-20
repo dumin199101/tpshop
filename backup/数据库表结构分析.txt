@@ -512,9 +512,67 @@ array(4) {
   }
 }
 
+首页
+  导航
+  轮播
+  活动列表
+  品牌筛选
+  太潮人
+  太潮志
+
+品牌
+   品牌按字母筛选
+   name
+   img
+   desc
+   position
+   telephone
+   time
+
+太潮人太潮志列表
 
 
+太潮志详情信息：  太潮志列表
+                    background-img
+    title           title
+    author          img
+    time
+    content
+    img
 
+太潮人详情信息            太潮人列表
+                          background-img
+    name                  activity
+    job                   name
+    desc                  job
+    img                   desc
+    activity(可以通过弹框选择)    img
+    更多潮人（相当于推荐）
+
+最新活动+往期活动
+    轮播
+    最新活动（小图）
+    往期活动（中图）
+
+最新活动
+    name
+    desc
+    time
+    img(大图)
+
+往期活动
+    同上
+
+活动详情
+    name
+    content
+    time
+    img（本活动图片）
+
+静态页面：
+    君太简介
+    免责条款
+    君太vip
 
 
 

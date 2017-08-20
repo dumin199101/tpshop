@@ -1,0 +1,116 @@
+<include file="public/layout"/>
+<style>
+    .te_le .dataTables_paginate{float: left;}
+    .bot{float: right;padding: 15px 0}
+</style>
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div class="page" style="padding: 0px 1% 0 1%;">
+    <!-- 操作说明 -->
+    <div class="flexigrid">
+        <div class="mDiv">
+            <div class="ftitle">
+                <h3>活动列表</h3>
+                <h5>(共{$pager->totalRows}条记录)</h5>
+            </div>
+            <form class="navbar-form form-inline" id="search-form2" action="{:U('Promotion/search_activity')}" method="get">
+                <div class="sDiv">
+                    <div class="sDiv2">
+                        <input size="30" name="keywords" value="{$keywords}"class="qsbox" placeholder="活动名称" type="text">
+                        <input class="btn" value="搜索" type="submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="hDiv">
+            <div class="hDivBox">
+                <table cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th abbr="article_title" axis="col3" class="" align="left">
+                            <div style="text-align: left; width: 50px;" class=""><input type="checkbox" onclick="$('input[name*=\'act_id\']').prop('checked', this.checked);"></div>
+                        </th>
+                        <th abbr="article_time" axis="col6" class="" align="left">
+                            <div style="text-align: left; width: 600px;" class="">活动名称</div>
+                        </th>
+                        <th abbr="ac_id" axis="col4" class="" align="left">
+                            <div style="text-align: center; width: 80px;" class="">开始时间</div>
+                        </th>
+                        <th abbr="article_show" axis="col5" class="" align="center">
+                            <div style="text-align: center; width: 80px;" class="">结束时间</div>
+                        </th>
+                        <th axis="col1" class=""  align="center">
+                            <div style="text-align: center; width: 80px;">操作</div>
+                        </th>
+                        <th style="width:100%" axis="col7">
+                            <div></div>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="bDiv" style="height: auto;">
+            <div id="flexigrid" cellpadding="0" cellspacing="0" border="0">
+                <table>
+                    <tbody id="goos_table">
+                    <volist name="activityList" id="list">
+                        <tr>
+                            <td class="" align="left">
+                                <div style="text-align: left; width: 50px;">
+                                    <input type="checkbox" name="act_id[]" value="{$list.act_id}"/>
+                                </div>
+                            </td>
+                            <td class="" align="left">
+                                <div style="text-align: left; width: 600px;">{$list.act_name}</div>
+                            </td>
+                            <td class="" align="left">
+                                <div style="text-align: center; width: 80px;">{$list.start_time|date='Y-m-d',###}</div>
+                            </td>
+                            <td class="" align="left">
+                                <div style="text-align: center; width: 80px;">{$list.end_time|date='Y-m-d',###}</div>
+                            </td>
+                            <td class="" align="center">
+                                <div style="text-align: center; width: 80px; ">
+                                    <a class="btn red" onclick="$(this).parent().parent().parent().remove();"><i class="fa fa-trash-o"></i>删除</a>
+                                </div>
+                            </td>
+                            <td class="" style="width: 100%;" align="">
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+            <div class="iDiv" style="display: none;"></div>
+        </div>
+        <!--分页位置-->
+        <div class="te_le">
+            {$page}
+        </div>
+        <div class="bot"><a onclick="select_goods();" class="ncap-btn-big ncap-btn-green">确认提交</a></div>
+    </div>
+</div>
+<script>
+    function select_goods()
+    {
+        if($("input[type='checkbox']:checked").length == 0)
+        {
+            layer.alert('请选择活动', {icon: 2});
+            return false;
+        }
+        //将没选中的复选框所在的  tr  remove  然后删除复选框
+        $("input[type='checkbox']").each(function(){
+            if($(this).is(':checked') == false)
+            {
+                $(this).parent().parent().parent().remove();
+            }else{
+                $(this).parent().parent().css('display','none');
+                $(this).attr("checked","checked");
+            }
+        });
+        javascript:window.parent.call_back($('#goos_table').html());
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<include file="public/layout" />
+
+<script src="__ROOT__/public/static/js/layer/laydate/laydate.js"></script>
+
+<style type="text/css">
+html, body {
+	overflow: visible;
+}
+ dd.opt table{
+     width: 100%;
+ }
+dd.opt tr{
+    border: 1px solid #f4f4f4;
+    padding: 8px;
+}
+dd.opt tr td{
+    border: 1px solid #f4f4f4;
+}
+</style>  
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+  <div class="fixed-bar">
+    <div class="item-title"><a class="back" href="javascript:history.back();" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+      <div class="subject">
+        <h3>太潮人管理 - 新增</h3>
+        <h5>网站系统太潮人索引与管理</h5>
+      </div>
+    </div>
+  </div>
+  <form class="form-horizontal" action="{:U('Person/personHandle')}" id="add_post" method="post">
+    <div class="ncap-form-default">
+      <dl class="row">
+        <dt class="tit">
+          <label><em>*</em>名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" value="{$info.name}" name="name" class="input-txt">
+          <span class="err"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="articleForm">职业</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" name="job"  value="{$info.job}" class="input-txt">
+          <span class="err"></span>
+          <p class="notic">请输入该潮人的职业信息</p>
+        </dd>
+      </dl>        
+      <dl class="row">
+        <dt class="tit">
+          <label for="articleForm">简介</label>
+        </dt>
+        <dd class="opt">
+          <textarea id="content" name="content" class="tarea" rows="6">{$info.content}</textarea>
+          <span class="err" id="err_tpl_content" style="display:none;">潮人描述不能为空</span>
+          <span class="err"></span>
+          <p class="notic">请用一句话简述该潮人</p>
+        </dd>
+      </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label><em>*</em>选择活动</label>
+            </dt>
+            <dd class="opt">
+                <span class="err" id="err_goods" style="color:#F00; display:none;">请添加活动</span>
+                <p class="notic">
+                    <a onclick="selectActivity()" class="ncap-btn"><i class="fa fa-search"></i>选择活动</a>
+                </p>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label>已选择的活动</label>
+            </dt>
+            <dd class="opt">
+                <table style="width:100%;">
+                    <thead>
+                    <tr>
+                        <th style="display:none">选择</th>
+                        <th class="text-left">活动名称</th>
+                        <th class="text-left">开始时间</th>
+                        <th class="text-left">结束时间</th>
+                        <th style="text-align:center;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="activity_list">
+                    <foreach name="activity_list" item="vo">
+                        <tr>
+                            <td style="display:none"><input type="checkbox" name="act_id[]" checked="checked" value="{$vo.act_id}"/></td>
+                            <td class="text-left">{$vo.act_name}</td>
+                            <td class="text-left">{$vo.start_time|date='Y-m-d',###}</td>
+                            <td class="text-left">{$vo.end_time|date='Y-m-d',###}</td>
+                            <td class="text-left"><a href="javascript:void(0)" onclick="javascript:$(this).parent().parent().remove();">删除</a></td>
+                        </tr>
+                    </foreach>
+                    </tbody>
+                </table>
+            </dd>
+        </dl>
+	  <dl class="row">
+        <dt class="tit">
+          <label for="articleForm">发布时间</label>
+        </dt>
+        <dd class="opt">
+            <input type="text" class="input-txt" id="publish_time" name="publish_time"  value="{$info.publish_time|date="Y-m-d",###}">        
+            <span class="add-on input-group-addon">
+                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+            </span> 
+          <span class="err"></span>
+        </dd>
+      </dl>       
+      <dl class="row">
+        <dt class="tit">
+          <label>显示</label>
+        </dt>
+        <dd class="opt">
+          <div class="onoff">
+            <label for="article_show1" class="cb-enable <if condition="$info[is_open] eq 1">selected</if>">是</label>
+            <label for="article_show0" class="cb-disable <if condition="$info[is_open] eq 0">selected</if>">否</label>
+            <input id="article_show1" name="is_open" value="1" type="radio" <if condition="$info[is_open] eq 1"> checked="checked"</if>>
+            <input id="article_show0" name="is_open" value="0" type="radio" <if condition="$info[is_open] eq 0"> checked="checked"</if>>
+          </div>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label>首页推荐</label>
+            </dt>
+            <dd class="opt">
+                <div class="onoff">
+                    <label for="article_recommend1" class="cb-enable <if condition="$info[is_recommend] eq 1">selected</if>">是</label>
+                    <label for="article_recommend0" class="cb-disable <if condition="$info[is_recommend] eq 0">selected</if>">否</label>
+                    <input id="article_recommend1" name="is_recommend" value="1" type="radio" <if condition="$info[is_recommend] eq 1"> checked="checked"</if>>
+                    <input id="article_recommend0" name="is_recommend" value="0" type="radio" <if condition="$info[is_recommend] eq 0"> checked="checked"</if>>
+                </div>
+                <p class="notic"></p>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label>图片上传</label>
+            </dt>
+            <dd class="opt">
+                <div class="input-file-show">
+                        <span class="show">
+                            <a id="img_a" class="nyroModal" rel="gal" href="{$info.thumb}">
+                                <i id="img_i" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$info.thumb}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
+                            </a>
+                        </span>
+           	            <span class="type-file-box">
+                            <input type="text" id="thumb" name="thumb" value="{$info.thumb}" class="type-file-text">
+                            <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
+                            <input class="type-file-file" onClick="GetUploadify(1,'','person','img_call_back')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                        </span>
+                </div>
+                <span class="err"></span>
+                <p class="notic">请上传图片格式文件</p>
+            </dd>
+        </dl>
+      <div class="bot"><a href="JavaScript:void(0);" onClick="checkForm()" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+    </div>
+        <input type="hidden" name="act" value="{$act}">
+        <input type="hidden" name="id" value="{$info.id}"></label>
+  </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#publish_time').layDate();
+    });
+	
+	function checkForm(){
+		if($('input[name="name"]').val() == ''){
+			layer.alert("请填写太潮人名称！",{icon:2});
+			return false;
+		}
+        if($('input[name="job"]').val() == ''){
+            layer.alert("请填写太潮人职业！",{icon:2});
+            return false;
+        }
+
+		if($('#content').val() == ''){
+            layer.alert("请填写文章内容！",{icon:2});
+			return false;
+		}
+		$('#add_post').submit();
+	}
+
+    function img_call_back(fileurl_tmp)
+    {
+        $("#thumb").val(fileurl_tmp);
+        $("#img_a").attr('href', fileurl_tmp);
+        $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+    function selectActivity(){
+        var acts_id = [];
+        //过滤选择重复商品
+        $('input[name*="act_id"]').each(function(i,o){
+            acts_id.push($(o).val());
+        });
+        var url = '/index.php?m=Admin&c=Person&a=search_activity&acts_id='+acts_id+'&t='+Math.random();
+        layer.open({
+            type: 2,
+            title: '选择活动',
+            shadeClose: true,
+            shade: 0.3,
+            area: ['70%', '80%'],
+            content: url,
+        });
+    }
+
+    function call_back(table_html)
+    {
+        layer.closeAll('iframe');
+        $('#activity_list').append(table_html);
+    }
+    
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ return	array(
 						array('name'=>'站点设置','act'=>'index','op'=>'System'),
 						array('name'=>'地区设置','act'=>'region','op'=>'Tools'),
 						array('name'=>'导航设置','act'=>'navigationList','op'=>'System'),
-						array('name'=>'友情链接','act'=>'linkList','op'=>'Article'),
+						array('name'=>'友情链接','act'=>'linkList','op'=>'System'),
 						array('name'=>'清除缓存','act'=>'cleanCache','op'=>'System'),
 				)),
 				array('name' => '数据','child'=>array(
@@ -17,10 +17,8 @@ return	array(
 						array('name'=>'轮播位置','act'=>'positionList','op'=>'Banner'),
 				)),
                 array('name' => '商品','child'=>array(
-                    array('name' => '文章列表', 'act'=>'articleList', 'op'=>'Article'),
-                    array('name' => '文章分类', 'act'=>'categoryList', 'op'=>'Article'),
-                    array('name' => '商品分类', 'act'=>'categoryList', 'op'=>'Goods'),
-                    array('name' => '商品列表', 'act'=>'goodsList', 'op'=>'Goods'),
+                    array('name' => '太潮人', 'act'=>'personList', 'op'=>'Person'),
+                    array('name' => '太潮志', 'act'=>'goodsList', 'op'=>'Goods'),
                     array('name' => '品牌列表', 'act'=>'brandList', 'op'=>'Goods'),
                     array('name' => '君太活动', 'act'=>'activityList', 'op'=>'Activity'),
                 )),
