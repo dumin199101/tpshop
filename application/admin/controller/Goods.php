@@ -13,12 +13,6 @@ use think\Page;
 use think\Db;
 
 class Goods extends Base {
-
-    public function test()
-    {
-        return $this->fetch('public/menubox');
-    }
-
     /**
      * 品牌列表
      */
