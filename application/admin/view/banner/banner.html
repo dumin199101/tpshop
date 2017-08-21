@@ -18,7 +18,7 @@
           <label><em>*</em>轮播名称：</label>
         </dt>
         <dd class="opt">
-          <input type="text" placeholder="名称" class="input-txt" name="banner_name" value="{$info.ad_name|default='自定义轮播名称'}">
+          <input type="text" placeholder="名称" class="input-txt" name="banner_name" value="{$info.banner_name|default='自定义轮播名称'}">
           <span class="err" id="err_ad_name" style="color:#F00; display:none;">轮播名称不能为空</span>
           <p class="notic"></p>
         </dd>
@@ -73,7 +73,7 @@
           <label><em>*</em>轮播链接：</label>
         </dt>
         <dd class="opt">
-          <input type="text" placeholder="轮播链接" class="input-txt" name="banner_link" value="{$info.ad_link}">
+          <input type="text" placeholder="轮播链接" class="input-txt" name="banner_link" value="{$info.banner_link}">
           <span class="err" id="err_ad_link" style="color:#F00; display:none;"></span>
           <p class="notic"></p>
         </dd>
@@ -90,7 +90,7 @@
                             </a>
                         </span>
            	            <span class="type-file-box">
-                            <input type="text" id="ad_code" name="ad_code" value="{$info.banner_code}" class="type-file-text">
+                            <input type="text" id="ad_code" name="banner_code" value="{$info.banner_code}" class="type-file-text">
                             <input type="button" name="button" id="button1" value="选择上传..." class="type-file-button">
                             <input class="type-file-file" onClick="GetUploadify(1,'','banner','img_call_back')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
                         </span>

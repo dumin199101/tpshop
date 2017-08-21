@@ -28,7 +28,10 @@ class Index extends Base {
 	 */
     public function welcome(){
     	$this->assign('sys_info',$this->get_sys_info());
-    	$count['goods'] =  M('goods')->where("1=1")->count();//品牌总数
+    	$count['goods'] =  M('goods')->where("1=1")->count();//太潮志总数
+    	$count['person'] =  M('person')->where("1=1")->count();//太潮人总数
+    	$count['brand'] =  M('brand')->where("1=1")->count();//品牌总数
+    	$count['activity'] =  M('activity')->where("1=1")->count();//活动总数
     	$this->assign('count',$count);
         return $this->fetch();
     }

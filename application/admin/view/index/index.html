@@ -34,7 +34,6 @@ var SITEURL = window.location.host +'/index.php/admin';
 <script src="__PUBLIC__/js/upgrade.js"></script>
 </head>
 <body>
-<include file="public/menubox" />
 <div class="admincp-header">
   <div class="bgSelector"></div>
   <div id="foldSidebar"><i class="fa fa-outdent " title="展开/收起侧边导航"></i></div>
@@ -67,8 +66,23 @@ var SITEURL = window.location.host +'/index.php/admin';
           <h4>常用操作</h4>
         </div>
                 <ul class="nc-row" tptype="quick_link">
-                <li><a href="javascript:void(0);" onClick="openItem('index|System')">站点设置</a></li>
-                  </ul>
+                    <li><a href="javascript:void(0);" onClick="openItem('index|System')">站点设置</a></li>
+                </ul>
+                <script>
+                    //管理显示与隐藏
+                    $("#admin-manager-btn").click(function () {
+                        if ($(".manager-menu").css("display") == "none") {
+                            $(".manager-menu").css('display', 'block');
+                            $("#admin-manager-btn").attr("title","关闭快捷管理");
+                            $("#admin-manager-btn").removeClass().addClass("arrow-close");
+                        }
+                        else {
+                            $(".manager-menu").css('display', 'none');
+                            $("#admin-manager-btn").attr("title","显示快捷管理");
+                            $("#admin-manager-btn").removeClass().addClass("arrow");
+                        }
+                    });
+                </script>
       </div>
     </div>
     <ul class="operate nc-row">

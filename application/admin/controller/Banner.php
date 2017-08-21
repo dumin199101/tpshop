@@ -28,7 +28,7 @@ class Banner extends Base
             adminLog("添加轮播");
         }
         if ($data['act'] == 'edit') {
-            $r = D('banner')->where('banner_id', $data['ad_id'])->save($data);
+            $r = D('banner')->where('banner_id', $data['banner_id'])->save($data);
             adminLog("修改轮播");
         }
 
@@ -129,7 +129,7 @@ class Banner extends Base
     {
         $act = I('get.act', 'add');
         $banner_id = I('get.banner_id/d');
-        $ad_info = array();
+        $banner_info = array();
         if ($banner_id) {
             $banner_info = D('banner')->where('banner_id', $banner_id)->find();
             $banner_info['start_time'] = date('Y-m-d', $banner_info['start_time']);
@@ -138,7 +138,7 @@ class Banner extends Base
         if ($act == 'add')
             $banner_info['pid'] = $this->request->param('pid');
         $position = D('banner_position')->select();
-        $this->assign('info', $ad_info);
+        $this->assign('info', $banner_info);
         $this->assign('act', $act);
         $this->assign('position', $position);
         return $this->fetch();

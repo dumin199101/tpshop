@@ -30,31 +30,31 @@
                 <div class="section_order_select">
                     <ul>
                         <li>
-                            <a  href="{:U('')}">
+                            <a  href="{:U('admin/Goods/goodsList')}">
                                 <i class="ice ice_q"></i>
                                 <div class="t">太潮志数量</div>
-                                <span class="number">0</span>
+                                <span class="number">{$count.goods}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{:U('')}">
+                            <a href="{:U('admin/Person/personList')}">
                                 <i class="ice ice_f"></i>
                                 <div class="t">太潮人数量</div>
-                                <span class="number">0</span>
+                                <span class="number">{$count.person}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{:U('')}">
+                            <a href="{:U('admin/Goods/brandList')}">
                                 <i class="ice ice_y"></i>
                                 <div class="t">品牌数量</div>
-                                <span class="number">0</span>
+                                <span class="number">{$count.brand}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{:U('')}">
+                            <a href="{:U('admin/Activity/activityList')}">
                                 <i class="ice ice_w"></i>
                                 <div class="t">活动数量</div>
-                                <span class="number">0</span>
+                                <span class="number">{$count.activity}</span>
                             </a>
                         </li>
                     </ul>
