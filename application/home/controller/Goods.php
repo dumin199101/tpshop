@@ -81,17 +81,7 @@ class Goods extends Base {
         return $this->fetch();
     }
 
-    /**
-     * 获取可发货地址
-     */
-    public function getRegion()
-    {
-        $goodsLogic = new GoodsLogic();
-        $region_list = $goodsLogic->getRegionList();//获取配送地址列表
-        $region_list['status'] = 1;
-        $this->ajaxReturn($region_list);
-    }
-    
+
     /**
      * 商品列表页
      */
