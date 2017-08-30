@@ -14,10 +14,20 @@
     <div class="ncap-form-default">
       <dl class="row">
         <dt class="tit">
-          <label for="ac_name"><em>*</em>品牌名称</label>
+          <label for="ac_name"><em>*</em>品牌英文名称</label>
         </dt>
         <dd class="opt">
-          <input type="text" placeholder="名称" class="input-txt" name="name" value="{$brand.name}">
+          <input type="text" placeholder="英文名称" class="input-txt" name="title" value="{$brand.title}">
+          <span class="err" id="err_title" style="color:#F00; display:none;"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="ac_name"><em>*</em>品牌中文名称</label>
+        </dt>
+        <dd class="opt">
+          <input type="text" placeholder="中文名称" class="input-txt" name="name" value="{$brand.name}">
 		  <span class="err" id="err_name" style="color:#F00; display:none;"></span>
             <p class="notic"></p>
         </dd>
@@ -31,7 +41,17 @@
 		  <span  class="err" id="err_url" style="color:#F00; display:none;"></span>                                                     
           <p class="notic"></p>
         </dd>
-      </dl>      
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label for="">品牌附加信息</label>
+        </dt>
+        <dd class="opt">
+          <textarea  name="attach" >{$brand.attach}</textarea>
+          <span class="err" id="err_attach" style="color:#F00; display:none;"></span>
+          <p class="notic"></p>
+        </dd>
+      </dl>
 
 
       <dl class="row">
