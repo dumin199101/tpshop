@@ -10,14 +10,12 @@ class Index extends Base {
      */
     public function index(){
 
-        //初始化
-        $index_banner  = [];
-
         //全屏banner
-        $index_banner = S('index_banner');
-        if(empty($index_banner))
+        $banner_list = S('Pos:index:banner_list');
+        if(empty($banner_list))
         {
-            $index_banner = Db::name('banner')->alias('a')
+            $banner_list = Db::name('banner')->alias('a')
+                ->field('a.banner_link,a.banner_code,a.target')
                 ->join('__BANNER_POSITION__ b','a.pid=b.position_id')
                 ->where('a.enabled',1)
                 ->where('a.start_time','<',time())
@@ -25,14 +23,52 @@ class Index extends Base {
                 ->where('a.pid',1)
                 ->order('a.orderby desc')
                 ->select();
-            S('index_banner',$index_banner,JT_CACHE_TIME);
+            S('Pos:index:banner_list',$banner_list,JT_CACHE_TIME);
         }
-        $this->assign('index_banner',$index_banner);
-        //首页活动
+        $this->assign('banner_list',$banner_list);
 
-        //品牌
+        //活动
+        $act_list = S('Pos:index:act_list');
+        if(empty($act_list)){
+            $act_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
+                ->where('is_recommend',1)
+                ->where('enable',1)
+                ->order('act_id desc')
+                ->limit(8)
+                ->select();
+            S('Pos:index:act_list',$act_list,JT_CACHE_TIME);
+        }
+        $this->assign('act_list',$act_list);
+
+        //BRAND_品牌
         $brand_list = range('A','Z');
         $this->assign('brand_list',$brand_list);
+
+        //太潮人：取出4个
+        $person_list = S('Pos:index:person_list');
+        if(empty($person_list)){
+            $person_list = Db::name('person')->field('id,name,thumb,job,content')
+                ->where('is_recommend',1)
+                ->where('is_open',1)
+                ->order('click desc')
+                ->limit(4)
+                ->select();
+            S('Pos:index:person_list',$person_list,JT_CACHE_TIME);
+        }
+        $this->assign('person_list',$person_list);
+
+        //太潮志:取出3个
+        $goods_list = S('Pos:index:goods_list');
+        if(empty($goods_list)){
+            $goods_list = Db::name('goods')->field('id,name,thumb')
+                ->where('is_recommend',1)
+                ->where('is_open',1)
+                ->order('sort')
+                ->limit(3)
+                ->select();
+            S('Pos:index:goods_list',$goods_list,JT_CACHE_TIME);
+        }
+        $this->assign('goods_list',$goods_list);
 
         return $this->fetch();
     }
