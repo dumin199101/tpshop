@@ -46,12 +46,14 @@
 						<th align="left" abbr="article_desc" axis="col3" class="">
 							<div style="text-align: left; width: 240px;" class="">活动简介</div>
 						</th>
-
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">开始时间</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">结束时间</div>
+						</th>
+						<th align="center" abbr="article_show" axis="col5" class="">
+							<div style="text-align: center; width: 120px;" class="">首页推荐</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 50px;" class="">显示</div>
@@ -109,6 +111,15 @@
 								</td>
 								<td align="left" class="">
 									<div style="text-align: center; width: 120px;">{$vo.end_time|date='Y-m-d',###}</div>
+								</td>
+								<td align="center" class="">
+									<div style="text-align: center; width: 120px;">
+										<if condition='$vo[is_recommend] eq 1'>
+											<span class="yes" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_recommend',this)" ><i class="fa fa-check-circle"></i>是</span>
+											<else />
+											<span class="no" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_recommend',this)" ><i class="fa fa-ban"></i>否</span>
+										</if>
+									</div>
 								</td>
 								<td align="center" class="">
 									<div style="text-align: center; width: 50px;">

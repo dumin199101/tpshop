@@ -84,6 +84,20 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
+                    <label>首页推荐</label>
+                </dt>
+                <dd class="opt">
+                    <div class="onoff">
+                        <label for="article_recommend1" class="cb-enable <if condition="$info[is_recommend] eq 1">selected</if>">是</label>
+                        <label for="article_recommend0" class="cb-disable <if condition="$info[is_recommend] eq 0">selected</if>">否</label>
+                        <input id="article_recommend1" name="is_recommend" value="1" type="radio" <if condition="$info[is_recommend] eq 1"> checked="checked"</if>>
+                        <input id="article_recommend0" name="is_recommend" value="0" type="radio" <if condition="$info[is_recommend] eq 0"> checked="checked"</if>>
+                    </div>
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
                     <label>活动图片</label>
                 </dt>
                 <dd class="opt">

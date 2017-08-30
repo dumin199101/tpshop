@@ -55,9 +55,6 @@
                 <div style="text-align: left; width: 100px;" class="">品牌首字母</div>
               </th>
               <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 100px;" class="">是否推荐</div>
-              </th>     
-              <th align="center" abbr="article_time" axis="col6" class="">
                 <div style="text-align: center; width: 100px;" class="">排序</div>
               </th>                      
               <th align="center" axis="col1" class="handle">
@@ -102,15 +99,6 @@
                 <td align="left" class="">
                   <div style="text-align: center; width: 100px;">{$list.letter}</div>
                 </td>
-                <td align="center" class="">
-                  <div style="text-align: center; width: 100px;">
-                    <if condition='$list[is_hot] eq 1'>
-                      <span class="yes" onClick="changeTableVal('brand','id','{$list.id}','is_hot',this)" ><i class="fa fa-check-circle"></i>是</span>
-                      <else />
-                      <span class="no" onClick="changeTableVal('brand','id','{$list.id}','is_hot',this)" ><i class="fa fa-ban"></i>否</span>
-                    </if>
-                  </div>
-                </td>               
               <td align="center">
                 <div style="text-align: center; width: 100px;">
                   <input type="text" onKeyUp="this.value=this.value.replace(/[^\d]/g,'')" onpaste="this.value=this.value.replace(/[^\d]/g,'')" onChange="changeTableVal('brand','id','{$list.id}','sort',this)" size="4" value="{$list.sort}" />

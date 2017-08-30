@@ -22,10 +22,6 @@ return [
         '__PUBLIC__' => '/public',
         '__ROOT__' => ''
     ],
-    'PAYMENT_PLUGIN_PATH' => PLUGIN_PATH . 'payment',
-    'LOGIN_PLUGIN_PATH' => PLUGIN_PATH . 'login',
-    'SHIPPING_PLUGIN_PATH' => PLUGIN_PATH . 'shipping',
-    'FUNCTION_PLUGIN_PATH' => PLUGIN_PATH . 'function',
 
     //默认错误跳转对应的模板文件
     'dispatch_error_tmpl' => 'public:dispatch_jump',
