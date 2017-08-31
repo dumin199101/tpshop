@@ -64,7 +64,59 @@ class Api extends Controller {
         ];
         return json($data);
     }
-
+    
+    /**
+     * ajax分页获取最新活动
+     */
+    public function ajaxGetLatestList()
+    {
+        $count =  Db::name('activity')
+            ->where('enable',1)
+            ->where('a.start_time','<',time())
+            ->where('a.start_time','>',time()-3600*24*30)
+            ->where('a.end_time','>',time())
+            ->count();
+        $page = new Page($count,4);
+        $activity_list =  Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
+            ->where('enable',1)
+            ->where('a.start_time','<',time())
+            ->where('a.start_time','>',time()-3600*24*30)
+            ->where('a.end_time','>',time())
+            ->order('act_id desc')
+            ->cache(true,JT_CACHE_TIME)
+            ->limit($page->firstRow.','.$page->listRows)
+            ->select();
+        $data = [
+            'data'=>$activity_list,
+            'count'=>$count
+        ];
+        return json($data);
+    }
+    
+    /**
+     * ajax分页获取往期活动
+     */
+    public function ajaxGetOldestList()
+    {
+        $count =  Db::name('activity')
+            ->where('enable',1)
+            ->where('a.start_time','<',time()-3600*24*30)
+            ->count();
+        $page = new Page($count,4);
+        $activity_list =  Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
+            ->where('enable',1)
+            ->where('a.start_time','<',time()-3600*24*30)
+            ->order('act_id desc')
+            ->cache(true,JT_CACHE_TIME)
+            ->limit($page->firstRow.','.$page->listRows)
+            ->select();
+        $data = [
+            'data'=>$activity_list,
+            'count'=>$count
+        ];
+        return json($data);
+    }
+    
 
 
 

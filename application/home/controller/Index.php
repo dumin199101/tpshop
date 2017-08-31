@@ -32,6 +32,8 @@ class Index extends Base {
             $act_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
                 ->where('is_recommend',1)
                 ->where('enable',1)
+                ->where('a.start_time','<',time())
+                ->where('a.end_time','>',time())
                 ->order('act_id desc')
                 ->limit(8)
                 ->select();
