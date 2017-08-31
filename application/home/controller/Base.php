@@ -14,9 +14,7 @@
 namespace app\home\controller;
 use think\Controller;
 use think\Db;
-use think\response\Json;
 use think\Session;
-use think\Cookie;
 
 class Base extends Controller {
     public $session_id;

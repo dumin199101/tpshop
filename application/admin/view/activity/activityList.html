@@ -28,6 +28,19 @@
 				<h5>(共{$pager->totalRows}条记录)</h5>
 			</div>
 			<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
+			<form class="navbar-form form-inline" action="{:U('Admin/Activity/activityList')}" method="post">
+				<div class="sDiv">
+					<div class="sDiv2">
+						<select name="filter_var"  class="select">
+							<option value="0">全部</option>
+							<option value="1" <if condition='$filter_var eq 1'>selected</if>>首页推荐</option>
+							<option value="2" <if condition='$filter_var eq 2'>selected</if>>太潮人页推荐</option>
+						</select>
+						<input type="text" size="30" name="keywords" class="qsbox" placeholder="搜索相关数据...">
+						<input type="submit" class="btn" value="搜索">
+					</div>
+				</div>
+			</form>
 		</div>
 		<div class="hDiv">
 			<div class="hDivBox">
@@ -54,6 +67,9 @@
 						</th>
 						<th align="center" abbr="article_show" axis="col5" class="">
 							<div style="text-align: center; width: 120px;" class="">首页推荐</div>
+						</th>
+						<th align="center" abbr="article_show" axis="col5" class="">
+							<div style="text-align: center; width: 120px;" class="">太潮人页推荐</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 50px;" class="">显示</div>
@@ -118,6 +134,15 @@
 											<span class="yes" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_recommend',this)" ><i class="fa fa-check-circle"></i>是</span>
 											<else />
 											<span class="no" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_recommend',this)" ><i class="fa fa-ban"></i>否</span>
+										</if>
+									</div>
+								</td>
+								<td align="center" class="">
+									<div style="text-align: center; width: 120px;">
+										<if condition='$vo[is_hot] eq 1'>
+											<span class="yes" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_hot',this)" ><i class="fa fa-check-circle"></i>是</span>
+											<else />
+											<span class="no" onClick="changeTableVal('activity','act_id','{$vo.act_id}','is_hot',this)" ><i class="fa fa-ban"></i>否</span>
 										</if>
 									</div>
 								</td>

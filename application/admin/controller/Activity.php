@@ -13,12 +13,23 @@ class Activity extends Base
      */
     public function activityList()
     {
-        $count = M('activity')->count();
+        $where = array();
+        $keywords = trim(I('keywords'));
+        $keywords && $where['act_name'] = array('like', '%' . $keywords . '%');
+        $filter_var = I('post.filter_var',0);
+        if(!empty($filter_var)){
+            if($filter_var==1)
+                $where['is_recommend'] = 1;
+            if($filter_var==2)
+                $where['is_hot'] = 1;
+        }
+        $count = M('activity')->where($where)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $activity_list = M('activity')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $activity_list = M('activity')->where($where)->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $this->assign('pager',$Page);
         $this->assign('page', $show);// 赋值分页输出
+        $this->assign('filter_var',$filter_var);
         $this->assign('activity_list', $activity_list);
         return $this->fetch();
     }

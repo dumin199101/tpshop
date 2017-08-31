@@ -29,7 +29,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);//报告运行时错误
 define('UPLOAD_PATH','public/upload/'); // 编辑器图片上传路径
 define('JT_CACHE_TIME',1800); //缓存时间  1800
 define('SITE_URL','http://'.$_SERVER['HTTP_HOST']); // 网站域名
-//define('HTML_PATH','./Application/Runtime/Html/'); //静态缓存文件目录，HTML_PATH可任意设置，此处设为当前项目下新建的html目录
+define('HTML_PATH','./Application/Runtime/Html/'); //静态缓存文件目录，HTML_PATH可任意设置，此处设为当前项目下新建的html目录
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/application/');
 // 定义时间

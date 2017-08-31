@@ -1,6 +1,5 @@
 <?php
-namespace app\home\controller; 
-use think\Controller;
+namespace app\home\controller;
 use think\Db;
 
 class Index extends Base {
@@ -20,7 +19,7 @@ class Index extends Base {
                 ->where('a.enabled',1)
                 ->where('a.start_time','<',time())
                 ->where('a.end_time','>',time())
-                ->where('a.pid',1)
+                ->where('b.position_name','like','%首页%')
                 ->order('a.orderby desc')
                 ->select();
             S('Pos:index:banner_list',$banner_list,JT_CACHE_TIME);
@@ -41,8 +40,8 @@ class Index extends Base {
         $this->assign('act_list',$act_list);
 
         //BRAND_品牌
-        $brand_list = range('A','Z');
-        $this->assign('brand_list',$brand_list);
+        $letter_list = range('A','Z');
+        $this->assign('letter_list',$letter_list);
 
         //太潮人：取出4个
         $person_list = S('Pos:index:person_list');
@@ -69,7 +68,6 @@ class Index extends Base {
             S('Pos:index:goods_list',$goods_list,JT_CACHE_TIME);
         }
         $this->assign('goods_list',$goods_list);
-
         return $this->fetch();
     }
 }
