@@ -71,13 +71,15 @@ class Api extends Controller {
     public function ajaxGetLatestList()
     {
         $count =  Db::name('activity')
+            ->alias('a')
             ->where('enable',1)
             ->where('a.start_time','<',time())
             ->where('a.start_time','>',time()-3600*24*30)
             ->where('a.end_time','>',time())
             ->count();
         $page = new Page($count,4);
-        $activity_list =  Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
+        $activity_list =  Db::name('activity')->alias('a')
+            ->field('act_id,act_name,act_img,start_time,act_desc')
             ->where('enable',1)
             ->where('a.start_time','<',time())
             ->where('a.start_time','>',time()-3600*24*30)
@@ -98,12 +100,13 @@ class Api extends Controller {
      */
     public function ajaxGetOldestList()
     {
-        $count =  Db::name('activity')
+        $count =  Db::name('activity')->alias('a')
             ->where('enable',1)
             ->where('a.start_time','<',time()-3600*24*30)
             ->count();
         $page = new Page($count,4);
-        $activity_list =  Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
+        $activity_list =  Db::name('activity')->alias('a')
+            ->field('act_id,act_name,act_img,start_time,act_desc')
             ->where('enable',1)
             ->where('a.start_time','<',time()-3600*24*30)
             ->order('act_id desc')

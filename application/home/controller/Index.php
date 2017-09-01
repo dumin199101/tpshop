@@ -29,7 +29,8 @@ class Index extends Base {
         //活动
         $act_list = S('Pos:index:act_list');
         if(empty($act_list)){
-            $act_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
+            $act_list = Db::name('activity')->alias('a')
+                ->field('act_id,act_name,act_img,start_time')
                 ->where('is_recommend',1)
                 ->where('enable',1)
                 ->where('a.start_time','<',time())

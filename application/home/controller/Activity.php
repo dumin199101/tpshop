@@ -30,9 +30,9 @@ class Activity extends Base {
         if(empty($act_latest_list)){
             $act_latest_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
                 ->where('enable',1)
-                ->where('a.start_time','<',time())
-                ->where('a.start_time','>',time()-3600*24*30)
-                ->where('a.end_time','>',time())
+                ->where('start_time','<',time())
+                ->where('start_time','>',time()-3600*24*30)
+                ->where('end_time','>',time())
                 ->order('act_id desc')
                 ->limit(4)
                 ->select();
@@ -45,7 +45,7 @@ class Activity extends Base {
         if(empty($act_oldest_list)){
             $act_oldest_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
                 ->where('enable',1)
-                ->where('a.start_time','<',time()-3600*24*30)
+                ->where('start_time','<',time()-3600*24*30)
                 ->order('act_id desc')
                 ->limit(4)
                 ->select();
@@ -63,9 +63,9 @@ class Activity extends Base {
         //最新活动4个
         $act_latest_list = Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
             ->where('enable',1)
-            ->where('a.start_time','<',time())
-            ->where('a.start_time','>',time()-3600*24*30)
-            ->where('a.end_time','>',time())
+            ->where('start_time','<',time())
+            ->where('start_time','>',time()-3600*24*30)
+            ->where('end_time','>',time())
             ->order('act_id desc')
             ->limit(0,4)
             ->cache(true,JT_CACHE_TIME)
@@ -81,7 +81,7 @@ class Activity extends Base {
     {
         $act_oldest_list = Db::name('activity')->field('act_id,act_name,act_img,start_time,act_desc')
             ->where('enable',1)
-            ->where('a.start_time','<',time()-3600*24*30)
+            ->where('start_time','<',time()-3600*24*30)
             ->order('act_id desc')
             ->limit(4,4)
             ->cache(true,JT_CACHE_TIME)

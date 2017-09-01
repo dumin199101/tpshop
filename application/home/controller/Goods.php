@@ -84,8 +84,8 @@ class Goods extends Base {
             $act_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
                 ->where('is_hot',1)
                 ->where('enable',1)
-                ->where('a.start_time','<',time())
-                ->where('a.end_time','>',time())
+                ->where('start_time','<',time())
+                ->where('end_time','>',time())
                 ->order('act_id desc')
                 ->limit(8)
                 ->select();
