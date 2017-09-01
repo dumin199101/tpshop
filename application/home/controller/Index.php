@@ -52,7 +52,6 @@ class Index extends Base {
             $person_list = Db::name('person')->field('id,name,thumb,job,content')
                 ->where('is_recommend',1)
                 ->where('is_open',1)
-                ->order('click desc')
                 ->limit(4)
                 ->select();
             S('Pos:index:person_list',$person_list,JT_CACHE_TIME);

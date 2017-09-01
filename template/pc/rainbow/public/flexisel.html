@@ -1,0 +1,18 @@
+        <!--底部轮播-->
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/jt/plugins/flexisel/css/flexisel.css">
+        <script src="__PUBLIC__/jt/plugins/flexisel/js/jquery.flexisel.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(function(){
+                $(".flexisel").flexisel({
+                    visibleItems: 4,
+                    itemsToScroll: 1,
+                    animationSpeed:1000,
+                    navigationTargetSelector:".jt-flexisel",
+                    autoPlay: {
+                        enable: true,
+                        interval: 5000,
+                        pauseOnHover: true
+                    }
+                });
+            });
+        </script>

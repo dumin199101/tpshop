@@ -39,19 +39,19 @@ function get_user_info($user_id_or_name,$type = 0,$oauth=''){
     return $user;
 }
 
+
 /**
- *  商品缩略图 给于标签调用 拿出商品表的 original_img 原始图来裁切出来的
+ *  首页推荐活动缩略图 给于标签调用 拿出商品表的 thumb 原始图来裁切出来的
  * @param type $goods_id  商品id
  * @param type $width     生成缩略图的宽度
  * @param type $height    生成缩略图的高度
  */
-function goods_thum_images($goods_id,$width,$height){
-
+function act_thum_images($goods_id,$width,$height){
     if(empty($goods_id))
         return '';
     //判断缩略图是否存在
-    $path = "public/upload/goods/thumb/$goods_id/";
-    $goods_thumb_name ="goods_thumb_{$goods_id}_{$width}_{$height}";
+    $path = "public/thumb/activity/" . date('Y-m-d',time()) . "/$goods_id/";
+    $goods_thumb_name ="act_thumb_{$goods_id}_{$width}_{$height}";
 
     // 这个商品 已经生成过这个比例的图片就直接返回了
     if(file_exists($path.$goods_thumb_name.'.jpg'))  return '/'.$path.$goods_thumb_name.'.jpg';
@@ -59,7 +59,7 @@ function goods_thum_images($goods_id,$width,$height){
     if(file_exists($path.$goods_thumb_name.'.gif'))  return '/'.$path.$goods_thumb_name.'.gif';
     if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
 
-    $original_img = M('Goods')->where("goods_id", $goods_id)->getField('original_img');
+    $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_img');
     if(empty($original_img)) return '';
 
     $original_img = '.'.$original_img; // 相对路径
@@ -75,22 +75,83 @@ function goods_thum_images($goods_id,$width,$height){
 
     //参考文章 http://www.mb5u.com/biancheng/php/php_84533.html  改动参考 http://www.thinkphp.cn/topic/13542.html
     $image->thumb($width, $height,2)->save($path.$goods_thumb_name,NULL,100); //按照原图的比例生成一个最大为$width*$height的缩略图并保存
+    return '/'.$path.$goods_thumb_name;
+}
 
-    //图片水印处理
-    $water = tpCache('water');
-    if($water['is_mark']==1){
-        $imgresource = './'.$path.$goods_thumb_name;
-        if($width>$water['mark_width'] && $height>$water['mark_height']){
-            if($water['mark_type'] == 'img'){
-                $image->open($imgresource)->water(".".$water['mark_img'],$water['sel'],$water['mark_degree'])->save($imgresource);
-            }else{
-                //检查字体文件是否存在
-                if(file_exists('./zhjt.ttf')){
-                    $image->open($imgresource)->text($water['mark_txt'],'./zhjt.ttf',20,'#000000',$water['sel'])->save($imgresource);
-                }
-            }
-        }
-    }
+
+/**
+ *  太潮人缩略图 给于标签调用 拿出商品表的 thumb 原始图来裁切出来的
+ * @param type $goods_id  商品id
+ * @param type $width     生成缩略图的宽度
+ * @param type $height    生成缩略图的高度
+ */
+function person_thum_images($goods_id,$width,$height){
+    if(empty($goods_id))
+        return '';
+    //判断缩略图是否存在
+    $path = "public/thumb/person/" . date('Y-m-d',time()) . "/$goods_id/";
+    $goods_thumb_name ="person_thumb_{$goods_id}_{$width}_{$height}";
+
+    // 这个商品 已经生成过这个比例的图片就直接返回了
+    if(file_exists($path.$goods_thumb_name.'.jpg'))  return '/'.$path.$goods_thumb_name.'.jpg';
+    if(file_exists($path.$goods_thumb_name.'.jpeg')) return '/'.$path.$goods_thumb_name.'.jpeg';
+    if(file_exists($path.$goods_thumb_name.'.gif'))  return '/'.$path.$goods_thumb_name.'.gif';
+    if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
+
+    $original_img = M('Person')->where("id", $goods_id)->getField('thumb');
+    if(empty($original_img)) return '';
+
+    $original_img = '.'.$original_img; // 相对路径
+    if(!file_exists($original_img)) return '';
+
+    //$image = new \think\Image();
+    $image = \think\Image::open($original_img);
+
+    $goods_thumb_name = $goods_thumb_name. '.'.$image->type();
+    //生成缩略图
+    if(!is_dir($path))
+        mkdir($path,0777,true);
+
+    //参考文章 http://www.mb5u.com/biancheng/php/php_84533.html  改动参考 http://www.thinkphp.cn/topic/13542.html
+    $image->thumb($width, $height,2)->save($path.$goods_thumb_name,NULL,100); //按照原图的比例生成一个最大为$width*$height的缩略图并保存
+    return '/'.$path.$goods_thumb_name;
+}
+
+/**
+ *  太潮志缩略图 给于标签调用 拿出商品表的 thumb 原始图来裁切出来的
+ * @param type $goods_id  商品id
+ * @param type $width     生成缩略图的宽度
+ * @param type $height    生成缩略图的高度
+ */
+function goods_thum_images($goods_id,$width,$height){
+    if(empty($goods_id))
+        return '';
+    //判断缩略图是否存在
+    $path = "public/thumb/goods/" . date('Y-m-d',time()) . "/$goods_id/";
+    $goods_thumb_name ="goods_thumb_{$goods_id}_{$width}_{$height}";
+
+    // 这个商品 已经生成过这个比例的图片就直接返回了
+    if(file_exists($path.$goods_thumb_name.'.jpg'))  return '/'.$path.$goods_thumb_name.'.jpg';
+    if(file_exists($path.$goods_thumb_name.'.jpeg')) return '/'.$path.$goods_thumb_name.'.jpeg';
+    if(file_exists($path.$goods_thumb_name.'.gif'))  return '/'.$path.$goods_thumb_name.'.gif';
+    if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
+
+    $original_img = M('Goods')->where("id", $goods_id)->getField('thumb');
+    if(empty($original_img)) return '';
+
+    $original_img = '.'.$original_img; // 相对路径
+    if(!file_exists($original_img)) return '';
+
+    //$image = new \think\Image();
+    $image = \think\Image::open($original_img);
+
+    $goods_thumb_name = $goods_thumb_name. '.'.$image->type();
+    //生成缩略图
+    if(!is_dir($path))
+        mkdir($path,0777,true);
+
+    //参考文章 http://www.mb5u.com/biancheng/php/php_84533.html  改动参考 http://www.thinkphp.cn/topic/13542.html
+    $image->thumb($width, $height,2)->save($path.$goods_thumb_name,NULL,100); //按照原图的比例生成一个最大为$width*$height的缩略图并保存
     return '/'.$path.$goods_thumb_name;
 }
 
@@ -216,4 +277,12 @@ function read_html_cache(){
             exit();
         }
     }
+}
+
+/**
+ * 格式化首页推荐活动日期：
+ */
+function formatDate($time){
+    $date = date("Y-m-d",$time);
+    return substr($date,5,2) . '-' . substr($date,8,2) . '-' . substr($date,2,2);
 }

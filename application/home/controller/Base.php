@@ -37,11 +37,11 @@ class Base extends Controller {
        $jt_config = M('config')->cache(true,JT_CACHE_TIME)->select();
        foreach($jt_config as $k => $v)
        {
-          $tpshop_config[$v['inc_type'].'_'.$v['name']] = $v['value'];
+           $config[$v['inc_type'].'_'.$v['name']] = $v['value'];
        }
        $jt_navigation = Db::name('navigation')->cache(true,JT_CACHE_TIME)->where('is_show',1)->order('sort')->select();
        $this->assign('jt_navigation',$jt_navigation);
-       $this->assign('jt_config', $jt_config);
+       $this->assign('jt_config', $config);
     }
 
     public function ajaxReturn($data)

@@ -26,7 +26,7 @@ class Activity extends Base
         $count = M('activity')->where($where)->count();
         $Page = new Page($count, 10);
         $show = $Page->show();
-        $activity_list = M('activity')->where($where)->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $activity_list = M('activity')->where($where)->order('act_id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $this->assign('pager',$Page);
         $this->assign('page', $show);// 赋值分页输出
         $this->assign('filter_var',$filter_var);

@@ -3,8 +3,8 @@
  * ============================================================================
  * Created by PhpStorm.
  * User: dd
- * Date: 2017/8/31
- * Time: 18:13
+ * Date: 2017/9/1
+ * Time: 14:55
  * ============================================================================
  * $Author:lieyan123091
  */
@@ -13,21 +13,13 @@
 namespace app\home\controller;
 
 
-class System extends Base
+class Vip extends Base
 {
     /**
-     * 关于君太
+     * 君太VIP
      * @return mixed
      */
-    public function about()
-    {
-        return $this->fetch();
-    }
-
-    /**
-     * 版权声明
-     */
-    public function copyright()
+    public function index()
     {
         return $this->fetch();
     }
