@@ -188,8 +188,16 @@
         editor = new UE.ui.Editor(options);
         editor.render("post_content");
 
-        $('#start_time').layDate();
-        $('#end_time').layDate();
+        laydate.skin('molv');
+        laydate({
+            elem: '#start_time',
+            format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        });
+        laydate({
+            elem: '#end_time',
+            format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        });
+
     });
     function adsubmit(){
         if($('#name').val() ==''){

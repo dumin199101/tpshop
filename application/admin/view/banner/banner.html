@@ -55,7 +55,7 @@
           <label>开始日期：</label>
         </dt>
         <dd class="opt">
-          <input type="text" class="input-txt" id="start_time" name="begin"  value="{$info.start_time|default='2016-01-01'}"/>
+          <input type="text" class="input-txt" id="start_time" name="begin"  value="{$info.start_time}"/>
           <span class="err"></span>
         </dd>
       </dl>
@@ -64,7 +64,7 @@
           <label>结束时间：</label>
         </dt>
         <dd class="opt">
-          <input type="text" class="input-txt" id="end_time" name="end"  value="{$info.end_time|default='2019-01-01'}"/>
+          <input type="text" class="input-txt" id="end_time" name="end"  value="{$info.end_time}"/>
           <span class="err"></span>
         </dd>
       </dl>
@@ -76,6 +76,16 @@
           <input type="text" placeholder="轮播链接" class="input-txt" name="banner_link" value="{$info.banner_link}">
           <span class="err" id="err_ad_link" style="color:#F00; display:none;"></span>
           <p class="notic"></p>
+        </dd>
+      </dl>
+      <dl class="row">
+        <dt class="tit">
+          <label>轮播描述</label>
+        </dt>
+        <dd class="opt">
+          <textarea class="span12 ckeditor" id="banner_desc" name="banner_desc" title="">{$goodsInfo.banner_desc}</textarea>
+          <span class="err"  style="color:#F00; display:none;"></span>
+          <p class="notic">（主要用于活动页轮播介绍）</p>
         </dd>
       </dl>
       <dl class="row">
@@ -131,8 +141,15 @@
   }
 
   $(document).ready(function(){
-    $('#start_time').layDate();
-    $('#end_time').layDate();
+      laydate.skin('molv');
+      laydate({
+          elem: '#start_time',
+          format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+      });
+      laydate({
+          elem: '#end_time',
+          format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+      });
   });
   function img_call_back(fileurl_tmp)
   {

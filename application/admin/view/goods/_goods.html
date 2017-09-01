@@ -203,7 +203,13 @@
     </form>
 </div>
 <script>
-    $('#publish_time').layDate();
+    $(function () {
+        laydate.skin('molv');
+        laydate({
+            elem: '#publish_time',
+            format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        });
+    });
     function verifyForm(){
         $('span.err').show();
         $.ajax({
