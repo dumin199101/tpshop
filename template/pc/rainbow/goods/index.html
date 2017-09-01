@@ -1,0 +1,139 @@
+<extend name="base" />
+<block name="title">太潮人</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt/css/goods.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider"/>
+</block>
+<block name="content">
+    <!--轮播图-->
+    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <volist name="banner_list" id="vo" key="k">
+                <eq name="k" value="1">
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}" class="active"></li>
+                    <else/>
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}"></li>
+                </eq>
+            </volist>
+        </ol>
+
+        <!-- Wrapper For Slides -->
+        <div class="carousel-inner" role="listbox">
+            <volist name="banner_list" id="vo" key="k" >
+                <eq name="k" value="1">
+                    <div class="item active">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                    <else/>
+                    <div class="item">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                </eq>
+            </volist>
+        </div><!-- End of Wrapper For Slides -->
+
+        <!-- Left Control -->
+        <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <!-- Right Control -->
+        <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+    <!--轮播图-->
+
+    <!--太潮人-->
+    <div id="jt-tcr-container">
+        <div class="container">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">我是太潮人</span>
+                    </div>
+                </div>
+                <div class="col-md-2 jt-tcr-more">
+                    <a href="{:url('Goods/personList')}" target="_blank">
+                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                </div>
+            </div>
+            <div class="row picScroll">
+                <div class="row bd">
+                    <foreach name="person_list" id="vo">
+                        <div class="col-md-3 pic-scroll">
+                            <div class="thumbnail">
+                                <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" class="img">
+                                    <img src="{$vo.id|person_thum_images=260,460}" alt="">
+                                </a>
+                                <div class="caption">
+                                    <h3>{$vo.name|getSubstr=0,9}</h3>
+                                    <p><span class="job">{$vo.job|getSubstr=0,20}</span></p>
+                                    <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
+                                    <div class="jt-tcr-line"></div>
+                                    <p class="jt-tcr-read">
+                                        <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--太潮人-->
+
+    <!--太潮志-->
+    <div id="jt-tcz-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">太潮志</span>
+                    </div>
+                </div>
+                <div class="col-md-2 jt-tcr-more">
+                    <a href="{:url('Goods/goodsList')}" target="_blank">
+                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row jt-tcz-content">
+                    <foreach name="goods_list" id="vo">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" class="img">
+                                    <img src="{$vo.id|goods_thum_images=360,240}" alt="">
+                                </a>
+                                <div class="caption">
+                                    <span class="h3">{$vo.name|getSubstr=0,10}</span>
+                            <span class="jt-tcz-read">
+                               <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--太潮志-->
+
+
+</block>

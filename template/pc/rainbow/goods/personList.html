@@ -1,343 +1,187 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>君太太潮人</title>
-
-    <!-- Bootstrap -->
-    <link href="__PUBLIC__/jt/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+<extend name="base" />
+<block name="title">太潮人</block>
+<block name="css">
     <!--首页自定义样式-->
     <link rel="stylesheet" href="__PUBLIC__/jt/css/person.css">
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="__PUBLIC__/jt/plugins/bootstrap/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="__PUBLIC__/jt/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-
-    <!--轮播图-->
-    <link href="__PUBLIC__/jt/plugins/slide/css/bootstrap-touch-slider.css" rel="stylesheet" media="all">
-    <link href="__PUBLIC__/jt/plugins/slide/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="__PUBLIC__/jt/plugins/slide/css/animate.min.css" rel="stylesheet" media="all">
-    <script src="__PUBLIC__/jt/plugins/slide/js/jquery.touchSwipe.min.js"></script>
-    <script src="__PUBLIC__/jt/plugins/slide/js/bootstrap-touch-slider.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $('#bootstrap-touch-slider').bsTouchSlider();
-        });
-    </script>
-
-    <!--底部轮播-->
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/jt/plugins/flexisel/css/flexisel.css">
-    <script src="__PUBLIC__/jt/plugins/flexisel/js/jquery.flexisel.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function(){
-            $(".flexisel").flexisel({
-                visibleItems: 4,
-                itemsToScroll: 1,
-                animationSpeed:1000,
-                navigationTargetSelector:".jt-flexisel",
-                autoPlay: {
-                    enable: true,
-                    interval: 5000,
-                    pauseOnHover: true
-                }
-            });
-        });
-    </script>
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider,public/flexisel"/>
+</block>
+<block name="js">
     <!--滚动加载-->
     <script type="text/javascript" src="__PUBLIC__/jt/plugins/infinite-scroll/infinite-scroll.js"></script>
+</block>
+<block name="content">
+    <!--轮播图-->
+    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
 
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <volist name="banner_list" id="vo" key="k">
+                <eq name="k" value="1">
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}" class="active"></li>
+                    <else/>
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}"></li>
+                </eq>
+            </volist>
+        </ol>
 
+        <!-- Wrapper For Slides -->
+        <div class="carousel-inner" role="listbox">
+            <volist name="banner_list" id="vo" key="k" >
+                <eq name="k" value="1">
+                    <div class="item active">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                    <else/>
+                    <div class="item">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                </eq>
+            </volist>
+        </div><!-- End of Wrapper For Slides -->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js" type="text/javascript"></script>
-    <![endif]-->
-</head>
-<body>
-<!--导航-->
-<header>
-    <div class="container navbar-jt">
-        <nav class="navbar navbar-default navbar-jt">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" style="padding:0px;" href=""><img alt="Brand" style="max-width:130px;" src="__PUBLIC__/jt/images/logo.jpg"></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav nav-header-right">
-                    <li><a href="">活动 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="">品牌索引</a></li>
-                    <li class="active"><a href="">太潮人</a></li>
-                    <li><a href="">君太vip</a></li>
-                    <li><a href="">关于君太</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </nav>
+        <!-- Left Control -->
+        <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <!-- Right Control -->
+        <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
     </div>
-</header>
-<!--导航-->
+    <!--轮播图-->
 
-<!--轮播图-->
-<div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000" >
-
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
-        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
-        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper For Slides -->
-    <div class="carousel-inner" role="listbox">
-
-        <!-- Third Slide -->
-        <div class="item active">
-
-            <!-- Slide Background -->
-            <img src="__PUBLIC__/jt/images/slide1.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/>
-            <div class="bs-slider-overlay"></div>
-        </div>
-        <!-- End of Slide -->
-
-        <!-- Second Slide -->
-        <div class="item">
-            <!-- Slide Background -->
-            <img src="__PUBLIC__/jt/images/slide2.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/>
-            <div class="bs-slider-overlay"></div>
-        </div>
-        <!-- End of Slide -->
-
-        <!-- Third Slide -->
-        <div class="item">
-            <!-- Slide Background -->
-            <img src="__PUBLIC__/jt/images/slide3.jpeg" alt="Bootstrap Touch Slider"  class="slide-image"/>
-            <div class="bs-slider-overlay"></div>
-        </div>
-        <!-- End of Slide -->
-
-
-    </div><!-- End of Wrapper For Slides -->
-
-    <!-- Left Control -->
-    <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-        <span class="fa fa-angle-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-
-    <!-- Right Control -->
-    <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-        <span class="fa fa-angle-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-
-</div>
-<!--轮播图-->
-
-<!--太潮人-->
-<div id="jt-tcr-container" >
-    <div class="container">
-        <div class="row jt-nav">
-            <div class="col-md-10 jt-tcr-title">
-                <div class="jt-navigator">
-                    <div class="jt-box"></div>
-                    <span class="h1 ml-5">我是太潮人</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--活动轮播-->
-    <div id="jt-activity">
+    <!--太潮人-->
+    <div id="jt-tcr-container" >
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 jt-flexisel">
-                    <ul class="flexisel">
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/01.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈1</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/02.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈2</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/03.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈3</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/04.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈4</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/04.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈5</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/03.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈6</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/02.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈7</h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img src="__PUBLIC__/jt/images/01.png"/>
-                                <div class="date text-left">06-05-17</div>
-                                <h5 class="text-left act-title">妆点盛夏,积分礼金大回馈8</h5>
-                            </a>
-                        </li>
-                    </ul>
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">我是太潮人</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--活动轮播-->
 
+        <!--活动轮播-->
+        <div id="jt-activity">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 jt-flexisel">
+                        <ul class="flexisel">
+                            <foreach name="act_list" id="vo">
+                                <li>
+                                    <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                                        <img src="{$vo.act_id|act_thum_images=288,188}"/>
+                                        <div class="date text-left">{$vo.start_time|formatDate}</div>
+                                        <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
+                                    </a>
+                                </li>
+                            </foreach>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--活动轮播-->
 
-
-    <div class="container-fluid">
-        <div class="container mt-50">
-            <div class="row">
-                <div class="row" id="items">
-                    <volist name="person_list" id="vo" mod="4">
-                        <div class="col-md-3 item">
-                            <div class="thumbnail">
-                                <a href="" class="img">
-                                    <img src="{$vo.thumb}" alt="">
-                                </a>
-                                <div class="caption">
-                                    <h3>{$vo.name}</h3>
-                                    <p><span class="job">{$vo.job}</span></p>
-                                    <p class="text-justify jt-tcr-desc">{$vo.content}</p>
-                                    <div class="jt-tcr-line"></div>
-                                    <p class="jt-tcr-read">
-                                        <a href="#">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
-                                    </p>
+        <div class="container-fluid">
+            <div class="container mt-50">
+                <div class="row">
+                    <div class="row" id="items">
+                        <volist name="person_list" id="vo" mod="4">
+                            <div class="col-md-3 item">
+                                <div class="thumbnail">
+                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                        <img src="{$vo.id|person_thum_images=260,460}" alt="">
+                                    </a>
+                                    <div class="caption">
+                                        <h3>{$vo.name|getSubstr=0,9}</h3>
+                                        <p><span class="job">{$vo.job|getSubstr=0,20}</span></p>
+                                        <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
+                                        <div class="jt-tcr-line"></div>
+                                        <p class="jt-tcr-read">
+                                            <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <eq name="mod" value="3"><div class="clearfix"></div></eq>
-                    </volist>
+                            <eq name="mod" value="3"><div class="clearfix"></div></eq>
+                        </volist>
+                    </div>
+                    <!--分页信息-->
+                    <div id="pages"><a id="next" href="/index.php/home/Api/ajaxGetPersonList?p=1">下一页</a></div>
+                    <div class="loading"></div>
+                    <!--分页信息-->
                 </div>
-                <!--分页信息-->
-                <div id="pages"><a id="next" href="/index.php/home/Api/ajaxGetPersonList?p=1">下一页</a></div>
-                <div class="loading"></div>
-                <!--分页信息-->
             </div>
         </div>
     </div>
-</div>
-<!--太潮人-->
+    <!--太潮人-->
 
-
-
-<!--底部导航-->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="list-inline list-unstyled text-center">
-                    <li><a href=""><span class="h4">免责条款</span></a></li>
-                    <li><a href=""><span class="h4">隐私政策</span></a></li>
-                    <li><a href=""><span class="h4">版权声明</span></a></li>
-                    <li><a href=""><span class="h4">网站地图</span></a></li>
-                    <li><a href=""><span class="h4">北京君太百货 &copy;版权所有</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-<!--底部导航-->
-
-<script>
-    $('#items').infinitescroll({
-            loading: {
-                msgText: "",
-                img: "/public/jt/plugins/infinite-scroll/loading.gif",
-                finishedMsg: '没有新数据了哦...',
-                selector: '.loading' //loading选择器
-            },
-            navSelector: "#pages", //导航的选择器，会被隐藏
-            nextSelector: "#next",//包含下一页链接的选择器
-            itemSelector: ".item",//你将要取回的选项(内容块)
-            debug: false, //启用调试信息，若启用必须引入debug.js
-            dataType: 'json',//格式要和itemSelector保持一致
+    <script>
+        $('#items').infinitescroll({
+                    loading: {
+                        msgText: "",
+                        img: "/public/jt/plugins/infinite-scroll/loading.gif",
+                        finishedMsg: '没有新数据了哦...',
+                        selector: '.loading' //loading选择器
+                    },
+                    navSelector: "#pages", //导航的选择器，会被隐藏
+                    nextSelector: "#next",//包含下一页链接的选择器
+                    itemSelector: ".item",//你将要取回的选项(内容块)
+                    debug: false, //启用调试信息，若启用必须引入debug.js
+                    dataType: 'json',//格式要和itemSelector保持一致
 //            animate: true,
 //            maxPage: 5,//最大加载的页数
-            //                animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
-            extraScrollPx: 100, //滚动条距离底部多少像素的时候开始加载，默认150
-            bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
-            errorCallback: function() { //加载完数据后的回调函数
-            },
-            path: function(index) { //获取下一页方法
-                return "/index.php/home/Api/ajaxGetPersonList?p=" + index;
-            },
-            template: function (data) {
-                content = '';
-                $(data.data).each(function(index,val){
-                    index++;
-                    content+='<div class="col-md-3 item">'+
-                        '<div class="thumbnail">'+
-                        '<a href="" class="img">'+
-                        '<img src="'+val.thumb+'" alt="">'+
-                        '</a>'+
-                        '<div class="caption">'+
-                        '<h3>'+val.name+'</h3>'+
-                        '<p><span class="job">'+val.job+'</span></p>'+
-                        '<p class="text-justify jt-tcr-desc">'+val.content+'</p>'+
-                        '<div class="jt-tcr-line"></div>'+
-                        '<p class="jt-tcr-read">'+
-                        '<a href="#">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
-                        '</p>'+
-                        '</div>'+
-                        '</div>'+
-                        '</div>';
-                    if(index%4==0)
-                        content+='<div class="clearfix"></div>';
+                    //                animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+                    extraScrollPx: 100, //滚动条距离底部多少像素的时候开始加载，默认150
+                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
+                    errorCallback: function() { //加载完数据后的回调函数
+                    },
+                    path: function(index) { //获取下一页方法
+                        return "/index.php/home/Api/ajaxGetPersonList?p=" + index;
+                    },
+                    template: function (data) {
+                        content = '';
+                        $(data.data).each(function(index,val){
+                            index++;
+                            content+='<div class="col-md-3 item">'+
+                                    '<div class="thumbnail">'+
+                                    '<a href="" class="img">'+
+                                    '<img src="'+val.thumb+'" alt="">'+
+                                    '</a>'+
+                                    '<div class="caption">'+
+                                    '<h3>'+val.name+'</h3>'+
+                                    '<p><span class="job">'+val.job+'</span></p>'+
+                                    '<p class="text-justify jt-tcr-desc">'+val.content+'</p>'+
+                                    '<div class="jt-tcr-line"></div>'+
+                                    '<p class="jt-tcr-read">'+
+                                    '<a href="#">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
+                                    '</p>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</div>';
+                            if(index%4==0)
+                                content+='<div class="clearfix"></div>';
+                        });
+                        return content;
+                    }
+                },
+                function(newElements, data, url) { //回调函数
+                    //console.log(data);
+                    //alert(url);
                 });
-                return content;
-            }
-        },
-        function(newElements, data, url) { //回调函数
-            //console.log(data);
-            //alert(url);
-        });
-</script>
+    </script>
 
-</body>
-</html>
+
+
+</block>

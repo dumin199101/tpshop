@@ -2,7 +2,18 @@
 
 namespace app\home\controller;
 use think\Db;
+use think\Request;
+
 class Goods extends Base {
+
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+        $position = Request::instance()->controller();
+        $this->assign('position',$position);
+    }
+
+
     /**
      * 太潮人+太潮志
      * @return mixed
@@ -32,7 +43,6 @@ class Goods extends Base {
             $person_list = Db::name('person')->field('id,name,thumb,job,content')
                 ->where('is_recommend',1)
                 ->where('is_open',1)
-                ->order('click desc')
                 ->limit(4)
                 ->select();
             S('Pos:goods:person_list',$person_list,JT_CACHE_TIME);
@@ -51,7 +61,6 @@ class Goods extends Base {
             S('Pos:goods:goods_list',$goods_list,JT_CACHE_TIME);
         }
         $this->assign('goods_list',$goods_list);
-
         return $this->fetch();
     }
 

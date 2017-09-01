@@ -9,6 +9,7 @@
 namespace app\home\controller;
 
 use think\Db;
+use think\Request;
 
 class Brand extends Base
 {
@@ -56,6 +57,8 @@ class Brand extends Base
         }
         $this->assign('letter',$letter);
         $this->assign('brand_list',$brand_list);
+        $position = Request::instance()->controller();
+        $this->assign('position',$position);
         return $this->fetch();
     }
 }

@@ -50,6 +50,8 @@ class System extends Base
      */
     public function copyright()
     {
+        $position = Request::instance()->controller();
+        $this->assign('position',$position);
         return $this->fetch();
     }
 }

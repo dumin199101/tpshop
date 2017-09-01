@@ -16,7 +16,7 @@
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                 <ul class="nav navbar-nav nav-header-right">
                     <volist name="jt_navigation" id="vo">
-                        <li <if condition="$vo['position'] eq $position">class="active"</if>><a href="{$vo.url}" target="_blank">{$vo.name}</a></li>
+                        <li <if condition="$vo['position'] eq $position">class="active"</if>><a href="{:url($vo['url'])}" target="_blank">{$vo.name}</a></li>
                     </volist>
                 </ul>
             </div>

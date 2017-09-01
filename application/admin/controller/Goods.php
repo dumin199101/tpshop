@@ -40,7 +40,7 @@ class Goods extends Base {
         {
             $data = I('post.');
             $brandVilidate = Loader::validate('Brand');
-            $data['letter'] = getFirstCharter($data['name']);
+            $data['letter'] = getFirstCharter($data['title']);
             if(!$brandVilidate->batch()->check($data)){
                 $return = ['status'=>0,'msg'=>'操作失败','result'=>$brandVilidate->getError()];
                 $this->ajaxReturn($return);
