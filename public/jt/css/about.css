@@ -1,0 +1,14 @@
+/*轮播图*/
+.carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
+.carousel-indicators li {background-color:#e6e6e6;border:none;}
+/*关于我们*/
+.jt-about-us-container{margin-bottom:50px;}
+.jt-about-us-container .jt-about-desc{padding:50px;}
+.jt-about-us-container .jt-about-desc p{color:#333;font-size:16px;letter-spacing: 1px;line-height:30px;}
+.jt-content-title > span.h3{color:#ce1621;}
+.jt-content-box .num{background-color: #ce1621;border-radius: 50%;color: #fff;display: inline-block;height: 30px;line-height: 30px;text-align: center;width: 30px;margin-right:10px;}
+.jt-content-box div.system{margin-top:30px;padding:0;}
+.jt-content-box div.system .hx{font-weight:600;font-size:20px;height:40px;line-height:40px;text-align: center;position:absolute;top:-4px;}
+.jt-content-box .system p.jtbh{line-height:2.0;color:#333;font-size:16px;margin-top:20px;letter-spacing:4px;}
+.jt-picture{ border: 5px solid #ce1621;display: inline-block;left:50px;position: absolute;top: 30px;z-index:-100;}
+.mt-80{margin-top:80px;}
