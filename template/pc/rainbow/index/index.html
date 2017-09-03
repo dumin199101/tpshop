@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-md-12 text-center jt-nav">
                     <span class="h3">我是太潮人</span>
-                    <a href="{:url('Goods/personList')}" target="_blank">
+                    <a href="{:url('goods/personList')}" target="_blank">
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -100,7 +100,7 @@
                     <foreach name="person_list" id="vo">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" class="img" target="_blank">
+                                <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" class="img" target="_blank">
                                     <img src="{$vo.id|person_thum_images=260,460}" alt="">
                                 </a>
                                 <div class="caption">
@@ -109,7 +109,7 @@
                                     <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
                                     <div class="jt-tcr-line"></div>
                                     <p class="jt-tcr-read">
-                                        <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                     </p>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
             <div class="row">
                 <div class="col-md-12 text-center jt-nav">
                     <span class="h3">太潮志</span>
-                    <a href="{:url('Goods/goodsList')}" target="_blank">
+                    <a href="{:url('goods/goodsList')}" target="_blank">
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -135,13 +135,13 @@
                     <foreach name="goods_list" id="vo">
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}" target="_blank" class="img">
                                     <img src="{$vo.id|goods_thum_images=360,240}" alt="">
                                 </a>
                                 <div class="caption">
                                     <span class="h3">{$vo.name|getSubstr=0,10}</span>
                                     <span class="jt-tcz-read">
-                               <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                               <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                                 </div>
                             </div>

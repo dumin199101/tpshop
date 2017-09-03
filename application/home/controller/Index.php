@@ -8,7 +8,6 @@ class Index extends Base {
      * @return mixed
      */
     public function index(){
-
         //全屏banner
         $banner_list = S('Pos:index:banner_list');
         if(empty($banner_list))
