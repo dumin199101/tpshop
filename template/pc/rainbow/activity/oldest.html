@@ -1,0 +1,130 @@
+<extend name="base"/>
+<block name="title">以往活动</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt/css/act-latest.css">
+</block>
+<block name="js">
+    <!--滚动加载-->
+    <script type="text/javascript" src="__PUBLIC__/jt/plugins/infinite-scroll/infinite-scroll.js"></script>
+</block>
+<block name="content">
+    <div class="jt-act-list-container">
+        <!--头部导航-->
+        <div class="container">
+            <div class="row jt-nav">
+                <div class="row">
+                    <div class="col-md-12 jt-latest-act">
+                        <a href=""><span class="h3">最新活动</span></a>
+                        <a href=""><span class="h3 active">往期活动</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--头部导航-->
+
+        <!--内容-->
+        <div class="container jt-act-content">
+            <div class="row">
+                <div class="row" id="items">
+                    <foreach name="act_oldest_list" id="vo">
+                        <div class="col-md-12 item">
+                            <h4 class="act-date">{$vo.start_time|formatActDate}</h4>
+                            <span class="date-line"></span>
+                            <div class="img">
+                                <img src="{$vo.act_img}" class="img-responsive" alt="">
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <span class="h3 act-title">{$vo.act_name|getSubstr=0,40}</span>
+                                    <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank" class="btn-learn-more">
+                                        <button class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-triangle-right"></span>
+                                            <span>了解详情</span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 act-desc">
+                                    <p>
+                                        {$vo.act_desc|getSubstr=0,140}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+            <!--分页信息-->
+            <div id="pages"><a id="next" href="/index.php/home/Api/ajaxGetOldestList?p=1">下一页</a></div>
+            <div class="loading"></div>
+            <!--分页信息-->
+
+        </div>
+    </div>
+    <script>
+        $('#items').infinitescroll({
+                    loading: {
+                        msgText: "",
+                        img: "/public/jt/plugins/infinite-scroll/loading.gif",
+                        finishedMsg: '没有新数据了哦...',
+                        selector: '.loading' //loading选择器
+                    },
+                    navSelector: "#pages", //导航的选择器，会被隐藏
+                    nextSelector: "#next",//包含下一页链接的选择器
+                    itemSelector: ".item",//你将要取回的选项(内容块)
+                    debug: false, //启用调试信息，若启用必须引入debug.js
+                    dataType: 'json',//格式要和itemSelector保持一致
+//            animate: true,
+//            maxPage: 5,//最大加载的页数
+                    //                animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+                    extraScrollPx: 100, //滚动条距离底部多少像素的时候开始加载，默认150
+                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
+                    errorCallback: function() { //加载完数据后的回调函数
+                    },
+                    path: function(index) { //获取下一页方法
+                        return "/index.php/home/Api/ajaxGetOldestList?p=" + index;
+                    },
+                    template: function (data) {
+                        content = '';
+                        $(data.data).each(function(index,val){
+                            index++;
+                            var url = "{:U('activity/info',['id'=>val])}";
+                            url = url.replace('val',val.act_id);
+                            content+= '<div class="col-md-12 item">'+
+                                    '<h4 class="act-date">'+val.start_time+'</h4>'+
+                                    '<span class="date-line"></span>'+
+                                    '<div class="img">'+
+                                    '<img src="'+val.act_img+'" class="img-responsive" alt="">'+
+                                    '</div>'+
+                                    '<div class="col-md-12">'+
+                                    '<div class="row">'+
+                                    '<span class="h3 act-title">'+val.act_name+'</span>'+
+                                    '<a href="'+url+'" class="btn-learn-more">'+
+                                    '<button class="btn btn-danger">'+
+                                    '<span class="glyphicon glyphicon-triangle-right"></span>'+
+                                    '<span>了解详情</span>'+
+                                    '</button>'+
+                                    '</a>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '<div class="row">'+
+                                    '<div class="col-md-12 act-desc">'+
+                                    '<p>'+val.act_desc+
+                                    '</p>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</div>';
+                        });
+                        return content;
+                    }
+                },
+                function(newElements, data, url) { //回调函数
+                    //console.log(data);
+                    //alert(url);
+                });
+    </script>
+</block>

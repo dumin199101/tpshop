@@ -1,0 +1,102 @@
+<extend name="base"/>
+<block name="title">{$person_info.name}</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt/css/personInfo.css">
+</block>
+<block name="content">
+    <!--太潮人-->
+    <div id="jt-tcr-container">
+        <div class="container-fluid">
+            <!--太潮人信息-->
+            <div class="container" id="jt-tcr-info-container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="jt-head-logo" src="{$person_info.thumb}" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="jt-person-navigator">
+                                        <div class="pull-left">
+                                            <div class="jt-person-box"></div>
+                                        </div>
+                                        <div class="pull-left">
+                                            <h2>{$person_info.name|getSubstr=0,15}</h2>
+                                            <h4>{$person_info.job|getSubstr=0,15}</h4>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <p class="text-justify">
+                                            {$person_info.content|getSubstr=0,136}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <div class="jt-person-activity">
+                                    <div class="row">
+                                        <div class="row">
+                                            <foreach name="act_list" id="vo">
+                                                <div class="col-md-3">
+                                                        <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                                                            <img src="{$vo.act_img}" alt="" width="180" height="215">
+                                                            <div class="date text-left">{$vo.start_time|formatDate}</div>
+                                                            <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
+                                                        </a>
+                                                </div>
+                                            </foreach>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--太潮人信息-->
+
+
+            <div class="container">
+                <div class="row jt-nav">
+                    <div class="col-md-10 jt-tcr-title">
+                        <div class="jt-navigator">
+                            <div class="jt-box"></div>
+                            <span class="h1 ml-5">更多潮人</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="row">
+                        <foreach name="more_list" id="vo">
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                        <img src="{$vo.id|person_thum_images=260,460}" alt="">
+                                    </a>
+
+                                    <div class="caption">
+                                        <h3>{$vo.name|getSubstr=0,9}</h3>
+
+                                        <p><span class="job">{$vo.job|getSubstr=0,20}</span></p>
+
+                                        <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
+
+                                        <div class="jt-tcr-line"></div>
+                                        <p class="jt-tcr-read">
+                                            <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}"
+                                               target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </foreach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</block>

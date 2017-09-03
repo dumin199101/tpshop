@@ -21,6 +21,7 @@ return	array(
                     array('name' => '太潮志', 'act'=>'goodsList', 'op'=>'Goods'),
                     array('name' => '品牌列表', 'act'=>'brandList', 'op'=>'Goods'),
                     array('name' => '君太活动', 'act'=>'activityList', 'op'=>'Activity'),
+					array('name' => '清除缩略图', 'act'=>'cleanThumb', 'op'=>'System'),
                 )),
 				array('name' => '权限','child'=>array(
 						array('name' => '管理员列表', 'act'=>'index', 'op'=>'Admin'),

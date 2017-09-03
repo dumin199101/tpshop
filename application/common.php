@@ -97,7 +97,10 @@ function act_thum_images($goods_id,$width,$height){
     if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
 
     $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_img');
+
     if(empty($original_img)) return '';
+
+
 
     $original_img = '.'.$original_img; // 相对路径
     if(!file_exists($original_img)) return '';
@@ -322,4 +325,14 @@ function read_html_cache(){
 function formatDate($time){
     $date = date("Y-m-d",$time);
     return substr($date,5,2) . '-' . substr($date,8,2) . '-' . substr($date,2,2);
+}
+
+function formatArticleDate($time){
+    $date = date("Y-m-d",$time);
+    return substr($date,2,2) . '.' . substr($date,5,2) . '.' . substr($date,8,2);
+}
+
+function formatActDate($time){
+    $date = date("Y-m-d",$time);
+    return substr($date,0,4) . '.' . substr($date,5,2) . '.' . substr($date,8,2);
 }

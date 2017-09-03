@@ -105,8 +105,8 @@ class Goods extends Base {
         //太潮人：取出第一页8个
         $person_list = Db::name('person')->field('id,name,thumb,job,content')
                 ->where('is_open',1)
-                ->order('id')
-                ->limit(0,8)
+                ->order('id desc')
+                ->limit(8)
                 ->cache(true,JT_CACHE_TIME)
                 ->select();
         $this->assign('person_list',$person_list);
@@ -121,7 +121,7 @@ class Goods extends Base {
     public function personInfo()
     {
         $id = input('param.id/d',1);
-        $person_info = Db::name('person')->field('name,content,job,thumb')
+        $person_info = Db::name('person')->field('id,name,content,job,thumb')
             ->where('id',$id)
             ->cache(true,JT_CACHE_TIME)
             ->find();
@@ -136,9 +136,12 @@ class Goods extends Base {
             ->limit(4)
             ->select();
 
+
         //更多潮人：
         $sql = "SELECT `id`,`name`,`content`,`job`,`thumb` FROM `__PREFIX__person` WHERE `id` >= ((SELECT MAX(`id`) FROM `__PREFIX__person`)-(SELECT MIN(`id`) FROM __PREFIX__person)) * RAND() + (SELECT MIN(`id`) FROM `__PREFIX__person`) AND `id`!=" . $id .  "  AND `is_open`=1 LIMIT 4";
-        $more_list = Db::table('person')->query($sql);
+        $more_list = Db::query($sql);
+
+
 
         $this->assign('more_list',$more_list);
         $this->assign('act_list',$act_list);
@@ -170,32 +173,34 @@ class Goods extends Base {
         //太潮志：取出第一页9个
         $goods_list = Db::name('goods')->field('id,name,thumb')
             ->where('is_open',1)
-            ->order('id')
-            ->limit(0,8)
+            ->order('id desc')
+            ->limit(9)
             ->cache(true,JT_CACHE_TIME)
             ->select();
         $this->assign('goods_list',$goods_list);
+        return $this->fetch();
     }
 
     /**
     * 太潮志详情页
     */
     public function goodsInfo(){
-        $key = md5($_SERVER['REQUEST_URI']);
+        /*$key = md5($_SERVER['REQUEST_URI']);
         $html = S($key);
         if(!empty($html))
         {
             return $html;
-        }
+        }*/
        $id = input('param.id/d',1);
        $goods_info = Db::name('goods')->field('name,content,add_time,thumb,author')
            ->where('id',$id)
            ->cache(true,JT_CACHE_TIME)
            ->find();
        $this->assign('goods_info',$goods_info);
-       $html = $this->fetch();
+      /* $html = $this->fetch();
        S($key,$html);
-       return $html;
+       return $html;*/
+       return $this->fetch();
     }
 
 

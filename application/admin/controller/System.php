@@ -6,6 +6,18 @@ use think\Cache;
 use think\Page;
 class System extends Base{
 
+    /**
+     * 清空缩略图
+     */
+    public function cleanThumb()
+    {
+        delFile(THUMB_PATH,true);
+        Cache::clear();
+        adminLog("清理缩略图");
+        $this->success("操作完成!!!",U('Admin/Admin/index'));
+        exit();
+    }
+
 	/**
 	 * 清空系统缓存
 	 */

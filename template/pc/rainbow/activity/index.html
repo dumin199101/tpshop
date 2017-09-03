@@ -1,0 +1,141 @@
+<extend name="base" />
+<block name="title">活动</block>
+<block name="css">
+    <!--首页自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt/css/activity.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider"/>
+</block>
+<block name="content">
+    <!--轮播图-->
+    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <volist name="banner_list" id="vo" key="k">
+                <eq name="k" value="1">
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}" class="active"></li>
+                    <else/>
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}"></li>
+                </eq>
+            </volist>
+        </ol>
+
+        <!-- Wrapper For Slides -->
+        <div class="carousel-inner" role="listbox">
+            <volist name="banner_list" id="vo" key="k" >
+                <eq name="k" value="1">
+                    <div class="item active">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <!-- Slide Text Layer -->
+                                <div class="slide-text slide_style_left">
+                                    <h1 data-animation="animated zoomInRight">{$vo.banner_name}</h1>
+                                    <p data-animation="animated fadeInRight">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</p>
+                                    <p data-animation="animated fadeInLeft">{$vo.banner_desc}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <else/>
+                    <div class="item">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                        <div class="container">
+                            <div class="row">
+                                <!-- Slide Text Layer -->
+                                <div class="slide-text slide_style_left">
+                                    <h1 data-animation="animated zoomInRight">{$vo.banner_name}</h1>
+                                    <p data-animation="animated fadeInRight">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</p>
+                                    <p data-animation="animated fadeInLeft">{$vo.banner_desc}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </eq>
+            </volist>
+        </div><!-- End of Wrapper For Slides -->
+
+        <!-- Left Control -->
+        <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <!-- Right Control -->
+        <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+    <!--轮播图-->
+
+    <div id="jt-act-container" >
+        <!--最新活动-->
+        <div class="container">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">最新活动</span>
+                    </div>
+                </div>
+                <div class="col-md-2 jt-act-more">
+                    <a href="{:url('activity/latest')}" target="_blank">
+                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                </div>
+                <div class="jt-latest-act-list">
+                    <foreach name="act_latest_list" id="vo">
+                        <div class="col-md-3">
+                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                                <img class="img-responsive" src="{$vo.act_img}" style="width:284px;height:160px;" alt="">
+                                <span class="h4">{$vo.act_name|getSubstr=0,28}</span>
+                            </a>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+        <!--最新活动-->
+
+        <!--往期活动-->
+        <div class="container">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">往期活动</span>
+                    </div>
+                </div>
+                <div class="col-md-2 jt-act-more">
+                    <a href="{:url('activity/oldest')}" target="_blank">
+                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+                <div class="jt-old-act-list">
+                    <foreach name="act_oldest_list" id="vo">
+                        <div class="col-md-6">
+                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                                <img class="img-responsive" src="{$vo.act_id|act_thum_images=554,360}" alt="">
+                                <h4 class="old-act-date">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</h4>
+                                <span class="h4 old-act-title">{$vo.act_name|getSubstr=0,24}</span>
+                            </a>
+                        </div>
+                    </foreach>
+                </div>
+
+            </div>
+        </div>
+        <!--往期活动-->
+
+
+    </div>
+
+
+</block>

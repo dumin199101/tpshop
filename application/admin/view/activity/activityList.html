@@ -51,13 +51,10 @@
 							<div style="width: 24px;"><i class="ico-check"></i></div>
 						</th>
 						<th align="left" abbr="article_title" axis="col3" class="">
-							<div style="text-align: left; width: 100px;" class="">活动名称</div>
+							<div style="text-align: left; width: 250px;" class="">活动名称</div>
 						</th>
 						<th align="left" abbr="article_title" axis="col3" class="">
 							<div style="text-align: left; width: 150px;" class="">活动封面</div>
-						</th>
-						<th align="left" abbr="article_desc" axis="col3" class="">
-							<div style="text-align: left; width: 240px;" class="">活动简介</div>
 						</th>
 						<th align="center" abbr="article_time" axis="col6" class="">
 							<div style="text-align: center; width: 120px;" class="">开始时间</div>
@@ -114,13 +111,10 @@
 									<div style="width: 24px;"><i class="ico-check"></i></div>
 								</td>
 								<td align="left" class="">
-									<div style="text-align: left; width: 100px;">{$vo.act_name|getSubstr=0,30}</div>
+									<div style="text-align: left; width:250px;">{$vo.act_name|getSubstr=0,30}</div>
 								</td>
 								<td>
 									<div style="text-align: center; width: 150px;"><img src="{$vo.act_img}" width="80px" height="22px"></div>
-								</td>
-								<td align="left" class="">
-									<div style="text-align: left; width: 240px;">{$vo.act_desc|getSubstr=0,50}</div>
 								</td>
 								<td align="left" class="">
 									<div style="text-align: center; width: 120px;">{$vo.start_time|date='Y-m-d',###}</div>

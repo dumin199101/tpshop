@@ -1,0 +1,10 @@
+/*轮播图*/
+.carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
+.carousel-indicators li {background-color:#e6e6e6;border:none;}
+
+/*活动详情*/
+.jt-act-info-container > .container-fluid{background:#f4f4f3;}
+.jt-act-info-container .jt-act-info-title{margin:20px 0 ;}
+.jt-act-info-container .jt-act-info-date{color:#7b7676;margin-bottom:20px;}
+.jt-act-info-container .jt-act-info-desc{background:#fff;margin-bottom:50px;}
+.jt-act-info-container .jt-act-info-desc p{ padding:30px;line-height:2.0;font-size:16px;color:#333;text-align:justify }

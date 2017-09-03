@@ -64,7 +64,6 @@ class Index extends Base {
             $goods_list = Db::name('goods')->field('id,name,thumb')
                 ->where('is_recommend',1)
                 ->where('is_open',1)
-                ->order('sort')
                 ->limit(3)
                 ->select();
             S('Pos:index:goods_list',$goods_list,JT_CACHE_TIME);

@@ -34,11 +34,19 @@ class Api extends Controller {
     {
         $count = Db::name('person')->where('is_open',1)->count();
         $page = new Page($count,8);
-        $person_list = Db::name('person')->where('is_open',1)
-            ->order("id")
+        $person_list = Db::name('person')->field('id,name,thumb,job,content')
+            ->where('is_open',1)
+            ->order("id desc")
             ->cache(true,JT_CACHE_TIME)
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
+        //处理数据
+        foreach($person_list as &$v){
+            $v['thumb'] = person_thum_images($v['id'],260,460);
+            $v['name'] = getSubstr($v['name'],0,9);
+            $v['job'] = getSubstr($v['job'],0,20);
+            $v['content'] = getSubstr($v['content'],0,30);
+        }
         $data = [
             'data'=>$person_list,
             'count'=>$count
@@ -53,11 +61,17 @@ class Api extends Controller {
     {
         $count = Db::name('goods')->where('is_open',1)->count();
         $page = new Page($count,9);
-        $goods_list = Db::name('goods')->where('is_open',1)
-            ->order("id")
+        $goods_list = Db::name('goods')->field('id,name,thumb')
+            ->where('is_open',1)
+            ->order("id desc")
             ->cache(true,JT_CACHE_TIME)
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
+        //处理数据
+        foreach($goods_list as &$v){
+            $v['thumb'] = goods_thum_images($v['id'],360,240);
+            $v['name'] = getSubstr($v['name'],0,10);
+        }
         $data = [
             'data'=>$goods_list,
             'count'=>$count
@@ -79,7 +93,7 @@ class Api extends Controller {
             ->count();
         $page = new Page($count,4);
         $activity_list =  Db::name('activity')->alias('a')
-            ->field('act_id,act_name,act_img,start_time,act_desc')
+            ->field('act_id,act_name,act_img,start_time,act_desc,end_time')
             ->where('enable',1)
             ->where('a.start_time','<',time())
             ->where('a.start_time','>',time()-3600*24*30)
@@ -88,6 +102,12 @@ class Api extends Controller {
             ->cache(true,JT_CACHE_TIME)
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
+        //处理数据
+        foreach($activity_list as &$v){
+            $v['start_time'] = formatActDate($v['start_time']);
+            $v['act_name'] = getSubstr($v['act_name'],0,40);
+            $v['act_desc'] = getSubstr($v['act_desc'],0,140);
+        }
         $data = [
             'data'=>$activity_list,
             'count'=>$count
@@ -106,7 +126,7 @@ class Api extends Controller {
             ->count();
         $page = new Page($count,4);
         $activity_list =  Db::name('activity')->alias('a')
-            ->field('act_id,act_name,act_img,start_time,act_desc')
+            ->field('act_id,act_name,act_img,start_time,act_desc,end_time')
             ->where('enable',1)
             ->where('a.start_time','<',time()-3600*24*30)
             ->order('act_id desc')
