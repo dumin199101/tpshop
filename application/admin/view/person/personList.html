@@ -129,7 +129,7 @@
                   <div style="text-align: center; width: 160px;">{$vo.add_time}</div>
                 </td>
                 <td align="center" class="handle">
-                  <div style="text-align: center; width: 174px; max-width:174px;"> <a class="btn blue"  href=""><i class="fa fa-search"></i>查看</a>
+                  <div style="text-align: center; width: 174px; max-width:174px;"> <a class="btn blue"  href="{:url('home/goods/personInfo',['id'=>$vo['id']])}"><i class="fa fa-search"></i>查看</a>
                     <a class="btn red" onClick="delfunc(this)" data-url="{:U('Person/personHandle')}" data-id="{$vo.id}"><i class="fa fa-trash-o"></i>删除</a>
                     <a href="{:U('Person/person',array('act'=>'edit','id'=>$vo['id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a>
                   </div>

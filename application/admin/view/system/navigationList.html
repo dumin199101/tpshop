@@ -114,7 +114,7 @@
                             <td align="center" class="handle">
                                 <div style="text-align: center; width: 170px; max-width:170px;">
                                     <if condition="$vo['url'] != NULL">
-                                        <a class="btn blue"  target="_blank" href="{$vo.url}"><i class="fa fa-search"></i>查看</a>
+                                        <a class="btn blue"  target="_blank" href="{:url($vo['url'])}"><i class="fa fa-search"></i>查看</a>
                                     </if>
                                     <a class="btn red" href="{:U('System/delNav',array('id'=>$vo.id))}"><i class="fa fa-trash-o"></i>删除</a>
                                     <a href="{:U('Admin/System/addEditNav',array('id'=>$vo['id']))}" class="btn blue"><i class="fa fa-pencil-square-o"></i>编辑</a> </div>

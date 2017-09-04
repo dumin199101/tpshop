@@ -9,7 +9,7 @@
                 <div style="text-align:left;   min-width:50px !important; max-width:inherit !important;">
                   <span class="btn"><em><i class="fa fa-cog"></i>设置<i class="arrow"></i></em>
                   <ul>
-                    <li><a target="_blank" href="{:U()}">预览</a></li>
+                    <li><a target="_blank" href="{:url('home/goods/goodsInfo',['id'=>$list['id']])}">预览</a></li>
                     <li><a href="{:U('Admin/Goods/addEditGoods',array('id'=>$list['id']))}">编辑</a></li>
                     <li><a href="javascript:void(0);" onclick="del_goods('{$list[id]}',this)">删除</a></li>
                   </ul>
