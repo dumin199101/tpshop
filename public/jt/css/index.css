@@ -21,10 +21,11 @@ body{background:#f4f4f3;}
 .jt-flexisel .flexisel > li > a >  h5.act-title{color:#333;padding:0 10px;font-weight:500;}
 
 /*品牌*/
+.jt-navigator{margin-bottom:20px;}
 #jt-brand .jt-brand > .brand-divider{width:100%;height:2px;border-bottom:2px dashed  #c9cdd0;margin-left:-5px;}
 .jt-brand{padding-left:5px;}
 .jt-brand a{color:#000;}
-.jt-brand ul li{width:30px;text-align:center;margin-right:10px;position:relative;}
+.jt-brand ul li{width:30px;text-align:center;margin-right:10px;margin-top:10px;position:relative;}
 .jt-brand ul li > .mark-divider{background:#ce1621;display:none;width:25px;height:4px;}
 .jt-brand ul li:hover > .mark-divider,.jt-brand ul li.active > .mark-divider{display:block;position:absolute;bottom:-12px;left:2px;}
 .jt-brand ul li:hover a ,.jt-brand ul li.active a{color: #ce1621;}
