@@ -12,7 +12,7 @@
             <div class="container" id="jt-tcr-info-container">
                 <div class="row">
                     <div class="col-md-4">
-                        <img class="jt-head-logo" src="{$person_info.thumb}" alt="">
+                        <img class="jt-head-logo" src="{$person_info.id|person_thum_images=326,480,2}" alt="">
                     </div>
                     <div class="col-md-8">
                         <div class="row">
@@ -40,7 +40,7 @@
                                             <foreach name="act_list" id="vo">
                                                 <div class="col-md-3">
                                                         <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
-                                                            <img src="{$vo.act_img}" alt="" width="180" height="215">
+                                                            <img src="{$vo.act_id|act_thum_images=3,180,200}"  alt="">
                                                             <div class="date text-left">{$vo.start_time|formatDate}</div>
                                                             <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
                                                         </a>

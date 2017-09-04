@@ -63,7 +63,7 @@
                        <foreach name="act_list" id="vo">
                            <li>
                                <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
-                                   <img src="{$vo.act_id|act_thum_images=288,188}"/>
+                                   <img src="{$vo.act_id|act_thum_images=2,288,188}"/>
                                    <div class="border"></div><div class="date text-right">{$vo.start_time|formatDate}</div>
                                    <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
                                </a>

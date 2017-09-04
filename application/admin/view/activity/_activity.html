@@ -112,7 +112,7 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
-                    <label>活动图片</label>
+                    <label>活动大图</label>
                 </dt>
                 <dd class="opt">
                     <div class="input-file-show">
@@ -128,10 +128,51 @@
                         </span>
                     </div>
                     <span class="err"></span>
-                    <p class="notic">请上传图片格式文件</p>
+                    <p class="notic">请上传图片格式文件,此图主要用于活动列表页(建议尺寸：1200*480)</p>
                 </dd>
             </dl>
-
+            <dl class="row">
+                <dt class="tit">
+                    <label>活动中图</label>
+                </dt>
+                <dd class="opt">
+                    <div class="input-file-show">
+                        <span class="show">
+                            <a id="img_a_logo" target="_blank" class="nyroModal" rel="gal" href="{$info.act_logo}">
+                                <i id="img_i_logo" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$info.act_logo}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
+                            </a>
+                        </span>
+                        <span class="type-file-box">
+                            <input type="text" id="prom_img_logo" name="act_logo" value="{$info.act_logo}" class="type-file-text">
+                            <input type="button" name="button" id="button_logo" value="选择上传..." class="type-file-button">
+                            <input class="type-file-file" onClick="GetUploadify(1,'','activity','img_call_back_logo')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                        </span>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件,此图主要用于活动首页及活动轮播配图(建议尺寸：576*376)</p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>活动竖图</label>
+                </dt>
+                <dd class="opt">
+                    <div class="input-file-show">
+                        <span class="show">
+                            <a id="img_a_cover" target="_blank" class="nyroModal" rel="gal" href="{$info.act_cover}">
+                                <i id="img_i_cover" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$info.act_cover}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
+                            </a>
+                        </span>
+                        <span class="type-file-box">
+                            <input type="text" id="prom_img_cover" name="act_cover" value="{$info.act_cover}" class="type-file-text">
+                            <input type="button" name="button" id="button_cover" value="选择上传..." class="type-file-button">
+                            <input class="type-file-file" onClick="GetUploadify(1,'','activity','img_call_back_cover')" size="30" hidefocus="true" nc_type="change_site_logo" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                        </span>
+                    </div>
+                    <span class="err"></span>
+                    <p class="notic">请上传图片格式文件,此图主要用于太潮人详情活动配图(建议尺寸：360*400)</p>
+                </dd>
+            </dl>
             <dl class="row">
                 <dt class="tit">
                     <label>活动详情</label>
@@ -223,6 +264,18 @@
         $("#prom_img").val(fileurl_tmp);
         $("#img_a").attr('href', fileurl_tmp);
         $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+    function img_call_back_logo(fileurl_tmp)
+    {
+        $("#prom_img_logo").val(fileurl_tmp);
+        $("#img_a_logo").attr('href', fileurl_tmp);
+        $("#img_i_logo").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+    function img_call_back_cover(fileurl_tmp)
+    {
+        $("#prom_img_cover").val(fileurl_tmp);
+        $("#img_a_cover").attr('href', fileurl_tmp);
+        $("#img_i_cover").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
 </script>
 </body>

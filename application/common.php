@@ -80,15 +80,16 @@ function brand_thum_images($goods_id,$width,$height){
 /**
  *  首页推荐活动缩略图 给于标签调用 拿出商品表的 thumb 原始图来裁切出来的
  * @param type $goods_id  商品id
+ * @param type $type 类型id 1.大图 2.中图 3.竖图
  * @param type $width     生成缩略图的宽度
  * @param type $height    生成缩略图的高度
  */
-function act_thum_images($goods_id,$width,$height){
+function act_thum_images($goods_id,$type,$width,$height){
     if(empty($goods_id))
         return '';
     //判断缩略图是否存在
     $path = "public/thumb/activity/" . date('Y-m-d',time()) . "/$goods_id/";
-    $goods_thumb_name ="act_thumb_{$goods_id}_{$width}_{$height}";
+    $goods_thumb_name ="act_thumb_{$type}_{$goods_id}_{$width}_{$height}";
 
     // 这个商品 已经生成过这个比例的图片就直接返回了
     if(file_exists($path.$goods_thumb_name.'.jpg'))  return '/'.$path.$goods_thumb_name.'.jpg';
@@ -96,11 +97,19 @@ function act_thum_images($goods_id,$width,$height){
     if(file_exists($path.$goods_thumb_name.'.gif'))  return '/'.$path.$goods_thumb_name.'.gif';
     if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
 
-    $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_img');
+    switch ($type){
+        case 1:
+            $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_img');
+            break;
+        case 2:
+            $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_logo');
+            break;
+        case 3:
+            $original_img = M('Activity')->where("act_id", $goods_id)->getField('act_cover');
+            break;
+    }
 
     if(empty($original_img)) return '';
-
-
 
     $original_img = '.'.$original_img; // 相对路径
     if(!file_exists($original_img)) return '';
@@ -124,13 +133,14 @@ function act_thum_images($goods_id,$width,$height){
  * @param type $goods_id  商品id
  * @param type $width     生成缩略图的宽度
  * @param type $height    生成缩略图的高度
+ * @param type $type  位置：1.列表页 2.详情页
  */
-function person_thum_images($goods_id,$width,$height){
+function person_thum_images($goods_id,$width,$height,$type=1){
     if(empty($goods_id))
         return '';
     //判断缩略图是否存在
     $path = "public/thumb/person/" . date('Y-m-d',time()) . "/$goods_id/";
-    $goods_thumb_name ="person_thumb_{$goods_id}_{$width}_{$height}";
+    $goods_thumb_name ="person_thumb_{$type}_{$goods_id}_{$width}_{$height}";
 
     // 这个商品 已经生成过这个比例的图片就直接返回了
     if(file_exists($path.$goods_thumb_name.'.jpg'))  return '/'.$path.$goods_thumb_name.'.jpg';
@@ -138,7 +148,19 @@ function person_thum_images($goods_id,$width,$height){
     if(file_exists($path.$goods_thumb_name.'.gif'))  return '/'.$path.$goods_thumb_name.'.gif';
     if(file_exists($path.$goods_thumb_name.'.png'))  return '/'.$path.$goods_thumb_name.'.png';
 
-    $original_img = M('Person')->where("id", $goods_id)->getField('thumb');
+    switch ($type){
+        case 1:
+            $original_img = M('Person')->where("id", $goods_id)->getField('thumb');
+            break;
+        case 2:
+            $original_img = M('Person')->where("id", $goods_id)->getField('logo');
+            break;
+        default:
+            $original_img = M('Person')->where("id", $goods_id)->getField('thumb');
+            break;
+
+    }
+
     if(empty($original_img)) return '';
 
     $original_img = '.'.$original_img; // 相对路径

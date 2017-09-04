@@ -145,7 +145,7 @@ dd.opt tr td{
         </dl>
         <dl class="row">
             <dt class="tit">
-                <label>图片上传</label>
+                <label>列表页图片上传</label>
             </dt>
             <dd class="opt">
                 <div class="input-file-show">
@@ -161,7 +161,28 @@ dd.opt tr td{
                         </span>
                 </div>
                 <span class="err"></span>
-                <p class="notic">请上传图片格式文件</p>
+                <p class="notic">请上传图片格式文件,此图主要用于太潮人列表页配图(建议尺寸：520*920)</p>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label>详情页图片上传</label>
+            </dt>
+            <dd class="opt">
+                <div class="input-file-show">
+                        <span class="show">
+                            <a id="img_a_logo" class="nyroModal" rel="gal" href="{$info.logo}">
+                                <i id="img_i_logo" class="fa fa-picture-o" onmouseover="layer.tips('<img src={$info.logo}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();"></i>
+                            </a>
+                        </span>
+                    <span class="type-file-box">
+                            <input type="text" id="thumb_logo" name="logo" value="{$info.logo}" class="type-file-text">
+                            <input type="button" name="button" id="button_logo" value="选择上传..." class="type-file-button">
+                            <input class="type-file-file" onClick="GetUploadify(1,'','person','img_call_back_logo')" size="30" title="点击前方预览图可查看大图，点击按钮选择文件并提交表单后上传生效">
+                        </span>
+                </div>
+                <span class="err"></span>
+                <p class="notic">请上传图片格式文件,此图主要用于太潮人详情页配图(建议尺寸：326*480)</p>
             </dd>
         </dl>
       <div class="bot"><a href="JavaScript:void(0);" onClick="checkForm()" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
@@ -201,6 +222,13 @@ dd.opt tr td{
         $("#thumb").val(fileurl_tmp);
         $("#img_a").attr('href', fileurl_tmp);
         $("#img_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+
+    function img_call_back_logo(fileurl_tmp)
+    {
+        $("#thumb_logo").val(fileurl_tmp);
+        $("#img_a_logo").attr('href', fileurl_tmp);
+        $("#img_i_logo").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
     }
 
     function selectActivity(){
