@@ -1,0 +1,391 @@
+<extend name="base" />
+<block name="title">君太VIP</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt/css/vip.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider"/>
+</block>
+<block name="content">
+    <!--轮播图-->
+    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <volist name="banner_list" id="vo" key="k">
+                <eq name="k" value="1">
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}" class="active"></li>
+                    <else/>
+                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}"></li>
+                </eq>
+            </volist>
+        </ol>
+
+        <!-- Wrapper For Slides -->
+        <div class="carousel-inner" role="listbox">
+            <volist name="banner_list" id="vo" key="k" >
+                <eq name="k" value="1">
+                    <div class="item active">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                    <else/>
+                    <div class="item">
+                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <div class="bs-slider-overlay"></div>
+                    </div>
+                </eq>
+            </volist>
+        </div><!-- End of Wrapper For Slides -->
+
+        <!-- Left Control -->
+        <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <!-- Right Control -->
+        <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
+    </div>
+    <!--轮播图-->
+
+    <!--vip-->
+    <div class="jt-vip-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">会员卡介绍</span>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/01.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">联合优惠</span><br>
+                            <span class="h5 jt-vip-desc">馆内购物享5%-10%off</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/02.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">独家好礼</span><br>
+                            <span class="h5 jt-vip-desc">独家级数赠奖、买赠、会员专享活动！</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/03.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">停车优惠</span><br>
+                            <span class="h5 jt-vip-desc">当日消费满指定金额最高赠送4小时免费停车券</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/04.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">积分超实用</span><br>
+                            <span class="h5 jt-vip-desc">积分兑换、购物礼金、超值赠礼</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/05.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">服务升级</span><br>
+                            <span class="h5 jt-vip-desc">忠诚会员独享个人化服务</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="__PUBLIC__/jt/images/vip/06.png" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <span class="h3 jt-vip-title">流行快讯</span><br>
+                            <span class="h5 jt-vip-desc">短信或微信发布时间讯息及档期优惠活动</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--vip-->
+
+    <!--card-->
+    <div class="jt-card-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">卡片介绍</span>
+                </div>
+                <table class="table">
+                    <tbody>
+                    <tr class="active">
+                        <th scope="row">卡片样式</th>
+                        <td><img src="__PUBLIC__/jt/images/vip/07.png" alt=""></td>
+                        <td><img src="__PUBLIC__/jt/images/vip/08.png" alt=""></td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">名称样式</th>
+                        <td>粉金卡</td>
+                        <td>黑金卡</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">级别</th>
+                        <td>普卡</td>
+                        <td>高端卡</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">招募对象</th>
+                        <td>当日消费500元或自消费日起一个月内满2000元</td>
+                        <td>年消费8000以上及年消费10次以上</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">办卡方式</th>
+                        <td>至4F卡务中心各楼层办卡直通车（持有效证件）</td>
+                        <td>不对外招募（预约办卡制）</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">办卡工本费</th>
+                        <td>10元办卡工本费</td>
+                        <td>10元办卡工本费</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">会员卡效期</th>
+                        <td>无</td>
+                        <td>自然年12月31日（最多两年有效期）</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">积分效期</th>
+                        <td>积分依现场公告为准</td>
+                        <td>积分依现场公告为准</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--card-->
+
+    <!--discount-->
+    <div class="jt-discount-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">优惠办法</span>
+                </div>
+                <table class="table">
+                    <tbody>
+                    <tr class="active">
+                        <th scope="row">积分比例</th>
+                        <td>服饰鞋帽／化妆品 1元：1分<br/>黄金珠宝／名表／小家电 50元：1分<br/><br/>租赁柜、特价柜不参加积分活动，特别促销活动积分比例以店内 </td>
+                        <td>服饰鞋帽／化妆品 1元：1.5分<br/>黄金珠宝／名表／小家电 50元：1.5分<br/>多倍积分不升级</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">兑券比例</th>
+                        <td>普通积分1000积分起兑<br/>1000积分=10元礼金  2000积分=20元礼金 以此类推<br/>多倍积分兑券比例依现场公告为准</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">商场活动</th>
+                        <td>可参加所有商场活动</td>
+                        <td></td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">商品折扣</th>
+                        <td>正价商品9-9.5折</td>
+                        <td>正价商品8.5-9.5折<br/>部分商品活动折上9.5折</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">停车优惠</th>
+                        <td>500元1小时，1000元2小时，1500元3小时，最多3小时</td>
+                        <td>500元1小时，1000元2小时，1500元3小时，2000元4小时，最多4小时</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">特殊优惠</th>
+                        <td>无</td>
+                        <td>1.独享生日礼金200元  2.其他服务上线陆续公告</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--discount-->
+
+    <!--points-->
+    <div class="jt-points-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">积分效期</span>
+                </div>
+                <table class="table">
+                    <tbody>
+                    <tr class="active">
+                        <td scope="row">办卡日期</td>
+                        <td>首年有效期</td>
+                        <td>后续有效期</td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">1/1-3/31</td>
+                        <td>办卡日至次年3/31</td>
+                        <td>4/1至次年3/31</td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">4/1-8/31</td>
+                        <td>办卡日至次年8/31</td>
+                        <td>9/1至次年8/31</td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">9/1-12/31</td>
+                        <td>办卡日至第三年3/31</td>
+                        <td>4/1至第三年3/31</td>
+                    </tr>
+                    <tr class="active example">
+                        <td scope="row">例：2012/9/5</td>
+                        <td>2012/9/5至2014/3/31</td>
+                        <td>2014/4/1至2015/3/31</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--points-->
+
+    <!--electric-->
+    <div class="jt-electric-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">实体卡／电子会员卡</span>
+                </div>
+                <table class="table">
+                    <tbody>
+                    <tr class="active">
+                        <td scope="row">卡别</td>
+                        <td>电子会员</td>
+                        <td>实体卡</td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">消费积分</td>
+                        <td><span class="glyphicon glyphicon-ok"></span></td>
+                        <td><span class="glyphicon glyphicon-ok"></span></td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">积分兑卷</td>
+                        <td>必须绑定实体卡</td>
+                        <td><span class="glyphicon glyphicon-ok"></span></td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">商场活动</td>
+                        <td>必须绑定实体卡</td>
+                        <td><span class="glyphicon glyphicon-ok"></span></td>
+                    </tr>
+                    <tr class="active">
+                        <td scope="row">购物折扣</td>
+                        <td>必须绑定实体卡</td>
+                        <td><span class="glyphicon glyphicon-ok"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--electric-->
+
+    <!--benifits-->
+    <div class="jt-benifits-container">
+        <div class="container">
+            <div class="row">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <span class="h1">会员权益须知</span>
+                </div>
+                <div class="col-md-12 jt-list-item">
+                    <div class="benifits-title">
+                        <span class="h3">购物须知</span>
+                    </div>
+                    <div class="benifits-desc">
+                        <p>1. 为维护您的权益，付款时请主动出示会员卡，以便享受到折扣优惠及积分。付款后请保留销售凭单及机打收银条，并核实是否刷会员卡。</p>
+                        <p>2. 退货时请按北京君太百货相关规定办理。办理退货应扣除（退还）相应积分、礼金、赠品，如积分、礼金不足，应以同等价值现金补足。</p>
+                    </div>
+                </div>
+                <div class="col-md-12 jt-list-item">
+                    <div class="benifits-title">
+                        <span class="h3">积分说明</span>
+                    </div>
+                    <div class="benifits-desc">
+                        <p>1. 办理会员卡前的消费金额不作积分。</p>
+                        <p>2. 仅现金、信用卡、支票付款可享积分，如遇特别促销活动，积分规则以店内明示为准。</p>
+                        <p>3. 不同会员卡积分不可累计使用；同一笔消费所得积分无法累积至不同会员卡。</p>
+                        <p>4. 会员卡内积分一年一清（详见积分效期说明表格），逾期作废。</p>
+                    </div>
+                </div>
+                <div class="col-md-12 jt-list-item">
+                    <div class="benifits-title">
+                        <span class="h3">积分兑换</span>
+                    </div>
+                    <div class="benifits-desc">
+                        <p>1. 卡内普通积分累计达1000分以上方可兑换(多倍积分除外)。</p>
+                        <p>2. 积分兑换时须出示会员卡、办卡有效证件、款台机打收银条。</p>
+                        <p>3. 礼金使用效期为兑换日起7天内有效，逾期作废。</p>
+                        <p>4. 使用礼金消费，不再参加店内任何活动积分，不开具发票。</p>
+                        <p>5. 多倍积分兑券比例及礼金使用规定依现场公告为准。</p>
+                    </div>
+                </div>
+                <div class="col-md-12 jt-list-item">
+                    <div class="benifits-title">
+                        <span class="h3">会员卡补办及更换</span>
+                    </div>
+                    <div class="benifits-desc">
+                        <p>1. 会员卡为具会员资格之记名卡片，请妥善保管，不得外借。</p>
+                        <p>2. 如不慎遗失、毁损，请会员本人携带有效证件（身份证、军官证、护照）及 10元工本费至卡务中心办理补卡手续。</p>
+                        <p>3. 如会员卡遗失，有相关损失由会员本人承担。</p>
+                        <p>4. 新办卡需10元工本费，退卡恕不退费。</p>
+                    </div>
+                </div>
+                <div class="col-md-12 jt-list-item">
+                    <div class="benifits-title">
+                        <span class="h3">会员权益</span>
+                    </div>
+                    <div class="benifits-desc">
+                        <p>1. 会员所提供信息须真实有效，如有变更请及时更新，以免影响您的权益。</p>
+                        <p>2. 特别活动须凭短信或邮件获得参加资格者，如未及时更新视为自动放弃。</p>
+                        <p>3. 请依循《北京君太百货会员条款》使用规则。如有违反或有非正常目的消费，北京君太百货有权取消其会员资格。</p>
+                        <p>4. 《北京君太百货会员条款》内容不定期更新，会员权益权限以店内明示为准。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--benifits-->
+
+</block>
