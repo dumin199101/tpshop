@@ -27,12 +27,12 @@
             <volist name="banner_list" id="vo" key="k" >
                 <eq name="k" value="1">
                     <div class="item active">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                 <else/>
                     <div class="item">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                 </eq>
@@ -62,7 +62,7 @@
                     <ul class="flexisel">
                        <foreach name="act_list" id="vo">
                            <li>
-                               <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                               <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
                                    <img src="{$vo.act_id|act_thum_images=2,288,188}"/>
                                    <div class="border"></div><div class="date text-right">{$vo.start_time|formatDate}</div>
                                    <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
@@ -85,14 +85,16 @@
             <div class="row">
                 <div class="jt-navigator">
                     <div class="jt-box"></div>
-                    <span class="h1">FASHION</span>
-                    <span class="h3 ml-5">太潮人</span>
+                    <a href="{:url('goods/index')}">
+                        <span class="h1">FASHION</span>
+                        <span class="h3 ml-5">太潮人</span>
+                    </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center jt-nav">
                     <span class="h3">我是太潮人</span>
-                    <a href="{:url('goods/personList')}" target="_blank">
+                    <a href="{:url('goods/personList')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -100,7 +102,7 @@
                     <foreach name="person_list" id="vo">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" class="img" target="_blank">
+                                <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" class="img" >
                                     <img src="{$vo.id|person_thum_images=260,460}" alt="">
                                 </a>
                                 <div class="caption">
@@ -109,7 +111,7 @@
                                     <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
                                     <div class="jt-tcr-line"></div>
                                     <p class="jt-tcr-read">
-                                        <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        <a href="{:url('goods/personInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                     </p>
                                 </div>
                             </div>
@@ -127,7 +129,7 @@
             <div class="row">
                 <div class="col-md-12 text-center jt-nav">
                     <span class="h3">太潮志</span>
-                    <a href="{:url('goods/goodsList')}" target="_blank">
+                    <a href="{:url('goods/goodsList')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -135,13 +137,13 @@
                     <foreach name="goods_list" id="vo">
                         <div class="col-md-4">
                             <div class="thumbnail">
-                                <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}"  class="img">
                                     <img src="{$vo.id|goods_thum_images=360,240}" alt="">
                                 </a>
                                 <div class="caption">
                                     <span class="h3">{$vo.name|getSubstr=0,10}</span>
                                     <span class="jt-tcz-read">
-                               <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                               <a href="{:url('goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                                 </div>
                             </div>

@@ -112,13 +112,22 @@
                 object.wrap("<div class='nbs-flexisel-container'><div class='nbs-flexisel-inner'></div></div>");
                 object.find("li").addClass("nbs-flexisel-item");
                 
-                if(settings.navigationTargetSelector && $(settings.navigationTargetSelector).length > 0) {
+               /* if(settings.navigationTargetSelector && $(settings.navigationTargetSelector).length > 0) {
                     $("<div class='nbs-flexisel-nav-left visible-lg'></div><div class='nbs-flexisel-nav-right visible-lg'></div>").appendTo(settings.navigationTargetSelector);
                 } else {
                     settings.navigationTargetSelector = object.parent();
                     $("<div class='nbs-flexisel-nav-left visible-lg'></div><div class='nbs-flexisel-nav-right visible-lg'></div>").insertAfter(object);
+                }*/
+
+                //改进箭头样式
+                if(settings.navigationTargetSelector && $(settings.navigationTargetSelector).length > 0) {
+                    $("<div class='nbs-flexisel-nav-left arrow_left visible-lg'><div class='arrow_left_top'></div><div class='arrow_left_bottom'></div></div><div class='nbs-flexisel-nav-right arrow_right visible-lg'><div class='arrow_right_top'></div><div class='arrow_right_bottom'></div></div>").appendTo(settings.navigationTargetSelector);
+                } else {
+                    settings.navigationTargetSelector = object.parent();
+                    $("<div class='nbs-flexisel-nav-left arrow_left visible-lg'><div class='arrow_left_top'></div><div class='arrow_left_bottom'></div></div><div class='nbs-flexisel-nav-right arrow_right visible-lg'><div class='arrow_right_top'></div><div class='arrow_right_bottom'></div></div>").insertAfter(object);
                 }
-                    
+
+
                 if(settings.infinite) {    
                     var childSet = object.children();
                     var cloneContentBefore = childSet.clone();

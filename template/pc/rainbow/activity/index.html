@@ -27,7 +27,7 @@
             <volist name="banner_list" id="vo" key="k" >
                 <eq name="k" value="1">
                     <div class="item active">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                         <div class="container">
                             <div class="row">
@@ -42,7 +42,7 @@
                     </div>
                     <else/>
                     <div class="item">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                         <div class="container">
                             <div class="row">
@@ -85,14 +85,14 @@
                     </div>
                 </div>
                 <div class="col-md-2 jt-act-more">
-                    <a href="{:url('activity/latest')}" target="_blank">
+                    <a href="{:url('activity/latest')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
                 <div class="jt-latest-act-list">
                     <foreach name="act_latest_list" id="vo">
                         <div class="col-md-3">
-                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
                                 <img  src="{$vo.act_id|act_thum_images=2,260,170}"  alt="">
                                 <span class="h4">{$vo.act_name|getSubstr=0,28}</span>
                             </a>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 jt-act-more">
-                    <a href="{:url('activity/oldest')}" target="_blank">
+                    <a href="{:url('activity/oldest')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -121,7 +121,7 @@
                 <div class="jt-old-act-list">
                     <foreach name="act_oldest_list" id="vo">
                         <div class="col-md-6">
-                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
                                 <img class="img-responsive" src="{$vo.act_id|act_thum_images=2,554,360}" alt="">
                                 <h4 class="old-act-date">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</h4>
                                 <span class="h4 old-act-title">{$vo.act_name|getSubstr=0,24}</span>

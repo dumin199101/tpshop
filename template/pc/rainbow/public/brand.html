@@ -4,16 +4,18 @@
         <div class="row">
             <div class="jt-navigator">
                 <div class="jt-box"></div>
-                <span class="h1">BRAND</span>
-                <span class="h3 ml-5">品牌</span>
+                <a href="{:url('brand/index')}">
+                    <span class="h1">BRAND</span>
+                    <span class="h3 ml-5">品牌</span>
+                </a>
             </div>
             <div class="col-md-12 jt-brand">
                 <ul class="list-unstyled list-inline">
                     <foreach name="letter_list" id="vo">
                         <if condition="$vo eq $letter">
-                            <li class="active"><a href="{:url('brand/index',['letter'=>$vo])}" target="_blank"><span class="h3">{$vo}</span></a><div class="mark-divider"></div></li>
+                            <li class="active"><a href="{:url('brand/index',['letter'=>$vo])}" ><span class="h3">{$vo}</span></a><div class="mark-divider"></div></li>
                         <else/>
-                            <li><a href="{:url('brand/index',['letter'=>$vo])}" target="_blank"><span class="h3">{$vo}</span></a><div class="mark-divider"></div></li>
+                            <li><a href="{:url('brand/index',['letter'=>$vo])}" ><span class="h3">{$vo}</span></a><div class="mark-divider"></div></li>
                         </if>
 
                     </foreach>

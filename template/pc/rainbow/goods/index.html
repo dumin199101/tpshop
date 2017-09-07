@@ -27,12 +27,12 @@
             <volist name="banner_list" id="vo" key="k" >
                 <eq name="k" value="1">
                     <div class="item active">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                     <else/>
                     <div class="item">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                 </eq>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 jt-tcr-more">
-                    <a href="{:url('Goods/personList')}" target="_blank">
+                    <a href="{:url('Goods/personList')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -84,7 +84,7 @@
                                     <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
                                     <div class="jt-tcr-line"></div>
                                     <p class="jt-tcr-read">
-                                        <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                     </p>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 jt-tcr-more">
-                    <a href="{:url('Goods/goodsList')}" target="_blank">
+                    <a href="{:url('Goods/goodsList')}" >
                         <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
                     </a>
                 </div>
@@ -123,7 +123,7 @@
                                 <div class="caption">
                                     <span class="h3">{$vo.name|getSubstr=0,10}</span>
                             <span class="jt-tcz-read">
-                               <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                               <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                             </span>
                                 </div>
                             </div>

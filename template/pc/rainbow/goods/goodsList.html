@@ -31,12 +31,12 @@
             <volist name="banner_list" id="vo" key="k" >
                 <eq name="k" value="1">
                     <div class="item active">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                     <else/>
                     <div class="item">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                 </eq>
@@ -79,13 +79,13 @@
                         <volist name="goods_list" id="vo" mod="3">
                             <div class="col-md-4 item">
                                 <div class="thumbnail">
-                                    <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                    <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}"  class="img">
                                         <img src="{$vo.id|goods_thum_images=360,240}" alt="">
                                     </a>
                                     <div class="caption">
                                          <span class="h3">{$vo.name|getSubstr=0,10}</span>
                                             <span class="jt-tcz-read">
-                                           <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                           <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                          </span>
                                     </div>
                                 </div>
@@ -137,13 +137,13 @@
                             url = url.replace('val',val.id);
                             content+= '<div class="col-md-4 item">'+
                                     '<div class="thumbnail">'+
-                                    '<a href="'+url+'" target="_blank" class="img">'+
+                                    '<a href="'+url+'"  class="img">'+
                                     '<img src="'+val.thumb+'" alt="">'+
                                     '</a>'+
                                     '<div class="caption">'+
                                     '<span class="h3">'+val.name+'</span>'+
                                     '<span class="jt-tcz-read">'+
-                                    '<a href="'+url+'" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
+                                    '<a href="'+url+'" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
                                     '</span>'+
                                     '</div>'+
                                     '</div>'+

@@ -1,7 +1,39 @@
 /**
+  引入第三方字体库
+ */
+@font-face {
+    font-family: "PingFangSC-Regular";
+    src: url('../fonts/PingFang-SC-Regular.otf');
+}
+@font-face {
+    font-family:"PingFangSC-Semibold";
+    src: url('../fonts/PingFang-SC-Semibold.ttf');
+}
+@font-face {
+    font-family:"PingFangSC-Medium";
+    src: url('../fonts/PingFang-Medium.otf');
+}
+@font-face {
+    font-family:"PingFangSC-Bold";
+    src: url('../fonts/PingFang-Bold.ttf');
+}
+@font-face {
+    font-family:"PingFangSC-Light";
+    src: url('../fonts/PingFang-Light.ttf');
+}
+@font-face {
+    font-family: "Helvetica";
+    src: url('../fonts/Helvetica.ttf');
+}
+@font-face {
+    font-family: "Helvetica-Bold";
+    src: url('../fonts/Helvetica-Bold.ttf');
+}
+
+/**
  公共样式
  */
-body{font-family: "Hiragino Sans GB",Helvetica,Arial,sans-serif,"微软雅黑";}
+body{font-family: "PingFangSC-Regular"}
 .mt-30{margin-top:30px;}
 .ml-5{margin-left:5px;}
 .thumbnail a.img{overflow:hidden;display:block;width:100%;height:auto;}
@@ -9,6 +41,7 @@ body{font-family: "Hiragino Sans GB",Helvetica,Arial,sans-serif,"微软雅黑";}
 .thumbnail img:hover{transform: scale(1.08);}
 .jt-box{background-color: #ce1621;display: inline-block;height: 30px;width: 10px;}
 .jt-navigator{margin:30px 0;}
+.jt-navigator a{color:#000;}
 .jt-nav .h3{letter-spacing: 5px;}
 
 /*头部导航*/

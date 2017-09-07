@@ -31,12 +31,12 @@
             <volist name="banner_list" id="vo" key="k" >
                 <eq name="k" value="1">
                     <div class="item active">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                     <else/>
                     <div class="item">
-                        <a href="{$vo.banner_link}" target="_blank"><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                         <div class="bs-slider-overlay"></div>
                     </div>
                 </eq>
@@ -79,7 +79,7 @@
                         <ul class="flexisel">
                             <foreach name="act_list" id="vo">
                                 <li>
-                                    <a href="{:url('activity/info',['id'=>$vo['act_id']])}" target="_blank">
+                                    <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
                                         <img src="{$vo.act_id|act_thum_images=2,288,188}"/>
                                         <div class="date text-left">{$vo.start_time|formatDate}</div>
                                         <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,15}</h5>
@@ -100,7 +100,7 @@
                         <volist name="person_list" id="vo" mod="4">
                             <div class="col-md-3 item">
                                 <div class="thumbnail">
-                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank" class="img">
+                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}"  class="img">
                                         <img src="{$vo.id|person_thum_images=260,460}" alt="">
                                     </a>
                                     <div class="caption">
@@ -109,7 +109,7 @@
                                         <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
                                         <div class="jt-tcr-line"></div>
                                         <p class="jt-tcr-read">
-                                            <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                            <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                         </p>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                             url = url.replace('val',val.id);
                             content+='<div class="col-md-3 item">'+
                                     '<div class="thumbnail">'+
-                                    '<a href="'+url+'" target="_blank" class="img">'+
+                                    '<a href="'+url+'"  class="img">'+
                                     '<img src="'+val.thumb+'" alt="">'+
                                     '</a>'+
                                     '<div class="caption">'+
@@ -167,7 +167,7 @@
                                     '<p class="text-justify jt-tcr-desc">'+val.content+'</p>'+
                                     '<div class="jt-tcr-line"></div>'+
                                     '<p class="jt-tcr-read">'+
-                                    '<a href="'+url+'" target="_blank">阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
+                                    '<a href="'+url+'" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
                                     '</p>'+
                                     '</div>'+
                                     '</div>'+
