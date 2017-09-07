@@ -11,53 +11,10 @@
     <!--滚动加载-->
     <script type="text/javascript" src="__PUBLIC__/jt/plugins/infinite-scroll/infinite-scroll.js"></script>
 </block>
+<block name="slider">
+    <include  file="public/slider"/>
+</block>
 <block name="content">
-    <!--轮播图-->
-    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="3000" >
-
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <volist name="banner_list" id="vo" key="k">
-                <eq name="k" value="1">
-                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}" class="active"></li>
-                    <else/>
-                    <li data-target="#bootstrap-touch-slider" data-slide-to="{$key}"></li>
-                </eq>
-            </volist>
-        </ol>
-
-        <!-- Wrapper For Slides -->
-        <div class="carousel-inner" role="listbox">
-            <volist name="banner_list" id="vo" key="k" >
-                <eq name="k" value="1">
-                    <div class="item active">
-                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
-                        <div class="bs-slider-overlay"></div>
-                    </div>
-                    <else/>
-                    <div class="item">
-                        <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
-                        <div class="bs-slider-overlay"></div>
-                    </div>
-                </eq>
-            </volist>
-        </div><!-- End of Wrapper For Slides -->
-
-        <!-- Left Control -->
-        <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-            <span class="fa fa-angle-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <!-- Right Control -->
-        <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-            <span class="fa fa-angle-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-
-    </div>
-    <!--轮播图-->
-
     <!--太潮人-->
     <div id="jt-tcr-container" >
         <div class="container">

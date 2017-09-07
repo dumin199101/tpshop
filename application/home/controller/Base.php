@@ -14,6 +14,7 @@
 namespace app\home\controller;
 use think\Controller;
 use think\Db;
+use think\Request;
 use think\Session;
 
 class Base extends Controller {
@@ -27,6 +28,8 @@ class Base extends Controller {
     	$this->session_id = session_id(); // 当前的 session_id
         define('SESSION_ID',$this->session_id); //将当前的session_id保存为常量，供其它方法调用
         $this->public_assign();
+        $action = Request::instance()->action();
+        $this->assign('action',$action);
     }
     /**
      * 保存公告变量到 smarty中 比如 导航 
@@ -40,6 +43,7 @@ class Base extends Controller {
            $config[$v['inc_type'].'_'.$v['name']] = $v['value'];
        }
        $jt_navigation = Db::name('navigation')->cache(true,JT_CACHE_TIME)->where('is_show',1)->order('sort')->select();
+       $jt_navigation = getTree($jt_navigation,0);
        $this->assign('jt_navigation',$jt_navigation);
        $this->assign('jt_config', $config);
     }

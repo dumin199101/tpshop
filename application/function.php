@@ -622,3 +622,25 @@ function GetIpLookup($ip = ''){
     }
     return $json;
 }
+
+/**
+ * @param $data//数据集合
+ * @param $pid
+ *
+ * @return array|string
+ */
+function getTree($data, $pid)
+{
+    $tree = array();
+    foreach ($data as $k => $v) {
+        if ($v['pid'] == $pid) {
+            $child = getTree($data, $v['id']);
+            if ($child) {
+                $v['childs'] = $child;
+            }
+            $tree[] = $v;
+        }
+    }
+
+    return $tree;
+}
