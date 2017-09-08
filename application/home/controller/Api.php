@@ -42,7 +42,7 @@ class Api extends Controller {
             ->select();
         //处理数据
         foreach($person_list as &$v){
-            $v['thumb'] = person_thum_images($v['id'],260,460);
+            $v['thumb'] = person_thum_images($v['id'],280,500);
             $v['name'] = getSubstr($v['name'],0,9);
             $v['job'] = getSubstr($v['job'],0,20);
             $v['content'] = getSubstr($v['content'],0,30);
@@ -69,7 +69,7 @@ class Api extends Controller {
             ->select();
         //处理数据
         foreach($goods_list as &$v){
-            $v['thumb'] = goods_thum_images($v['id'],360,240);
+            $v['thumb'] = goods_thum_images($v['id'],384,253);
             $v['name'] = getSubstr($v['name'],0,10);
         }
         $data = [

@@ -18,7 +18,12 @@
             <div class="row">
                 <div class="col-md-2 text-center">
                     <div class="thumbnail letter">
-                        <span class="h1">{$letter}</span>
+                        <empty name="letter">
+                            <span class="h1">ALL</span>
+                        <else/>
+                            <span class="h1">{$letter}</span>
+                        </empty>
+
                     </div>
                 </div>
                 <foreach name="brand_list" id="vo">

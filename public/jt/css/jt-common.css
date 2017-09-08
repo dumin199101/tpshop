@@ -36,7 +36,7 @@
 body{font-family: "PingFangSC-Regular"}
 .mt-30{margin-top:30px;}
 .ml-5{margin-left:5px;}
-.thumbnail{border:none;}
+.thumbnail{border:none;padding:0px;}
 .thumbnail a.img{overflow:hidden;display:block;width:100%;height:auto;}
 .thumbnail img{ transition: all 1s ease 0s;;cursor:pointer;; }
 .thumbnail img:hover{transform: scale(1.08);}
