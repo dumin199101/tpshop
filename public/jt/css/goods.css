@@ -1,3 +1,4 @@
+body{background:#f2f2f2;}
 /*分区导航*/
 .jt-tcr-more .look-more{position: absolute;right:0px;top:28px;letter-spacing:3px;font-weight:bold;}
 .jt-tcr-more .look-more > .glyphicon{top:3px;margin-left:15px;}
@@ -13,17 +14,21 @@
 .carousel-indicators li {background-color:#e6e6e6;border:none;}
 
 /*太潮人*/
+.jt-navigator span.h1{font-size:24px;}
+.jt-box{height:22px;}
 #jt-tcr-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;}
-.jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:10px 0;}
+.jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:20px 0;}
 .jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;}
 .job{color:#999999;}
 .jt-tcr-read{position:relative;}
 .jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
 .jt-tcr-read a{color:#ce1621;font-size:14px;display:block;}
+.caption h3{font-size:18px;}
 
 /*太潮志*/
-.jt-tcz-content .caption{padding:20px 10px;position:relative;}
+.jt-tcz-content .caption{padding:25px 10px;position:relative;}
 .jt-tcz-content .caption .glyphicon{top:2px;}
 .jt-tcz-read{position:absolute;right:30px;top:25px;}
 .jt-tcz-read a{color:#ce1621;font-size:14px;}
+.jt-tcz-content .caption span.h3{font-size:18px;}
 

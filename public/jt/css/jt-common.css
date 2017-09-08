@@ -36,7 +36,7 @@
 body{font-family: "PingFangSC-Regular"}
 .mt-30{margin-top:30px;}
 .ml-5{margin-left:5px;}
-.thumbnail{border:none;}
+.thumbnail{border:none;padding:0px;}
 .thumbnail a.img{overflow:hidden;display:block;width:100%;height:auto;}
 .thumbnail img{ transition: all 1s ease 0s;;cursor:pointer;; }
 .thumbnail img:hover{transform: scale(1.08);}
@@ -46,18 +46,22 @@ body{font-family: "PingFangSC-Regular"}
 .jt-navigator a{color:#000;}
 .jt-nav .h3{letter-spacing: 5px;}
 
+/*兼容移动端*/
+.navbar{min-height:80px;}
+.navbar-toggle{margin-top:20px;}
+
 /*头部导航*/
 .navbar-jt{position:absolute;right:0;left:0;top:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
 .navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus{color:#ce1621;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #ce1621;  background-color: transparent;  }
 .navbar-default .navbar-nav > li{padding:30px 0 !important;font-family: "PingFangSC-Semibold"}
-.navbar-default .navbar-nav > li > a {color: #868686;font-size: 18px;padding: 0px 40px 0px !important;border-right:1px dashed #c4c4c4;}
+.navbar-default .navbar-nav > li > a {color: #868686;font-size: 14px;padding: 0px 40px 0px !important;border-right:1px dashed #c4c4c4;}
 .navbar-default .navbar-nav > li:last-child > a {border-right:none;}
 /*二级导航*/
 .child{position:absolute;top:80px;background:#fff;color:#868686;list-style:none;}
 .child > li{width:200px;padding:20px 0}
-.child > li > a{padding:20px 0px 5px 0;color:#868686;font-size:16px;letter-spacing:3px;}
+.child > li > a{padding:20px 0px 5px 0;color:#868686;font-size:14px;letter-spacing:3px;}
 .child > li.active a{color:#ce1621;border-bottom:2px solid #ce1621;}
 .nav li ul{height:0;overflow:hidden;transition: all 0.4s ease 0s}
 .nav li:hover ul{height:140px;}

@@ -14,9 +14,12 @@
 
 
 /*太潮志*/
+.jt-navigator span.h1{font-size:24px;}
+.jt-box{height:22px;}
 #jt-tcz-container .container-fluid{background:#f2f2f2;}
 #jt-tcz-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;}
-.jt-tcz-content .caption{padding:20px 10px;position:relative;}
+.jt-tcz-content .caption{padding:25px 10px;position:relative;}
 .jt-tcz-content .caption .glyphicon{top:2px;}
 .jt-tcz-read{position:absolute;right:30px;top:25px;}
 .jt-tcz-read a{color:#ce1621;font-size:14px;}
+.jt-tcz-content .caption span.h3{font-size:18px;}
