@@ -51,7 +51,8 @@ body{font-family: "PingFangSC-Regular"}
 .navbar-toggle{margin-top:20px;}
 
 /*头部导航*/
-.navbar-jt{position:absolute;right:0;left:0;top:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
+.navbar-fixed-top{background:#fff;border:none;}
+.navbar-jt{position:absolute;top:0;left:0;right:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
 .navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus{color:#ce1621;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #ce1621;  background-color: transparent;  }
