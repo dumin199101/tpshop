@@ -46,6 +46,10 @@ body{font-family: "PingFangSC-Regular"}
 .jt-navigator a{color:#000;}
 .jt-nav .h3{letter-spacing: 5px;}
 
+/*兼容移动端*/
+.navbar{min-height:80px;}
+.navbar-toggle{margin-top:20px;}
+
 /*头部导航*/
 .navbar-jt{position:absolute;right:0;left:0;top:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
