@@ -1,7 +1,7 @@
 /*分区导航*/
 .jt-nav{padding:17px 0;background-color: #ce1621;  box-shadow: 0 2px 4px 0 rgba(255, 89, 99, 0.21);color:#fff;margin-bottom:30px;position:relative;}
 .jt-nav a{color:#fff;}
-.jt-nav .look-more{position: absolute;right:20px;top:11px;letter-spacing:3px;font-weight:bold;font-size:14px;}
+.jt-nav .look-more{position: absolute;right:20px;top:10px;letter-spacing:3px;font-weight:bold;font-size:14px;}
 .jt-nav .look-more > .glyphicon{top:3px;margin-left:15px;}
 
 /*区块间距*/
