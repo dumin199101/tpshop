@@ -47,7 +47,7 @@ body{font-family: "PingFangSC-Regular"}
 .jt-nav .h3{letter-spacing: 5px;}
 
 /*兼容移动端*/
-.navbar{min-height:80px;}
+.navbar{max-height:60px;}
 .navbar-toggle{margin-top:20px;}
 
 /*头部导航*/
@@ -56,11 +56,11 @@ body{font-family: "PingFangSC-Regular"}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
 .navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus{color:#ce1621;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #ce1621;  background-color: transparent;  }
-.navbar-default .navbar-nav > li{padding:30px 0 !important;font-family: "PingFangSC-Semibold"}
+.navbar-default .navbar-nav > li{padding:20px 0 !important;font-family: "PingFangSC-Semibold"}
 .navbar-default .navbar-nav > li > a {color: #868686;font-size: 14px;padding: 0px 40px 0px !important;border-right:1px dashed #c4c4c4;}
 .navbar-default .navbar-nav > li:last-child > a {border-right:none;}
 /*二级导航*/
-.child{position:absolute;top:80px;background:#fff;color:#868686;list-style:none;}
+.child{position:absolute;top:60px;background:#fff;color:#868686;list-style:none;}
 .child > li{width:200px;padding:20px 0}
 .child > li > a{padding:20px 0px 5px 0;color:#868686;font-size:14px;letter-spacing:3px;}
 .child > li.active a{color:#ce1621;border-bottom:2px solid #ce1621;}
