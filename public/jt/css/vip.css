@@ -3,9 +3,11 @@
 .carousel-indicators li {background-color:#e6e6e6;border:none;}
 
 /*vip*/
+.jt-navigator span.h1{font-size:24px;}
+
 .jt-vip-container .item{margin-bottom:30px;}
 .jt-vip-container span.h3{margin-top:0;}
-.jt-vip-container .jt-vip-title{display:inline-block; line-height: 1;letter-spacing:3px;text-align: left; color: #ff7000;}
+.jt-vip-container .jt-vip-title{display:inline-block; line-height: 1;letter-spacing:3px;text-align: left; color: #ff7000;font-size:18px;}
 .jt-vip-container .jt-vip-desc{display:inline-block;text-align: left;color: #000000;mragin-top:30px;letter-spacing:4px;line-height:1.2;}
 .table tr th{font-size:16px;}
 .table tr td{font-size:14px;}
