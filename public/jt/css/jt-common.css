@@ -42,9 +42,11 @@ body{font-family: "PingFangSC-Regular"}
 .thumbnail img:hover{transform: scale(1.08);}
 .jt-box{background-color: #ce1621;display: inline-block;height: 32px;width: 10px;}
 .jt-navigator{margin:30px 0;}
-.jt-navigator span.h3{font-size:24px;}
+.jt-navigator span.h3{font-size:18px;}
 .jt-navigator a{color:#000;}
 .jt-nav .h3{letter-spacing: 5px;}
+.jt-nav span.h3{font-size:18px;}
+
 
 /*兼容移动端*/
 .navbar{max-height:60px;}
@@ -69,6 +71,7 @@ body{font-family: "PingFangSC-Regular"}
 .nav li ul li:hover a{color:#ce1621;border-bottom:2px solid #ce1621;}
 
 /*底部*/
-footer{background: #9b9b9b;padding:10px 0;}
-footer ul{margin:15px auto;}
+footer{background: #ccc;padding:10px 0;font-size:12px;}
+footer ul{margin:2.5px auto;}
 footer a{color:#fff;}
+footer span.h4{font-size:12px;}
