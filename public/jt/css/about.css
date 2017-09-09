@@ -4,7 +4,7 @@
 /*关于我们*/
 .jt-navigator span.h1{font-family:"Helvetica";font-size:24px;font-weight:bold;}
 .jt-about-us-container{margin-bottom:50px;}
-.jt-about-us-container .jt-about-desc{padding:50px;}
+.jt-about-us-container .jt-about-desc{padding:50px 20px;}
 .jt-about-us-container .jt-about-desc p{color:#333;font-size:14px;letter-spacing: 1px;line-height:30px;}
 .jt-content-title > span.h3{color:#ce1621;font-size:18px;font-weight:bold;}
 .jt-content-box .num{background-color: #ce1621;border-radius: 50%;color: #fff;display: inline-block;height: 30px;line-height: 30px;text-align: center;width: 30px;margin-right:10px;}

@@ -4,7 +4,7 @@
 
 /*品牌*/
 .jt-navigator{margin-bottom:20px;}
-.jt-navigator span.h1{font-family: "Helvetica"; font-size:42px; font-weight: bold;font-style: normal; font-stretch: normal; line-height: 2.0; letter-spacing: 3px; color: #333333}
+.jt-navigator span.h1{font-family: "Helvetica"; font-size:24px; font-weight: bold;font-style: normal; font-stretch: normal; line-height: 2.0; letter-spacing: 3px; color: #333333}
 #jt-brand .jt-brand  .brand-divider{width:100%;height:2px;border-bottom:2px dashed  #c9cdd0;}
 .jt-brand a{color:#000;}
 .jt-brand ul li{width:28px;text-align:center;margin-right:12.8px;margin-top:10px;position:relative;}
