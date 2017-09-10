@@ -179,4 +179,85 @@
     border-left:10px solid #ce1621;
 }
 
+/*移动端*/
+.arrow_left_sx,.arrow_right_sx{
+    width:40px;
+    height:40px;
+    position: absolute;
+    background:#fff;
+    border-radius:40px;
+    top:40%;
+    cursor:pointer;
+}
+.arrow_left_sx{right:80px;}
+.arrow_right_sx{right:20px;}
+
+.arrow_left_top_sx{
+    position: absolute;
+    top:10px;
+    left:13px;
+    width:0px;
+    height:0px;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right:10px solid #ce1621;
+}
+.arrow_left_bottom_sx{
+    position: absolute;
+    top:10px;
+    left:17px;
+    width:0px;
+    height:0px;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right:10px solid #fff;
+}
+.arrow_right_top_sx{
+    position: absolute;
+    top:10px;
+    left:17px;
+    width:0px;
+    height:0px;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #ce1621;
+}
+.arrow_right_bottom_sx{
+    position: absolute;
+    top:10px;
+    left:13px;
+    width:0px;
+    height:0px;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #fff;
+}
+
+/*悬停时的状态*/
+.arrow_left_sx:hover,.arrow_right_sx:hover{
+    background:#ce1621;
+}
+.arrow_left_sx:hover .arrow_left_top_sx{
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right:10px solid #f4f4f3;
+}
+
+.arrow_left_sx:hover .arrow_left_bottom_sx{
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right:10px solid #ce1621;
+}
+.arrow_right_sx:hover .arrow_right_top_sx{
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #f4f4f3;
+}
+
+.arrow_right_sx:hover .arrow_right_bottom_sx{
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-left:10px solid #ce1621;
+}
+
 
