@@ -1,0 +1,37 @@
+<extend name="base" />
+<block name="title">{$act_info.act_name}</block>
+<block name="css">
+    <!--首页自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/actinfo.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider"/>
+</block>
+<block name="slider">
+    <include  file="public/slider"/>
+</block>
+<block name="content">
+    <div class="jt-act-info-container">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="jt-act-info-title">
+                        <span class="h3">{$act_info.act_name|getSubstr=0,40}</span>
+                    </div>
+                    <div class="jt-act-info-date">
+                        <span class="h3">{$act_info.start_time|formatActDate}—{$act_info.end_time|formatActDate}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container jt-act-info-desc">
+                <div class="row">
+                    <div class="col-md-12">
+                        {$act_info.act_content|htmlspecialchars_decode}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</block>

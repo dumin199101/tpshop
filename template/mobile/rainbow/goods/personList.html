@@ -1,0 +1,148 @@
+<extend name="base" />
+<block name="title">太潮人</block>
+<block name="css">
+    <!--首页自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/person.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider,public/flexisel"/>
+</block>
+<block name="js">
+    <!--滚动加载-->
+    <script type="text/javascript" src="__PUBLIC__/jt-mobile/plugins/infinite-scroll/infinite-scroll.js"></script>
+</block>
+<block name="slider">
+    <include  file="public/slider"/>
+</block>
+<block name="content">
+    <!--太潮人-->
+    <div id="jt-tcr-container" >
+        <div class="container">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">我是太潮人</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--活动轮播-->
+        <div id="jt-activity">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 jt-flexisel">
+                        <div class="row">
+                            <ul class="flexisel">
+                                <foreach name="act_list" id="vo">
+                                    <li>
+                                        <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
+                                            <img src="{$vo.act_id|act_thum_images=2,288,188}"/>
+                                            <div class="border"></div><div class="date text-right">{$vo.start_time|formatDate}</div>
+                                            <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,25}</h5>
+                                        </a>
+                                    </li>
+                                </foreach>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--活动轮播-->
+
+        <div class="container-fluid">
+            <div class="container mt-50">
+                <div class="row">
+                    <div class="row" id="items">
+                        <volist name="person_list" id="vo" mod="4">
+                            <div class="col-md-3 item">
+                                <div class="thumbnail">
+                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}"  class="img">
+                                        <img src="{$vo.id|person_thum_images=280,500}" alt="">
+                                    </a>
+                                    <div class="caption">
+                                        <h3>{$vo.name|getSubstr=0,9}</h3>
+                                        <p><span class="job">{$vo.job|getSubstr=0,20}</span></p>
+                                        <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,30}</p>
+                                        <div class="jt-tcr-line"></div>
+                                        <p class="jt-tcr-read">
+                                            <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <eq name="mod" value="3"><div class="clearfix"></div></eq>
+                        </volist>
+                    </div>
+                    <!--分页信息-->
+                    <div id="pages"><a id="next" href="/index.php/home/Api/ajaxGetPersonList?p=1">下一页</a></div>
+                    <div class="loading"></div>
+                    <!--分页信息-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--太潮人-->
+
+    <script>
+        $('#items').infinitescroll({
+                    loading: {
+                        msgText: "",
+                        img: "/public/jt-mobile/plugins/infinite-scroll/loading.gif",
+                        finishedMsg: '没有新数据了哦...',
+                        selector: '.loading' //loading选择器
+                    },
+                    navSelector: "#pages", //导航的选择器，会被隐藏
+                    nextSelector: "#next",//包含下一页链接的选择器
+                    itemSelector: ".item",//你将要取回的选项(内容块)
+                    debug: false, //启用调试信息，若启用必须引入debug.js
+                    dataType: 'json',//格式要和itemSelector保持一致
+//            animate: true,
+//            maxPage: 5,//最大加载的页数
+                    //                animate: true, //当有新数据加载进来的时候，页面是否有动画效果，默认没有
+                    extraScrollPx: 100, //滚动条距离底部多少像素的时候开始加载，默认150
+                    bufferPx: 40, //载入信息的显示时间，时间越大，载入信息显示时间越短
+                    errorCallback: function() { //加载完数据后的回调函数
+                    },
+                    path: function(index) { //获取下一页方法
+                        return "/index.php/home/Api/ajaxGetPersonList?p=" + index;
+                    },
+                    template: function (data) {
+                        content = '';
+                        $(data.data).each(function(index,val){
+                            index++;
+                            var url = "{:U('goods/personInfo',['id'=>val])}";
+                            url = url.replace('val',val.id);
+                            content+='<div class="col-md-3 item">'+
+                                    '<div class="thumbnail">'+
+                                    '<a href="'+url+'"  class="img">'+
+                                    '<img src="'+val.thumb+'" alt="">'+
+                                    '</a>'+
+                                    '<div class="caption">'+
+                                    '<h3>'+val.name+'</h3>'+
+                                    '<p><span class="job">'+val.job+'</span></p>'+
+                                    '<p class="text-justify jt-tcr-desc">'+val.content+'</p>'+
+                                    '<div class="jt-tcr-line"></div>'+
+                                    '<p class="jt-tcr-read">'+
+                                    '<a href="'+url+'" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>'+
+                                    '</p>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '</div>';
+                            if(index%4==0)
+                                content+='<div class="clearfix"></div>';
+                        });
+                        return content;
+                    }
+                },
+                function(newElements, data, url) { //回调函数
+                    //console.log(data);
+                    //alert(url);
+                });
+    </script>
+
+
+
+</block>

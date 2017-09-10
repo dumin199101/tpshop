@@ -1,0 +1,10 @@
+body{background:#f4f4f3;}
+/*头部导航*/
+header > .container{padding:0;}
+.navbar-jt > .navbar{margin-bottom:0;}
+.navbar-jt{background: #fff;z-index:100000;border-radius:0px;border:none;position:relative;}
+
+/*版权声明*/
+.jt-navigator span.h1{font-size:24px;}
+.jt-copyright p{line-height:2.0;font-size:14px;color:#333;text-align:justify }
+.date-line{background-color: #e7e7e7;display: block;height: 2px; margin-bottom: 20px;  width: 100%;margin:20px 0;}
