@@ -14,6 +14,21 @@
     <!--底部轮播-->
     <div id="jt-activity">
         <div class="container mt-30">
+            <div class="row hidden-lg" style="position:relative;">
+                <div class="jt-navigator">
+                    <div class="jt-box"></div>
+                    <a href="{:url('activity/index')}">
+                        <span class="h1">ACTIVITY</span>
+                        <span class="h3 ml-5">活动</span>
+                    </a>
+                    <div class='nbs-flexisel-nav-left arrow_left_sx'>
+                        <div class='arrow_left_top_sx'></div><div class='arrow_left_bottom_sx'></div>
+                    </div>
+                    <div class='nbs-flexisel-nav-right arrow_right_sx'>
+                        <div class='arrow_right_top_sx'></div><div class='arrow_right_bottom_sx'></div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12 jt-flexisel">
                     <div class="row">
@@ -21,7 +36,7 @@
                             <foreach name="act_list" id="vo">
                                 <li>
                                     <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
-                                        <img src="{$vo.act_id|act_thum_images=2,288,188}"/>
+                                        <img src="{$vo.act_id|act_thum_images=2,403,263}"/>
                                         <div class="border"></div><div class="date text-right">{$vo.start_time|formatDate}</div>
                                         <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,25}</h5>
                                     </a>

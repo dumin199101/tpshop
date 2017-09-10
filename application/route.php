@@ -48,6 +48,7 @@ return [
     'personList' => 'goods/personList',
     'goodsList' => 'goods/goodsList',
     'oldest' => 'activity/oldest',
-    'latest' => 'activity/latest'
+    'latest' => 'activity/latest',
+    'index'=>'index/index'
 ];
 

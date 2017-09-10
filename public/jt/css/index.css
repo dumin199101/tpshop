@@ -15,10 +15,10 @@ body{background:#f4f4f3;}
 /*底部轮播图*/
 .jt-flexisel{/*padding:0 50px;*/background:#f4f4f3;}
 .jt-flexisel .flexisel > li > a > img{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39);}
-.jt-flexisel .flexisel > li > a > div.border{width:55%;height:1px;border: solid 1px #e7e7e7;margin:8px 5px 0 12px;}
-.jt-flexisel .flexisel > li > a >div.date{color: #c9cdd0;margin:0px 15px 0 0;font-size:14px;font-weight:bold;letter-spacing:1px;}
+.jt-flexisel .flexisel > li > a > div.border{width:55%;height:1px;border: solid 1px #e7e7e7;margin:8px 5px 0 20px;}
+.jt-flexisel .flexisel > li > a >div.date{color: #c9cdd0;margin:0px 20px 0 0;font-size:14px;font-weight:bold;letter-spacing:1px;}
 .jt-flexisel .flexisel > li > a{color:#333;}
-.jt-flexisel .flexisel > li > a >  h5.act-title{color:#333;padding:0px 10px 0;font-weight:500;font-size:16px;line-height:1.5;}
+.jt-flexisel .flexisel > li > a >  h5.act-title{color:#333;padding:0px 20px 0;font-weight:500;font-size:16px;line-height:1.5;}
 
 /*品牌*/
 .jt-navigator{margin-bottom:20px;}
