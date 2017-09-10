@@ -36,7 +36,7 @@ body{background:#f4f4f3;}
 
 
 /*太潮人*/
-.person_list{padding:0 20px;}
+.person_list{padding:0 5px;}/*修复空白bug*/
 /*#jt-tcr-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;box-sizing: border-box}*/
 .jt-picture{ border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;display: inline-block;left:24px;position: absolute;top:10px;display:none;pointer-events: none;}
 /*#jt-tcr-container .thumbnail:hover + .jt-picture{display:block;}*/
@@ -47,7 +47,8 @@ body{background:#f4f4f3;}
 .jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
 .jt-tcr-read a{color:#ce1621;font-size:14px;display:block;}
 .caption h3{font-size:18px;}
-
+/*修复空白bug*/
+#jt-tcr-container .col-xs-6,#jt-tcr-container.col-sm-6{padding:0 15px;}
 
 
 /*太潮志*/
