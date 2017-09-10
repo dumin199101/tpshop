@@ -38,7 +38,7 @@ body{font-family: "PingFangSC-Regular"}
 .ml-5{margin-left:5px;}
 .thumbnail{border:none;padding:0px;}
 .thumbnail a.img{overflow:hidden;display:block;width:100%;height:auto;}
-.thumbnail img{ transition: all 1s ease 0s;;cursor:pointer;; }
+.thumbnail img{ transition: all 1s ease 0s;cursor:pointer; }
 .thumbnail img:hover{transform: scale(1.08);}
 .jt-box{background-color: #ce1621;display: inline-block;height: 32px;width: 10px;}
 .jt-navigator{margin:30px 0;}
