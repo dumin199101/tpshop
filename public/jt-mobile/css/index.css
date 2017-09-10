@@ -1,0 +1,61 @@
+/*分区导航*/
+.jt-nav{padding:17px 0;background-color: #ce1621;  box-shadow: 0 2px 4px 0 rgba(255, 89, 99, 0.21);color:#fff;margin-bottom:30px;position:relative;}
+.jt-nav a{color:#fff;}
+.jt-nav .look-more{position: absolute;right:32px;top:10px;letter-spacing:3px;font-weight:bold;font-size:14px;}
+.jt-nav .look-more > .glyphicon{top:3px;margin-left:8px;}
+
+/*区块间距*/
+body{background:#f4f4f3;}
+#jt-tcz-container,#jt-tcr-container{margin-bottom:30px;margin-top:20px;}
+.jt-brand{margin:0 20px;}
+
+
+/*轮播图*/
+.carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
+.carousel-indicators li {background-color:#e6e6e6;border:none;}
+
+/*底部轮播图*/
+.jt-flexisel{/*padding:0 50px;*/background:#f4f4f3;}
+.jt-flexisel .flexisel > li > a > img{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39);}
+.jt-flexisel .flexisel > li > a > div.border{width:55%;height:1px;border: solid 1px #e7e7e7;margin:8px 5px 0 20px;}
+.jt-flexisel .flexisel > li > a >div.date{color: #c9cdd0;margin:0px 20px 0 0;font-size:14px;font-weight:bold;letter-spacing:1px;}
+.jt-flexisel .flexisel > li > a{color:#333;}
+.jt-flexisel .flexisel > li > a >  h5.act-title{color:#333;padding:0px 20px 0;font-weight:500;font-size:16px;line-height:1.5;}
+
+/*品牌*/
+.jt-navigator{margin-bottom:20px;}
+.jt-navigator span.h1{font-family: "Helvetica"; font-size:24px; font-weight: bold;font-style: normal; font-stretch: normal; line-height: 2.0; letter-spacing: 3px; color: #333333}
+#jt-brand .jt-brand  .brand-divider{width:100%;height:2px;border-bottom:2px dashed  #c9cdd0;}
+.jt-brand a{color:#000;}
+.jt-brand ul li{width:15px;text-align:center;margin-right:12.8px;margin-top:10px;position:relative;}
+.jt-brand ul li:last-child{margin-right:0;}
+.jt-brand ul li span.h3{font-family:"Helvetica";}
+.jt-brand ul li > .mark-divider{background:#ce1621;display:none;width:25px;height:4px;}
+.jt-brand ul li:hover > .mark-divider,.jt-brand ul li.active > .mark-divider{display:block;position:absolute;bottom:-12px;left:2px;}
+.jt-brand ul li:hover a > span.h3 ,.jt-brand ul li.active a > span.h3{color: #ce1621;font-family:"Helvetica";font-weight:bold;}
+
+
+/*太潮人*/
+.person_list{padding:0 20px;}
+/*#jt-tcr-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;box-sizing: border-box}*/
+.jt-picture{ border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;display: inline-block;left:24px;position: absolute;top:10px;display:none;pointer-events: none;}
+/*#jt-tcr-container .thumbnail:hover + .jt-picture{display:block;}*/
+.jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:20px 0;}
+.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;}
+.job{color:#999999;}
+.jt-tcr-read{position:relative;}
+.jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
+.jt-tcr-read a{color:#ce1621;font-size:14px;display:block;}
+.caption h3{font-size:18px;}
+
+
+
+/*太潮志*/
+.goods_list{padding:0 20px;}
+.jt-tcz-content .caption{padding:25px 10px;position:relative;}
+.jt-tcz-content .caption .glyphicon{top:2px;}
+.jt-tcz-read{position:absolute;right:30px;top:25px;}
+.jt-tcz-read a{color:#ce1621;font-size:14px;}
+.jt-tcz-content .caption span.h3{font-size:18px;}
+
+

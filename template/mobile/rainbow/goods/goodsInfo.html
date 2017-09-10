@@ -1,0 +1,40 @@
+<extend name="base"/>
+<block name="title">{$goods_info.name}</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/goodsinfo.css">
+</block>
+<block name="content">
+    <!--太潮志-->
+    <div id="jt-tcz-info-container">
+        <div class="container">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jt-goods-navigator">
+                            <div class="pull-left visible-lg">
+                                <div class="jt-goods-box"></div>
+                            </div>
+                            <div class="pull-left">
+                                <div class="col-xs-12 col-md-12">
+                                    <div class="row">
+                                        <h2>{$goods_info.name}</h2>
+                                        <h4>{$goods_info.author} | {$goods_info.add_time|formatArticleDate}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="jt-goods-content">
+                            {$goods_info.content|htmlspecialchars_decode}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--太潮志-->
+    <script>
+        $(".jt-goods-content img").addClass("img-responsive");
+    </script>
+</block>

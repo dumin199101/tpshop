@@ -1,0 +1,84 @@
+/**
+  引入第三方字体库
+ */
+@font-face {
+    font-family: "PingFangSC-Regular";
+    src: url('../fonts/PingFang-SC-Regular.otf');
+}
+@font-face {
+    font-family:"PingFangSC-Semibold";
+    src: url('../fonts/PingFang-SC-Semibold.ttf');
+}
+@font-face {
+    font-family:"PingFangSC-Medium";
+    src: url('../fonts/PingFang-Medium.otf');
+}
+@font-face {
+    font-family:"PingFangSC-Bold";
+    src: url('../fonts/PingFang-Bold.ttf');
+}
+@font-face {
+    font-family:"PingFangSC-Light";
+    src: url('../fonts/PingFang-Light.ttf');
+}
+@font-face {
+    font-family: "Helvetica";
+    src: url('../fonts/Helvetica.ttf');
+}
+@font-face {
+    font-family: "Helvetica-Bold";
+    src: url('../fonts/Helvetica-Bold.ttf');
+}
+
+/**
+ 公共样式
+ */
+body{font-family: "PingFangSC-Regular"}
+.mt-30{margin-top:30px;}
+.ml-5{margin-left:5px;}
+.row{padding-right:0;}
+.thumbnail{border:none;padding:0px;}
+.thumbnail a.img{overflow:hidden;display:block;width:100%;height:auto;}
+.thumbnail img{ transition: all 1s ease 0s;cursor:pointer; }
+.thumbnail img:hover{transform: scale(1.08);}
+.jt-box{background-color: #ce1621;display: inline-block;height: 32px;width: 10px;margin-left:20px;}
+.jt-navigator{margin:30px 0;}
+.jt-navigator span.h3{font-size:18px;}
+.jt-navigator a{color:#000;}
+.jt-nav .h3{letter-spacing: 5px;}
+.jt-nav span.h3{font-size:18px;}
+
+
+/*兼容移动端*/
+.navbar{min-height:60px;margin-bottom:0;}
+.navbar-toggle{margin-top:15px;margin-bottom:13px;background:none;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{background:none;}
+.navbar-toggle:hover{background:none;}
+.navbar-default .navbar-toggle{border:none;}
+.indicators-line > .carousel-indicators{display:block;}
+#bignav{box-shadow:0 4px 4px rgba(0,0,0,0.2)}
+
+
+/*头部导航*/
+.navbar-fixed-top{background:#fff;border:none;}
+.navbar-jt{position:relative;top:0;left:0;right:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
+.navbar-default .navbar-nav > .active > a{color: #ce1621;}
+.navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus{color:#ce1621;}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #ce1621;  background-color: transparent;  }
+.navbar-default .navbar-nav > li{padding:20px 0 !important;font-family: "PingFangSC-Semibold"}
+.navbar-default .navbar-nav > li > a {color: #868686;font-size: 14px;padding: 0px 40px 0px !important;border-right:1px dashed #c4c4c4;}
+.navbar-default .navbar-nav > li:last-child > a {border-right:none;}
+/*二级导航*/
+.child{position:absolute;top:60px;background:#fff;color:#868686;list-style:none;}
+.child > li{width:200px;padding:20px 0}
+.child > li > a{padding:20px 0px 5px 0;color:#868686;font-size:14px;letter-spacing:3px;}
+.child > li.active a{color:#ce1621;border-bottom:2px solid #ce1621;}
+.nav li ul{height:0;overflow:hidden;transition: all 0.4s ease 0s}
+.nav li:hover ul{height:140px;}
+.nav li ul li:hover a{color:#ce1621;border-bottom:2px solid #ce1621;}
+
+/*底部*/
+footer{background: #ccc;padding:10px 0;font-size:12px;}
+footer ul{margin:2.5px auto;}
+footer a{color:#fff;}
+footer span.h4{font-size:12px;}

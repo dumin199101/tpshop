@@ -1,0 +1,22 @@
+/*分页*/
+.loading{text-align: center;font-size: 20px;margin:20px 0}
+#pages {display:none;}
+body{background:#f4f4f3;}
+
+/*头部导航*/
+header > .container{padding:0;}
+.navbar-jt > .navbar{margin-bottom:0;}
+.navbar-jt{background: #fff;z-index:100000;border-radius:0px;border:none;position:relative;}
+
+
+/*活动列表*/
+.jt-act-list-container{margin-bottom:30px;}
+.jt-latest-act{margin:50px 0 30px;}
+.jt-latest-act > a > span{color:#000;margin-right:50px;}
+.jt-latest-act > a > span.active{color:#ce1621;}
+.date-line{background-color: #e7e7e7;display: block;height: 2px; margin-bottom: 20px;  width: 100%;}
+.act-date{color: #c9cdd0;font-weight: bold;  letter-spacing:2px;}
+.jt-act-content .img{margin-bottom:20px;}
+.btn-learn-more{position:absolute;right:0;}
+.btn-danger{background:#ce1621;}
+.act-desc{color:#333;line-height:1.5;margin-top:20px;font-size:16px;}

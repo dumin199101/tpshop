@@ -1,0 +1,36 @@
+/*分页*/
+.loading{text-align: center;font-size: 20px;margin:20px 0}
+#pages {display:none;}
+body{background:#f2f2f2}
+.mt-50{margin-top:50px;}
+.arrow_left,.arrow_right{top:40%;}
+
+/*分区导航*/
+.jt-tcr-title{padding-left:0;}
+
+/*区块间距*/
+#jt-tcr-container{margin-bottom:30px;}
+
+
+/*轮播图*/
+.carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
+.carousel-indicators li {background-color:#e6e6e6;border:none;}
+
+/*活动轮播*/
+#jt-activity{margin-bottom:30px;}
+.jt-flexisel .flexisel > li > a >div.date{color: #fff;padding:0 30px;position:absolute;bottom:65px;}
+.jt-flexisel .flexisel > li > a{color:#fff;}
+.jt-flexisel .flexisel > li > a >  h5.act-title{color:#fff;padding:0 30px;font-weight:500;position:absolute;top:130px;}
+
+/*太潮人*/
+.caption h3{font-size:18px;}
+.jt-navigator span.h1{font-size:24px;}
+#jt-tcr-container .container-fluid{background:#f2f2f2;}
+#jt-tcr-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;}
+.jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:20px 0;}
+.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;}
+.job{color:#999999;}
+.jt-tcr-read{position:relative;}
+.jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
+.jt-tcr-read a{color:#ce1621;font-size:14px;display:block;}
+

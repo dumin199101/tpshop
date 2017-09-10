@@ -1,0 +1,82 @@
+<extend name="base" />
+<block name="title">品牌列表</block>
+<block name="css">
+    <!--自定义样式-->
+    <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/brand.css">
+</block>
+<block name="plugins">
+    <include  file="public/bootstrap-touch-slider"/>
+</block>
+<block name="slider">
+    <include  file="public/slider"/>
+</block>
+<block name="content">
+    <include  file="public/brand"/>
+    <!--品牌列表-->
+    <div id="brand-list-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <div class="thumbnail letter">
+                        <empty name="letter">
+                            <span class="h1">ALL</span>
+                        <else/>
+                            <span class="h1">{$letter}</span>
+                        </empty>
+
+                    </div>
+                </div>
+                <foreach name="brand_list" id="vo">
+                    <div class="col-md-2">
+                        <div class="thumbnail" data-id="{$vo.id}">
+                            <a href="javascript:void(0);" class="img">
+                                <img src="{$vo.id|brand_thum_images=200,135}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </foreach>
+            </div>
+        </div>
+    </div>
+    <!--品牌列表-->
+
+    <script type="text/javascript">
+        $(".thumbnail").bind("click",function(){
+            $(".brand-des").remove();
+            brand_show($(this).parent().index(),$(this));
+        });
+
+        function brand_show(idx,e){
+            sw_bs=0;
+            var x = 6, y = 0;
+            $(".brand-des").remove();
+            for(var i=1;i<100;i++){
+                y=x*i;
+                if(y>idx){
+                    if(y>$(".thumbnail").size()){y=$(".thumbnail").size();}
+                    break;
+                }
+            }
+            $.getJSON("{:url('api/ajaxGetBrandInfo')}",{id: e.attr('data-id')},function(data){
+                $(".thumbnail").parent().eq(y-1).after('<div class="col-md-12 brand-des">\n' +
+                        '                 <h3 class="cn-name">'+ data.title+'</h3>\n' +
+                        '                 <h3 class="en-name">'+data.name+'</h3>\n' +
+                        '                 <p>'+data.desc+'</p>\n' +
+                        '                 <h4>' + data.attach  +
+                        '                 </h4>\n' +
+                        '             </div>');
+
+                $(".thumbnail").removeClass("active");
+                e.addClass("active");
+                $(".brand-des").slideDown(function(){
+                    setTimeout(function(){
+                        sw_bs=1;
+                    },300);
+                });
+            });
+
+        }
+    </script>
+
+
+</block>

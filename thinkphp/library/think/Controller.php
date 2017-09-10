@@ -62,11 +62,11 @@ class Controller
         define('PREFIX',C('database.prefix')); // 数据库表前缀               
         $this->assign('action',ACTION_NAME);	
         
-        /*if(true == isMobile() && strtolower(MODULE_NAME) == 'home'  && strtolower(CONTROLLER_NAME) == 'index' && strtolower(ACTION_NAME) == 'index')
+        if(true == isMobile() && strtolower(MODULE_NAME) == 'home'  && strtolower(CONTROLLER_NAME) == 'index' && strtolower(ACTION_NAME) == 'index')
         {
             header("Location: ".U('Mobile/Index/index'));
             exit();
-         }  */
+         }
         read_html_cache(); // 尝试从缓存中读取		
         
         
