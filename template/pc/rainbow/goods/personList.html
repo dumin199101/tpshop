@@ -56,7 +56,7 @@
             <div class="container mt-50">
                 <div class="row">
                     <div class="row" id="items">
-                        <volist name="person_list" id="vo" mod="4">
+                        <volist name="person_list" id="vo">
                             <div class="col-md-3 item">
                                 <div class="thumbnail">
                                     <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}"  class="img">
@@ -72,8 +72,9 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="jt-picture">
+                                </div>
                             </div>
-                            <eq name="mod" value="3"><div class="clearfix"></div></eq>
                         </volist>
                     </div>
                     <!--分页信息-->
@@ -116,7 +117,7 @@
                             var url = "{:U('goods/personInfo',['id'=>val])}";
                             url = url.replace('val',val.id);
                             content+='<div class="col-md-3 item">'+
-                                    '<div class="thumbnail">'+
+                                    '<div class="thumbnail" onmouseover="mouseOver()" onmouseleave="mouseOut()">'+
                                     '<a href="'+url+'"  class="img">'+
                                     '<img src="'+val.thumb+'" alt="">'+
                                     '</a>'+
@@ -130,9 +131,10 @@
                                     '</p>'+
                                     '</div>'+
                                     '</div>'+
+                                    '<div class="jt-picture"></div>'+
                                     '</div>';
-                            if(index%4==0)
-                                content+='<div class="clearfix"></div>';
+                            /*if(index%4==0)
+                                content+='<div class="clearfix"></div>';*/
                         });
                         return content;
                     }
@@ -141,6 +143,27 @@
                     //console.log(data);
                     //alert(url);
                 });
+    </script>
+
+    <script type="text/javascript">
+        function getSize(){
+            var width = $("#jt-tcr-container .thumbnail:first").width()-5;
+            var height = $("#jt-tcr-container .thumbnail:first").height()-6;
+            $(".jt-picture").css({width:width,height:height});
+        }
+        function mouseOver(){
+            $(".item").on('mouseenter','.thumbnail',function(){
+                getSize();
+                $(this).siblings(".jt-picture").show();
+            });
+        }
+        function mouseOut(){
+            $(".item").on('mouseleave','.thumbnail',function(){
+                $(this).siblings(".jt-picture").hide();
+            });
+        }
+        mouseOver();
+        mouseOut();
     </script>
 
 

@@ -45,6 +45,8 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="jt-picture">
+                            </div>
                         </div>
                     </foreach>
                 </div>
@@ -91,6 +93,20 @@
         </div>
     </div>
     <!--太潮志-->
+
+    <script type="text/javascript">
+        $(function(){
+            var width = $("#jt-tcr-container .thumbnail:first").width()-5;
+            var height = $("#jt-tcr-container .thumbnail:first").height()-6;
+            $(".jt-picture").css({width:width,height:height});
+            $("#jt-tcr-container .thumbnail").mouseenter(function(){
+                $(this).siblings(".jt-picture").show();
+            });
+            $("#jt-tcr-container .thumbnail").mouseleave(function(){
+                $(this).siblings(".jt-picture").hide();
+            });
+        })
+    </script>
 
 
 </block>

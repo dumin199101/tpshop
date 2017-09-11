@@ -38,7 +38,7 @@ body{background:#f4f4f3;}
 .jt-picture{ border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;display: inline-block;left:24px;position: absolute;top:10px;display:none;pointer-events: none;}
 /*#jt-tcr-container .thumbnail:hover + .jt-picture{display:block;}*/
 .jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:20px 0;}
-.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;}
+.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;min-height:45px;}
 .job{color:#999999;}
 .jt-tcr-read{position:relative;}
 .jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
