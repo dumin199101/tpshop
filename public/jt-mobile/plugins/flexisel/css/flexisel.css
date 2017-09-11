@@ -181,21 +181,21 @@
 
 /*移动端*/
 .arrow_left_sx,.arrow_right_sx{
-    width:40px;
-    height:40px;
+    width:35px;
+    height:35px;
     position: absolute;
     background:#fff;
-    border-radius:40px;
+    border-radius:35px;
     top:40%;
     cursor:pointer;
 }
-.arrow_left_sx{right:80px;}
-.arrow_right_sx{right:20px;}
+.arrow_left_sx{right:60px;}
+.arrow_right_sx{right:15px;}
 
 .arrow_left_top_sx{
     position: absolute;
-    top:10px;
-    left:13px;
+    top:8px;
+    left:10px;
     width:0px;
     height:0px;
     border-top:10px solid transparent;
@@ -204,8 +204,8 @@
 }
 .arrow_left_bottom_sx{
     position: absolute;
-    top:10px;
-    left:17px;
+    top:8px;
+    left:15px;
     width:0px;
     height:0px;
     border-top:10px solid transparent;
@@ -214,8 +214,8 @@
 }
 .arrow_right_top_sx{
     position: absolute;
-    top:10px;
-    left:17px;
+    top:8px;
+    left:15px;
     width:0px;
     height:0px;
     border-top:10px solid transparent;
@@ -224,8 +224,8 @@
 }
 .arrow_right_bottom_sx{
     position: absolute;
-    top:10px;
-    left:13px;
+    top:8px;
+    left:10px;
     width:0px;
     height:0px;
     border-top:10px solid transparent;
