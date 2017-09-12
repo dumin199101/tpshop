@@ -70,8 +70,8 @@ class Api extends Controller {
             ->select();
         //处理数据
         foreach($goods_list as &$v){
-            $v['thumb'] = goods_thum_images($v['id'],384,253);
-            $v['name'] = getSubstr($v['name'],0,10);
+            $v['thumb'] = goods_thum_images($v['id'],768,506);
+            $v['name'] = getSubstr($v['name'],0,7);
         }
         $data = [
             'data'=>$goods_list,
