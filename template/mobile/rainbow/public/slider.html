@@ -20,12 +20,12 @@
         <volist name="banner_list" id="vo" key="k" >
             <eq name="k" value="1">
                 <div class="item active">
-                    <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                    <a href="{$vo.banner_link|reBuildLink}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                     <div class="bs-slider-overlay"></div>
                 </div>
                 <else/>
                 <div class="item">
-                    <a href="{$vo.banner_link}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
+                    <a href="{$vo.banner_link|reBuildLink}" ><img src="{$vo.banner_code}" alt="Bootstrap Touch Slider"  class="slide-image"/></a>
                     <div class="bs-slider-overlay"></div>
                 </div>
             </eq>

@@ -27,6 +27,7 @@
 // http://www.tpshop2.0.com/home/goods/goodsInfo/id/77.html
 
 return [
+    //Web端
     '[g]'     => [
         ':id'   => ['goods/goodsInfo', ['method' => 'get'],['id' => '\d+']],
     ],
@@ -49,6 +50,34 @@ return [
     'goodsList' => 'goods/goodsList',
     'oldest' => 'activity/oldest',
     'latest' => 'activity/latest',
-    'index'=>'index/index'
+    'index'=>'index/index',
+
+    //移动端
+
+    '[m-g]'     => [
+        ':id'   => ['mobile/goods/goodsInfo', ['method' => 'get'],['id' => '\d+']],
+    ],
+    '[m-p]'     => [
+        ':id'   => ['mobile/goods/personInfo', ['method' => 'get'],['id' => '\d+']],
+    ],
+    '[m-act]'     => [
+        ':id'   => ['mobile/activity/info', ['method' => 'get'],['id' => '\d+']],
+    ],
+    '[m-filterByLetter]'     => [
+        ':letter'   => ['mobile/brand/index', ['method' => 'get'],['letter' => '[A-Z]']],
+    ],
+    'm-activity' => 'mobile/activity/index',
+    'm-brand' => 'mobile/brand/index',
+    'm-goods' => 'mobile/goods/index',
+    'm-vip' => 'mobile/vip/index',
+    'm-about' => 'mobile/system/about',
+    'm-copyright' => 'mobile/system/copyright',
+    'm-personList' => 'mobile/goods/personList',
+    'm-goodsList' => 'mobile/goods/goodsList',
+    'm-oldest' => 'mobile/activity/oldest',
+    'm-latest' => 'mobile/activity/latest',
+    'm-index'=>'mobile/index/index',
+
+
 ];
 

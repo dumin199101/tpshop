@@ -19,11 +19,12 @@ class Api extends Controller {
      */
     public function ajaxGetBrandInfo()
     {
-        $id = input('get.id/d',1);
-        $brand_info = Db::name('brand')->field('title,name,attach,desc')
-            ->where('id',$id)
-            ->cache(true,JT_CACHE_TIME)
-            ->find();
+        $id = input('get.id/d',0);
+        if($id)
+            $brand_info = Db::name('brand')->field('title,name,attach,desc')
+                ->where('id',$id)
+                ->cache(true,JT_CACHE_TIME)
+                ->find();
         return json($brand_info);
     }
 
