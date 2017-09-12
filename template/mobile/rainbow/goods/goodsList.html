@@ -33,25 +33,24 @@
             <div class="container">
                 <div class="row">
                     <div class="row jt-tcz-content" id="items">
-                        <volist name="goods_list" id="vo" mod="3">
-                            <div class="col-md-4 item">
+                        <volist name="goods_list" id="vo">
+                            <div class="col-xs-12 col-sm-12 item">
                                 <div class="thumbnail">
-                                    <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}"  class="img">
-                                        <img src="{$vo.id|goods_thum_images=384,253}" alt="">
+                                    <a href="{:url('mobile/goods/goodsInfo',['id'=>$vo['id']])}"  class="img">
+                                        <img src="{$vo.id|goods_thum_images=768,506}" alt="">
                                     </a>
                                     <div class="caption">
-                                         <span class="h3">{$vo.name|getSubstr=0,10}</span>
+                                         <span class="h3">{$vo.name|getSubstr=0,7}</span>
                                             <span class="jt-tcz-read">
-                                           <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                           <a href="{:url('mobile/goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                          </span>
                                     </div>
                                 </div>
                             </div>
-                            <eq name="mod" value="2"><div class="clearfix"></div></eq>
                         </volist>
                     </div>
                     <!--分页信息-->
-                    <div id="pages"><a id="next" href="/index.php/home/Api/ajaxGetGoodsList?p=1">下一页</a></div>
+                    <div id="pages"><a id="next" href="/index.php/mobile/Api/ajaxGetGoodsList?p=1">下一页</a></div>
                     <div class="loading"></div>
                     <!--分页信息-->
                 </div>
@@ -84,7 +83,7 @@
                     errorCallback: function() { //加载完数据后的回调函数
                     },
                     path: function(index) { //获取下一页方法
-                        return "/index.php/home/Api/ajaxGetGoodsList?p=" + index;
+                        return "/index.php/mobile/Api/ajaxGetGoodsList?p=" + index;
                     },
                     template: function (data) {
                         content = '';
@@ -92,7 +91,7 @@
                             index++;
                             var url = "{:U('goods/goodsInfo',['id'=>val])}";
                             url = url.replace('val',val.id);
-                            content+= '<div class="col-md-4 item">'+
+                            content+= '<div class="col-xs-12 col-sm-12 item">'+
                                     '<div class="thumbnail">'+
                                     '<a href="'+url+'"  class="img">'+
                                     '<img src="'+val.thumb+'" alt="">'+
@@ -105,8 +104,6 @@
                                     '</div>'+
                                     '</div>'+
                                     '</div>';
-                            if(index%3==0)
-                                content+='<div class="clearfix"></div>';
                         });
                         return content;
                     }
