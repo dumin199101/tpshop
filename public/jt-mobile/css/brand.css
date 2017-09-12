@@ -16,7 +16,7 @@
 
 /*品牌列表*/
 #brand-list-container{margin:30px 0;}
-#brand-list-container > .container{background:#f6f6f6;padding:20px;}
+#brand-list-container > .container > .row{margin:0 20px;background:#f6f6f6;padding-top:20px;}
 #brand-list-container > .container > .row .thumbnail{padding:0;border:2px solid #f6f6f6;}
 #brand-list-container > .container > .row .active{border:2px solid #ce1621}
 .brand-des{background:#ebe9e9;margin-bottom:20px;display:none;padding:0 20px;}
