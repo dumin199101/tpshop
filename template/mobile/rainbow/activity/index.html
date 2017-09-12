@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/activity.css">
 </block>
 <block name="plugins">
-    <include  file="public/bootstrap-touch-slider"/>
+    <include  file="public/bootstrap-touch-slider,public/flexisel"/>
 </block>
 <block name="content">
     <!--轮播图-->
@@ -80,28 +80,38 @@
 
     <div id="jt-act-container" >
         <!--最新活动-->
-        <div class="container">
-            <div class="row jt-nav">
-                <div class="col-md-10 jt-tcr-title">
-                    <div class="jt-navigator">
+        <div id="jt-activity">
+            <div class="container mt-30">
+                <div class="row hidden-lg" style="position:relative;">
+                    <div class="jt-navigator jt-flexisel">
                         <div class="jt-box"></div>
-                        <span class="h1 ml-5">最新活动</span>
+                        <a href="{:url('mobile/activity/latest')}">
+                            <span class="h1">最新活动</span>
+                        </a>
+                        <div class='nbs-flexisel-nav-left arrow_left_sx'>
+                            <div class='arrow_left_top_sx'></div><div class='arrow_left_bottom_sx'></div>
+                        </div>
+                        <div class='nbs-flexisel-nav-right arrow_right_sx'>
+                            <div class='arrow_right_top_sx'></div><div class='arrow_right_bottom_sx'></div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2 jt-act-more">
-                    <a href="{:url('activity/latest')}" >
-                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
-                    </a>
-                </div>
-                <div class="jt-latest-act-list">
-                    <foreach name="act_latest_list" id="vo">
-                        <div class="col-md-3">
-                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
-                                <img  src="{$vo.act_id|act_thum_images=2,260,170}"  alt="">
-                                <span class="h4">{$vo.act_name|getSubstr=0,28}</span>
-                            </a>
+                <div class="row">
+                    <div class="col-md-12 jt-flexisel">
+                        <div class="row">
+                            <ul class="flexisel">
+                                <foreach name="act_latest_list" id="vo">
+                                    <li>
+                                        <a href="{:url('mobile/activity/info',['id'=>$vo['act_id']])}" >
+                                            <img src="{$vo.act_id|act_thum_images=2,576,376}"/>
+                                            <div class="border"></div><div class="date text-right">{$vo.start_time|formatDate}</div>
+                                            <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,18}</h5>
+                                        </a>
+                                    </li>
+                                </foreach>
+                            </ul>
                         </div>
-                    </foreach>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,25 +120,22 @@
         <!--往期活动-->
         <div class="container">
             <div class="row jt-nav">
-                <div class="col-md-10 jt-tcr-title">
+                <div class="col-xs-12 col-sm-12 jt-tcr-title">
                     <div class="jt-navigator">
                         <div class="jt-box"></div>
-                        <span class="h1 ml-5">往期活动</span>
+                        <a href="{:url('mobile/activity/oldest')}">
+                            <span class="h1">往期活动</span>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-2 jt-act-more">
-                    <a href="{:url('activity/oldest')}" >
-                        <span class="h4 look-more">查看更多<span class="glyphicon glyphicon-menu-right"></span></span>
-                    </a>
                 </div>
                 <div class="clearfix"></div>
                 <div class="jt-old-act-list">
                     <foreach name="act_oldest_list" id="vo">
-                        <div class="col-md-6">
-                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
+                        <div class="col-xs-12 col-sm-12">
+                            <a href="{:url('mobile/activity/info',['id'=>$vo['act_id']])}" >
                                 <img class="img-responsive" src="{$vo.act_id|act_thum_images=2,554,360}" alt="">
                                 <h4 class="old-act-date">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</h4>
-                                <span class="h4 old-act-title">{$vo.act_name|getSubstr=0,24}</span>
+                                <span class="h4 old-act-title">{$vo.act_name|getSubstr=0,18}</span>
                             </a>
                         </div>
                     </foreach>

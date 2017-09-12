@@ -647,6 +647,8 @@ function getTree($data, $pid)
 
 /*根据PC端Banner链接重建符合路由规则的Web端Banner链接*/
 function reBuildLink($link){
+    if(empty($link))
+        return '';
     //正则表达式
     $reg = '/(http):\/\/([^\/]+)/i';
     preg_match($reg, $link,$res);

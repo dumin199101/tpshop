@@ -134,6 +134,12 @@ class Api extends Controller {
             ->cache(true,JT_CACHE_TIME)
             ->limit($page->firstRow.','.$page->listRows)
             ->select();
+        //处理数据
+        foreach($activity_list as &$v){
+            $v['start_time'] = formatActDate($v['start_time']);
+            $v['act_name'] = getSubstr($v['act_name'],0,40);
+            $v['act_desc'] = getSubstr($v['act_desc'],0,140);
+        }
         $data = [
             'data'=>$activity_list,
             'count'=>$count
