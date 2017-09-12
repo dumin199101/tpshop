@@ -19,7 +19,9 @@
                         <volist name="jt_navigation" id="vo">
                             <li <if condition="$vo['position'] eq $position">class="active"</if>><a href="{:url($vo['m_url'])}" >{$vo.name}</a>
                             <notempty name="vo[childs]">
-                                <ul class="child visible-lg">
+                                <span class="glyphicon glyphicon-menu-down show arrow-nav-child"></span>
+                                <span class="glyphicon glyphicon-menu-up hide arrow-nav-child"></span>
+                                <ul class="child">
                                     <foreach name="vo[childs]" id="v">
                                         <li <if condition="$v['position'] eq $action">class="active"</if>><a href="{:url($v['m_url'])}">{$v.name}</a></li>
                                     </foreach>
@@ -35,4 +37,14 @@
     </div>
 </header>
 <!--导航-->
+
+<script type="text/javascript">
+    $(".nav > li").hover(function(){
+        $(this).find(".glyphicon-menu-down").removeClass("show").addClass("hide");
+        $(this).find(".glyphicon-menu-up").removeClass("hide").addClass("show");
+    },function(){
+        $(this).find(".glyphicon-menu-down").removeClass("hide").addClass("show");
+        $(this).find(".glyphicon-menu-up").removeClass("show").addClass("hide");
+    })
+</script>
 
