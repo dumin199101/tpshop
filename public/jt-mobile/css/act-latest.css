@@ -10,13 +10,14 @@ header > .container{padding:0;}
 
 
 /*活动列表*/
-.jt-act-list-container{margin-bottom:30px;}
-.jt-latest-act{margin:50px 0 30px;}
-.jt-latest-act > a > span{color:#000;margin-right:50px;}
+.jt-act-list-container{margin-bottom:30px;padding:0 20px;}
+.jt-latest-act{margin:30px 0 20px;}
+.jt-latest-act > a > span{color:#000;margin-right:30px;}
 .jt-latest-act > a > span.active{color:#ce1621;}
 .date-line{background-color: #e7e7e7;display: block;height: 2px; margin-bottom: 20px;  width: 100%;}
 .act-date{color: #c9cdd0;font-weight: bold;  letter-spacing:2px;}
 .jt-act-content .img{margin-bottom:20px;}
 .btn-learn-more{position:absolute;right:0;}
 .btn-danger{background:#ce1621;}
-.act-desc{color:#333;line-height:1.5;margin-top:20px;font-size:16px;}
+.act-title{font-size:20px;}
+.act-desc{color:#333;line-height:1.5;margin-top:40px;font-size:16px;}

@@ -1,21 +1,25 @@
-
+body{background:#f4f4f3;}
 /*区块间距*/
 #jt-act-container{margin-bottom:30px;}
 
-/*分区导航*/
-.jt-act-more .look-more{position: absolute;right:20px;top:28px;letter-spacing:3px;font-weight:bold;}
-.jt-act-more .look-more > .glyphicon{top:3px;margin-left:15px;}
-.jt-act-more >a > .look-more {color:#ce1621;}
+
 
 /*轮播图*/
+.jt-flexisel .flexisel > li > a > img{box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39);}
+.jt-flexisel .flexisel > li > a > div.border{width:55%;height:1px;border: solid 1px #e7e7e7;margin:8px 5px 0 20px;}
+.jt-flexisel .flexisel > li > a >div.date{color: #c9cdd0;margin:0px 20px 0 0;font-size:14px;font-weight:bold;letter-spacing:1px;}
+.jt-flexisel .flexisel > li > a{color:#333;}
+.jt-flexisel .flexisel > li > a >  h5.act-title{color:#333;padding:0px 20px 0;font-weight:500;font-size:16px;line-height:1.5;}
 .carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
 .carousel-indicators li {background-color:#e6e6e6;border:none;}
+.arrow_left_sx, .arrow_right_sx{top:30%;}
+.arrow_right_sx{right:20px;}
+.arrow_left_sx{right:70px;}
 
 /*活动轮播*/
-.jt-navigator span.h1{font-size:24px;}
-.jt-act-more .look-more{font-size:14px;}
-.jt-latest-act-list img{margin-bottom:20px;}
-.jt-latest-act-list span.h4{color:#333;line-height:1.5;font-size:16px;}
-.old-act-date{position:absolute;left:40px;bottom:40px;color:#fff;}
-.old-act-title{position:absolute;left:40px;bottom:10px;color:#fff;}
+.jt-navigator{margin-bottom:20px;}
+.jt-navigator span.h1{font-size:24px; font-weight: bold;font-style: normal; font-stretch: normal; line-height: 2.0; letter-spacing: 3px; color: #333333}
+.old-act-date{position:absolute;left:20px;bottom:40px;color:#fff;font-size:14px;}
+.old-act-title{position:absolute;left:20px;bottom:10px;color:#fff;font-size:14px;}
+.jt-old-act-list{padding:0 20px;}
 .jt-old-act-list div{margin-bottom:30px;}
