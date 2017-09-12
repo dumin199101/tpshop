@@ -11,17 +11,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="padding:0px;" href="{:url('index/index')}"><img alt="Brand" style="max-width:225px;" src="{$jt_config['shop_info_store_logo']}"></a>
+                    <a class="navbar-brand" style="padding:0px;" href="{:url('mobile/index/index')}"><img alt="Brand" style="max-width:225px;" src="{$jt_config['shop_info_store_logo']}"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav nav-header-right">
                         <volist name="jt_navigation" id="vo">
-                            <li <if condition="$vo['position'] eq $position">class="active"</if>><a href="{:url($vo['url'])}" >{$vo.name}</a>
+                            <li <if condition="$vo['position'] eq $position">class="active"</if>><a href="{:url($vo['m_url'])}" >{$vo.name}</a>
                             <notempty name="vo[childs]">
                                 <ul class="child visible-lg">
                                     <foreach name="vo[childs]" id="v">
-                                        <li <if condition="$v['position'] eq $action">class="active"</if>><a href="{:url($v['url'])}">{$v.name}</a></li>
+                                        <li <if condition="$v['position'] eq $action">class="active"</if>><a href="{:url($v['m_url'])}">{$v.name}</a></li>
                                     </foreach>
                                 </ul>
                             </notempty>

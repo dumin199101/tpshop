@@ -644,3 +644,13 @@ function getTree($data, $pid)
 
     return $tree;
 }
+
+/*根据PC端Banner链接重建符合路由规则的Web端Banner链接*/
+function reBuildLink($link){
+    //正则表达式
+    $reg = '/(http):\/\/([^\/]+)/i';
+    preg_match($reg, $link,$res);
+    $link_right = str_replace($res[0],"",$link);
+    return $res[0] . '/m-' . substr($link_right, 1);
+}
+

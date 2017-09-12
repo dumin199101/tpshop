@@ -16,25 +16,24 @@
     <div id="brand-list-container">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 text-center">
-                    <div class="thumbnail letter">
+                <div class="col-xs-4 col-sm-4 text-center">
+                    <div class="thumbnail" id="letter" style="padding:17px 0;">
                         <empty name="letter">
-                            <span class="h1">ALL</span>
+                            <span class="h3">ALL</span>
                         <else/>
                             <span class="h1">{$letter}</span>
                         </empty>
-
                     </div>
                 </div>
-                <foreach name="brand_list" id="vo">
-                    <div class="col-md-2">
+                <volist name="brand_list" id="vo">
+                    <div class="col-xs-4 col-sm-4">
                         <div class="thumbnail" data-id="{$vo.id}">
                             <a href="javascript:void(0);" class="img">
                                 <img src="{$vo.id|brand_thum_images=200,135}" alt="">
                             </a>
                         </div>
                     </div>
-                </foreach>
+                </volist>
             </div>
         </div>
     </div>
@@ -42,13 +41,16 @@
 
     <script type="text/javascript">
         $(".thumbnail").bind("click",function(){
+            if($(this).parent().index()==0){
+                return false;
+            }
             $(".brand-des").remove();
             brand_show($(this).parent().index(),$(this));
         });
 
         function brand_show(idx,e){
             sw_bs=0;
-            var x = 6, y = 0;
+            var x = 3, y = 0;
             $(".brand-des").remove();
             for(var i=1;i<100;i++){
                 y=x*i;
@@ -58,7 +60,8 @@
                 }
             }
             $.getJSON("{:url('api/ajaxGetBrandInfo')}",{id: e.attr('data-id')},function(data){
-                $(".thumbnail").parent().eq(y-1).after('<div class="col-md-12 brand-des">\n' +
+                if(data!=null){
+                    $(".thumbnail").parent().eq(y-1).after('<div class="col-xs-12 col-sm-12 brand-des">\n' +
                         '                 <h3 class="cn-name">'+ data.title+'</h3>\n' +
                         '                 <h3 class="en-name">'+data.name+'</h3>\n' +
                         '                 <p>'+data.desc+'</p>\n' +
@@ -66,13 +69,14 @@
                         '                 </h4>\n' +
                         '             </div>');
 
-                $(".thumbnail").removeClass("active");
-                e.addClass("active");
-                $(".brand-des").slideDown(function(){
-                    setTimeout(function(){
-                        sw_bs=1;
-                    },300);
-                });
+                    $(".thumbnail").removeClass("active");
+                    e.addClass("active");
+                    $(".brand-des").slideDown(function(){
+                        setTimeout(function(){
+                            sw_bs=1;
+                        },300);
+                    });
+                }
             });
 
         }

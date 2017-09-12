@@ -42,6 +42,9 @@
 
     <script type="text/javascript">
         $(".thumbnail").bind("click",function(){
+            if($(this).parent().index()==0){
+                return false;
+            }
             $(".brand-des").remove();
             brand_show($(this).parent().index(),$(this));
         });
@@ -58,7 +61,8 @@
                 }
             }
             $.getJSON("{:url('api/ajaxGetBrandInfo')}",{id: e.attr('data-id')},function(data){
-                $(".thumbnail").parent().eq(y-1).after('<div class="col-md-12 brand-des">\n' +
+                if(data!=null){
+                    $(".thumbnail").parent().eq(y-1).after('<div class="col-md-12 brand-des">\n' +
                         '                 <h3 class="cn-name">'+ data.title+'</h3>\n' +
                         '                 <h3 class="en-name">'+data.name+'</h3>\n' +
                         '                 <p>'+data.desc+'</p>\n' +
@@ -66,13 +70,14 @@
                         '                 </h4>\n' +
                         '             </div>');
 
-                $(".thumbnail").removeClass("active");
-                e.addClass("active");
-                $(".brand-des").slideDown(function(){
-                    setTimeout(function(){
-                        sw_bs=1;
-                    },300);
-                });
+                    $(".thumbnail").removeClass("active");
+                    e.addClass("active");
+                    $(".brand-des").slideDown(function(){
+                        setTimeout(function(){
+                            sw_bs=1;
+                        },300);
+                    });
+                }
             });
 
         }

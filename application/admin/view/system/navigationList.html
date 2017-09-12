@@ -19,6 +19,7 @@
         </div>
         <ul>
             <li>前台导航管理: 修改导航名称, 导航链接以及导航的隐藏与显示等.</li>
+            <li>导航链接应用路由规则，请不要随意更改</li>
         </ul>
     </div>
     <div class="flexigrid">
@@ -41,7 +42,10 @@
                             <div style="text-align: left; width: 100px;" class="">导航名称</div>
                         </th>
                         <th align="left" abbr="ac_id" axis="col4" class="">
-                            <div style="text-align: left; width: 350px;" class="">链接地址</div>
+                            <div style="text-align: left; width: 150px;" class="">PC端链接地址</div>
+                        </th>
+                        <th align="left" abbr="ac_id" axis="col4" class="">
+                            <div style="text-align: left; width: 150px;" class="">移动端链接地址</div>
                         </th>
                         <th align="center" abbr="article_show" axis="col5" class="">
                             <div style="text-align: center; width: 80px;" class="">显示</div>
@@ -86,7 +90,10 @@
                                 <div style="text-align: left; width: 100px;">{$vo.name}</div>
                             </td>
                             <td align="left" class="">
-                                <div style="text-align: left; width: 350px;">{$vo.url}</div>
+                                <div style="text-align: left; width: 150px;">{$vo.url}</div>
+                            </td>
+                            <td align="left" class="">
+                                <div style="text-align: left; width: 150px;">{$vo.m_url}</div>
                             </td>
                             <td align="center" class="">
                                 <div style="text-align: center; width: 80px;">

@@ -26,10 +26,20 @@
             </dl>
             <dl class="row">
                 <dt class="tit">
-                    <label for="url"><em>*</em>链接</label>
+                    <label for="url"><em>*</em>PC端链接</label>
                 </dt>
                 <dd class="opt">
                     <input type="text" value="{$navigation.url}" name="url" id="url" class="input-txt">
+                    <span class="err"></span>
+                    <p class="notic"></p>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label for="url"><em>*</em>移动端链接</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$navigation.m_url}" name="m_url" id="m_url" class="input-txt">
                     <span class="err"></span>
                     <p class="notic"></p>
                 </dd>

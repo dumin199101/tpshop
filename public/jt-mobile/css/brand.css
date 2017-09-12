@@ -3,25 +3,25 @@
 .carousel-indicators li {background-color:#e6e6e6;border:none;}
 
 /*品牌*/
+.jt-brand{margin:0 20px;}
 .jt-navigator{margin-bottom:20px;}
 .jt-navigator span.h1{font-family: "Helvetica"; font-size:24px; font-weight: bold;font-style: normal; font-stretch: normal; line-height: 2.0; letter-spacing: 3px; color: #333333}
 #jt-brand .jt-brand  .brand-divider{width:100%;height:2px;border-bottom:2px dashed  #c9cdd0;}
 .jt-brand a{color:#000;}
-.jt-brand ul li{width:28px;text-align:center;margin-right:12.8px;margin-top:10px;position:relative;}
-.jt-brand ul li:last-child{margin-right:0;}
-.jt-brand ul li span.h3{font-family:"Helvetica";}
-.jt-brand ul li > .mark-divider{background:#ce1621;display:none;width:25px;height:4px;}
+.jt-brand ul li{text-align:center;width:21px;margin-top:10px;position:relative;}
+.jt-brand ul li span.h3{font-family:"Helvetica";font-size:20px;}
+.jt-brand ul li > .mark-divider{background:#ce1621;display:none;width:21px;height:4px;}
 .jt-brand ul li:hover > .mark-divider,.jt-brand ul li.active > .mark-divider{display:block;position:absolute;bottom:-12px;left:2px;}
 .jt-brand ul li:hover a > span.h3 ,.jt-brand ul li.active a > span.h3{color: #ce1621;font-family:"Helvetica";font-weight:bold;}
 
 /*品牌列表*/
 #brand-list-container{margin:30px 0;}
 #brand-list-container > .container{background:#f6f6f6;padding:20px;}
-#brand-list-container > .container .letter{color:#fff;background:#ce1621;text-transform:uppercase;line-height:110px;height:110px;padding:0;}
-#brand-list-container > .container > .row .thumbnail{padding:0;border:2px solid #f6f6f6;/*添加一个透明边框进行占位,防止添加border后错位*/;}
+#brand-list-container > .container > .row .thumbnail{padding:0;border:2px solid #f6f6f6;}
 #brand-list-container > .container > .row .active{border:2px solid #ce1621}
-.brand-des{background:#ebe9e9;margin-bottom:20px;display:none;}
+.brand-des{background:#ebe9e9;margin-bottom:20px;display:none;padding:0 20px;}
 .brand-des > h3.cn-name , .brand-des > h3.en-name{color:#ce1621;}
 .brand-des > p{text-align: justify;line-height:1.5;color:#333;}
-.brand-des > h4{margin-bottom:30px;}
-
+.brand-des > h4{margin-bottom:30px;text-align:justify;font-size:14px;line-height:1.5;}
+#letter{color:#fff;background:#ce1621;text-transform:uppercase;}
+#brand-list-container .col-xs-4,#jt-tcr-container.col-sm-4{padding:0 5px;}
