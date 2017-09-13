@@ -4,12 +4,16 @@
 /*关于我们*/
 .jt-navigator span.h1{font-family:"Helvetica";font-size:24px;font-weight:bold;}
 .jt-about-us-container{margin-bottom:50px;}
-.jt-about-us-container .jt-about-desc{padding:50px 20px;}
+.jt-about-us-container .jt-about-desc{padding:50px 20px 0;}
 .jt-about-us-container .jt-about-desc p{color:#333;font-size:14px;letter-spacing: 1px;line-height:30px;}
+.jt-about-content{padding:0 20px;}
+.jt-box{margin-left:0;}
 .jt-content-title > span.h3{color:#ce1621;font-size:18px;font-weight:bold;}
-.jt-content-box .num{background-color: #ce1621;border-radius: 50%;color: #fff;display: inline-block;height: 30px;line-height: 30px;text-align: center;width: 30px;margin-right:10px;}
-.jt-content-box div.system{margin-top:30px;padding:0;}
-.jt-content-box div.system .hx{font-weight:600;font-size:18px;height:40px;line-height:40px;text-align: center;position:absolute;top:-4px;}
+.jt-content-box .num{background-color: #ce1621;border-radius: 50%;color: #fff;display: inline-block;height:20px;line-height: 20px;text-align: center;width: 20px;margin-right:10px;}
+.jt-content-box div.system{margin-top:20px;padding:0;}
+.jt-content-box div.system .hx{font-weight:600;font-size:18px;height:30px;line-height:30px;text-align: center;position:absolute;top:-4px;}
 .jt-content-box .system p.jtbh{line-height:2.0;color:#333;font-size:14px;margin-top:20px;letter-spacing:4px;}
-.jt-picture{ border: 5px solid #ce1621;display: inline-block;left:50px;position: absolute;top: 30px;z-index:-100;}
+.jt-picture{ border: 5px solid #ce1621;display: inline-block;left:20px;position: absolute;top: 20px;z-index:-100;}
 .mt-80{margin-top:80px;}
+.img-responsive{padding:0 20px 0 0;}
+.jt-pic{margin-bottom:30px;}
