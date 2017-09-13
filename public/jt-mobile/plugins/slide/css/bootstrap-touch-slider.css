@@ -198,14 +198,13 @@
 
 .slide-text {
     left: 0;
-    top: 25%;
+    bottom: 20%;
     right: 0;
     margin: auto;
     padding: 10px;
     position: absolute;
     text-align: left;
     padding: 10px 85px;
-    
 }
 
 .slide-text > h1 {
@@ -311,6 +310,7 @@
         font-size: 30px;
         line-height: 40px;
         margin-bottom: 10px;
+        font-size:18px;
     }
     .slide-text > p {
         font-size: 14px;
