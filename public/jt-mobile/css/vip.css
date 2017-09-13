@@ -1,19 +1,23 @@
 /*轮播图*/
 .carousel-indicators .active {width: 12px;height: 12px;margin: 0;background-color: #ce1621;}
 .carousel-indicators li {background-color:#e6e6e6;border:none;}
-
 /*vip*/
+body{background:#fff;}
+.jt-box{margin-left:0;}
 .jt-navigator span.h1{font-size:24px;}
 .jt-navigator{margin-top:48px;}
-.jt-vip-container .item{margin-bottom:30px;}
-.jt-vip-container span.h3{margin-top:0;}
-.jt-vip-container .jt-vip-title{display:inline-block; line-height: 1;letter-spacing:3px;text-align: left; color: #ff7000;font-size:18px;}
-.jt-vip-container .jt-vip-desc{display:inline-block;text-align: left;color: #000000;mragin-top:30px;letter-spacing:4px;line-height:1.2;}
+.jt-vip-container,.jt-card-container,.jt-discount-container,.jt-points-container,.jt-electric-container,.jt-benifits-container{padding:0 20px;}
+.jt-vip-container .item{margin-bottom:30px;min-height:110px;}
+.jt-vip-container span.h3{margin-top:0;font-size:16px;}
+.jt-vip-container .jt-vip-title{display:inline-block; line-height: 1;letter-spacing:3px;text-align: left; color: #ff7000;font-size:18px;margin-left:15px;}
+.jt-vip-container .jt-vip-desc{display:inline-block;text-align: left;color: #000000;letter-spacing:2px;line-height:1.2;}
+.jt-vip-container span.h5{margin-left:15px;margin-top:0;}
 .table tr th{font-size:16px;}
 .table tr td{font-size:14px;}
-.table > tbody > tr > th{padding:10px 50px;}
+.table > tbody > tr > th{width:150px;padding:10px 30px;}
 .jt-points-container .table tbody tr,.jt-electric-container .table tbody tr{text-align: center;}
 .example{color:#ce1621;}
+.jt-benifits-container{margin-bottom:30px;}
 .jt-benifits-container .benifits-title{margin-bottom:20px;}
 .jt-benifits-container .benifits-desc p{line-height:1.5;letter-spacing: 3px;}
 .jt-list-item{margin-bottom:30px;}
