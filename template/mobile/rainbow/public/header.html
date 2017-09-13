@@ -42,6 +42,9 @@
     $(".glyphicon-menu-down").click(function(){
         $(this).removeClass("show").addClass("hide");
         $(this).parent("li").find(".glyphicon-menu-up").removeClass("hide").addClass("show");
+        $(this).parent("li").siblings("li").find(".glyphicon-menu-up").removeClass("show").addClass("hide");
+        $(this).parent("li").siblings("li").find(".glyphicon-menu-down").removeClass("hide").addClass("show");
+        $(this).parent("li").siblings("li").find("ul.child").css("height","0px");
         $(this).siblings("ul.child").css("height","85px");
     });
     $(".glyphicon-menu-up").click(function(){
