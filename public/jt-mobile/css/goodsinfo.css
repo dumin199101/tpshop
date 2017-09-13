@@ -1,4 +1,3 @@
-body{background:#f4f4f3;}
 /*头部导航*/
 header > .container{padding:0;}
 .navbar-jt > .navbar{margin-bottom:0;}
@@ -6,11 +5,11 @@ header > .container{padding:0;}
 
 
 /*太潮志信息*/
-#jt-tcz-info-container{margin:40px auto;padding:0;}
+#jt-tcz-info-container{margin:40px auto;padding:0 20px;}
 .jt-goods-navigator{padding:10px 0px;}
-.jt-goods-box{background-color: #ce1621;display: inline-block;height: 60px;width:10px;}
-.jt-goods-navigator .pull-left h2{margin-top:0;margin-bottom:0;margin-left:15px;}
-.jt-goods-navigator .pull-left h4{margin-top:10px;margin-left:15px;color:#7b7676;}
+.jt-goods-box{background-color: #ce1621;display: inline-block;height:50px;width:10px;}
+.jt-goods-navigator .pull-left h2{margin-top:0;margin-bottom:0;margin-left:15px;font-size:18px;}
+.jt-goods-navigator .pull-left h4{margin-top:10px;margin-left:15px;color:#7b7676;font-size:18px;}
 .ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 .jt-goods-content{margin-top:20px;}
 .jt-goods-content p{color:#333;line-height:2.5;text-align: justify;margin:10px 0;font-size:16px;}
