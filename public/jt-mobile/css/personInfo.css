@@ -13,25 +13,35 @@ header > .container{padding:0;}
 
 /*太潮人信息*/
 .caption h3{font-size:18px;}
-.jt-navigator span.h1{font-size:24px;}
-.jt-box{height:22px;}
+.jt-navigator span.h1{font-size:18px;}
+.jt-box{height:32px;}
 #jt-tcr-info-container{margin:40px auto;padding:0;}
-.jt-head-logo{box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);width:326px;height:480px;}
-.jt-person-navigator{background:#fff;padding:10px 15px 0;min-height:235px;}
-.jt-person-navigator p{line-height:2.5;font-size:14px;color:#333;}
-.jt-person-box{background-color: #ce1621;display: inline-block;height: 60px;width:10px;}
-.jt-person-navigator .pull-left h2{margin-top:0;margin-bottom:0;margin-left:15px;}
-.jt-person-navigator .pull-left h4{margin-top:10px;margin-left:15px;color:#7b7676;}
-.jt-person-activity{padding:46px 0px 0px;}
-.jt-person-activity  a >div.date{color: #fff;padding:0 20px;position:absolute;bottom:55px;}
+.jt-head-logo{box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12);}
+.jt-person-navigator{background:#fff;padding:10px 15px 0;}
+.jt-summarys{overflow:auto}
+.jt-person-navigator .jt-summary{line-height:1.5;font-size:14px;color:#333;}
+.jt-person-box{background-color: #ce1621;display: inline-block;height: 45px;width:10px;}
+.jt-person-navigator .pull-left h2{margin-top:0;margin-bottom:0;margin-left:5px;font-size:18px;}
+.jt-person-navigator .pull-left h4{margin-top:10px;margin-left:5px;color:#7b7676;font-size:14px;}
+.jt-person-activity .col-xs-6,.jt-person-activity .col-sm-6{padding:0 15px;}
+.jt-person-activity{padding:0px 5px 0px;}
+.jt-person-activity  a >div.date{color: #fff;padding:0 10px;position:absolute;bottom:65px;}
 .jt-person-activity  a{color:#fff;}
-.jt-person-activity  a  h5.act-title{color:#fff;font-weight:500;position:absolute;top:140px;padding:0 20px;}
+.jt-person-activity  a  h5.act-title{color:#fff;font-weight:500;position:absolute;bottom:35px;padding:0 10px;}
+
 /*太潮人*/
 #jt-tcr-container .container-fluid{background:#f2f2f2;}
-#jt-tcr-container .thumbnail:hover{border-right:4px solid #ce1621;border-bottom:4px solid #ce1621;}
 .jt-tcr-line{width:100%;height:1px;border: solid 1px #e7e7e7;margin:20px 0;}
-.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;}
+.jt-tcr-desc{color:#666666;line-height:1.5;padding-right:10px;min-height:45px;}
 .job{color:#999999;}
 .jt-tcr-read{position:relative;}
 .jt-tcr-read .glyphicon{position:absolute;top: 4px;right:0px;}
 .jt-tcr-read a{color:#ce1621;font-size:14px;display:block;}
+
+/*移动端兼容*/
+body{background:#f2f2f2;}
+.container-fluid{padding:0;}
+.person_list{padding:0 5px;}
+.person_list .col-xs-6,.person_list .col-sm-6{padding:0 15px;}
+#jt-tcr-info-container .col-xs-5,#jt-tcr-info-container .col-sm-5,#jt-tcr-info-container .col-xs-7,#jt-tcr-info-container .col-sm-7{padding:0 15px;}
+#jt-tcr-info-container{padding:0 5px;}
