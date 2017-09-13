@@ -3,11 +3,11 @@
  */
 @font-face {
     font-family: "PingFangSC-Regular";
-    src: url('../fonts/PingFang-SC-Regular.otf');
+    src: url('../fonts/PingFang_Bold.ttf');
 }
 @font-face {
     font-family:"PingFangSC-Semibold";
-    src: url('../fonts/PingFang-SC-Semibold.ttf');
+    src: url('../fonts/PingFang_Heavy.ttf');
 }
 @font-face {
     font-family:"PingFangSC-Medium";
