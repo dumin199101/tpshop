@@ -47,7 +47,7 @@
                         <foreach name="act_list" id="vo">
                             <div class="col-xs-6 col-sm-6">
                                 <div class="thumbnail">
-                                    <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
+                                    <a href="{:url('mobile/activity/info',['id'=>$vo['act_id']])}" >
                                         <img src="{$vo.act_id|act_thum_images=3,360,400}"  alt="">
                                         <div class="date text-left">{$vo.start_time|formatDate}</div>
                                         <h5 class="text-left act-title">{$vo.act_name|getSubstr=0,7}</h5>
@@ -78,7 +78,7 @@
                         <foreach name="more_list" id="vo">
                             <div class="col-xs-6 col-sm-6">
                                 <div class="thumbnail">
-                                    <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}"  class="img">
+                                    <a href="{:url('mobile/goods/personInfo',['id'=>$vo['id']])}"  class="img">
                                         <img src="{$vo.id|person_thum_images=280,500}" alt="">
                                     </a>
 
@@ -91,7 +91,7 @@
 
                                         <div class="jt-tcr-line"></div>
                                         <p class="jt-tcr-read">
-                                            <a href="{:url('Goods/personInfo',['id'=>$vo['id']])}"
+                                            <a href="{:url('mobile/goods/personInfo',['id'=>$vo['id']])}"
                                                >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
                                         </p>
                                     </div>
