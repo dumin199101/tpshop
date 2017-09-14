@@ -4,7 +4,7 @@
 /*vip*/
 body{background:#fff;}
 .jt-box{margin-left:0;}
-.jt-navigator span.h1{font-size:24px;}
+.jt-navigator span.h1{font-size:24px;bottom:2px;position:relative;}
 .jt-navigator{margin-top:48px;}
 .jt-vip-container,.jt-card-container,.jt-discount-container,.jt-points-container,.jt-electric-container,.jt-benifits-container{padding:0 20px;}
 .jt-vip-container .item{margin-bottom:30px;min-height:110px;}

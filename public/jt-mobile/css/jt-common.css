@@ -33,7 +33,7 @@
 /**
  公共样式
  */
-body{font-family: "PingFangSC-Regular"}
+body{font-family: "PingFangSC-Regular","Microsoft Yahei","微软雅黑"}
 .mt-30{margin-top:30px;}
 .ml-5{margin-left:5px;}
 .row{padding-right:0;}
@@ -67,7 +67,7 @@ body{font-family: "PingFangSC-Regular"}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
 .navbar-default .navbar-nav > .active > a:hover,.navbar-default .navbar-nav > .active > a:focus{color:#ce1621;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {color: #ce1621;  background-color: transparent;  }
-.navbar-default .navbar-nav > li{font-family: "PingFangSC-Semibold";}
+.navbar-default .navbar-nav > li{font-family: "PingFangSC-Regular","Microsoft Yahei","微软雅黑";}
 .navbar-default .navbar-nav > li > a {color: #868686;font-size: 14px;width:100%;display:inline-block;text-align:center;}
 .navbar-default .navbar-nav > li:last-child > a {border-right:none;}
 /*二级导航*/

@@ -30,8 +30,10 @@ body{background:#f4f4f3;}
 .jt-brand ul li{width:20px;text-align:center;margin-top:10px;position:relative;}
 .jt-brand ul li span.h3{font-family:"Helvetica";font-size:20px;}
 .jt-brand ul li > .mark-divider{background:#ce1621;display:none;width:21px;height:4px;}
-.jt-brand ul li:hover > .mark-divider,.jt-brand ul li.active > .mark-divider{display:block;position:absolute;bottom:-12px;left:2px;}
-.jt-brand ul li:hover a > span.h3 ,.jt-brand ul li.active a > span.h3{color: #ce1621;font-family:"Helvetica";font-weight:bold;}
+.jt-brand ul li.active > .mark-divider{display:block;position:absolute;bottom:-12px;left:2px;}
+.jt-brand ul li.active a > span.h3{color: #ce1621;font-family:"Helvetica";font-weight:bold;}
+.jt-brand ul li:active  > .mark-divider,.jt-brand ul li:hover > .mark-divider{display:none;}
+.jt-brand ul li:active a > span.h3,.jt-brand ul li:hover a > span.h3{color: #000;font-family:"Helvetica";font-weight:normal;}
 
 
 /*太潮人*/
