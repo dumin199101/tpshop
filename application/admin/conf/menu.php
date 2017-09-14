@@ -32,6 +32,12 @@ return	array(
 				array('name' => '模板','child'=>array(
 						array('name' => '模板设置', 'act'=>'templateList', 'op'=>'Template'),
 				)),
+                array('name' => '其它','child'=>array(
+                    array('name' => '关于君太', 'act'=>'aboutUpdate', 'op'=>'Other'),
+                    array('name' => '君太VIP', 'act'=>'vipUpdate', 'op'=>'Other'),
+                    array('name' => '版权信息', 'act'=>'copyrightUpdate', 'op'=>'Other'),
+                )),
+
 
 	)),
 );
