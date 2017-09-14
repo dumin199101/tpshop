@@ -105,8 +105,13 @@
     </div>
 
     <script>
-        var height = $(".jt-head-logo").height();
-        $(".jt-summarys").height(height);
+        $(".jt-head-logo").load(function(){
+            var height = $(".jt-head-logo").height();
+            $(".jt-summarys").height(height);
+        }).error(function(){
+            console.log("Image Load Failed!!!")
+        });
+
     </script>
 
 
