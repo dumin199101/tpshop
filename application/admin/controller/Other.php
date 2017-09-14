@@ -17,16 +17,16 @@ class Other extends Base
 {
     public function aboutUpdate()
     {
-        
+        return $this->fetch();
      }
 
     public function vipUpdate()
     {
-        
+        return $this->fetch();
      }
 
     public function copyrightUpdate()
     {
-
+        return $this->fetch();
      }
 }
