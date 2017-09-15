@@ -89,7 +89,7 @@
                         content = '';
                         $(data.data).each(function(index,val){
                             index++;
-                            var url = "{:U('goods/goodsInfo',['id'=>val])}";
+                            var url = "{:U('mobile/goods/goodsInfo',['id'=>val])}";
                             url = url.replace('val',val.id);
                             content+= '<div class="col-xs-12 col-sm-12 item">'+
                                     '<div class="thumbnail">'+

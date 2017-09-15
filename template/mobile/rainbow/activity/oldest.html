@@ -92,7 +92,7 @@
                         content = '';
                         $(data.data).each(function(index,val){
                             index++;
-                            var url = "{:U('activity/info',['id'=>val])}";
+                            var url = "{:U('mobile/activity/info',['id'=>val])}";
                             url = url.replace('val',val.act_id);
                             content+= '<div class="col-md-12 item">'+
                                     '<h4 class="act-date">'+val.start_time+'</h4>'+
