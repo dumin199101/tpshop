@@ -16,9 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="jt-about-desc col-md-12">
-                    <p>君太百货集团(Grand Pacific)创立于2003年,是一家大型商业企业,总部设于北京,原太平洋SOGO百货和太平洋百货也是由君太百货集团(Grand Pacific)的创办人所创立的。</p>
-                    <p>君太百货集团(Grand Pacific)拥有百货零售事业群、商业管理事业群、餐饮文娱事业群、商业地产事业群、品牌贸易事业群、电子商务事业群、商业设计事业群等七大产业，是台资企业在中国大陆少数形成商业地产完整产业链和企业核心竞争优势的大型综合性商业企业。</p>
-                    <p>君太百货集团(Grand Pacific)的北京店，建筑面积7万平方米，单店年营业额逾新台币佰亿。</p>
+                   {$content.desc|htmlspecialchars_decode}
                 </div>
             </div>
         </div>
@@ -40,13 +38,13 @@
                                 </div>
                                 <div class="system col-md-10">
                                     <span class="num">1</span>
-                                    <span class="hx">核心理念</span>
-                                    <p class="jtbh">君太百货集团(Grand Pacific)企业文化的核心理念是“有心、用心、求创新”。</p>
+                                    <span class="hx">{$title.coreidea}</span>
+                                    <p class="jtbh">{$content.coreidea}</p>
                                 </div>
                                 <div class="system col-md-10">
                                     <span class="num">2</span>
-                                    <span class="hx">企业使命</span>
-                                    <p class="jtbh">君太百货集团(Grand Pacific)一直以“优良生活环境的创造者”做为企业使命与社会责任。</p>
+                                    <span class="hx">{$title.mission}</span>
+                                    <p class="jtbh">{$content.mission}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 jt-pic">
@@ -55,7 +53,7 @@
                                         <div class="jt-picture">
                                         </div>
                                         <div class="jt-frame">
-                                            <img class="img-responsive" src="__PUBLIC__/jt/images/about/1.png">
+                                            <img class="img-responsive" src="{$img.coreidea}">
                                         </div>
                                     </div>
                                 </div>
@@ -69,17 +67,17 @@
                                         <div class="jt-picture">
                                         </div>
                                         <div class="jt-frame">
-                                            <img class="img-responsive" src="__PUBLIC__/jt/images/about/2.png">
+                                            <img class="img-responsive" src="{$img.institutional}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="jt-content-title">
-                                    <span class="h3">制度体系</span>
+                                    <span class="h3">{$title.institutional}</span>
                                 </div>
                                 <div class="system col-md-10">
-                                    <p class="jtbh">君太百货集团(Grand Pacific)为了保证企业文化与管理制度的传承、贯彻、执行、形成一套完整的顾客服务与员工教育培训体系，是一个学习型成长企业。</p>
+                                    <p class="jtbh">{$content.institutional}</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +89,8 @@
                                 </div>
                                 <div class="system col-md-10">
                                     <span class="num">1</span>
-                                    <span class="hx">勇于创新</span>
-                                    <p class="jtbh">勇于创新是君太百货集团(Grand Pacific)企业文化的首要特点，就是只要认为有利于企业的，就鼓励大家要大胆的建议，勇于尝试、放手去做。</p>
+                                    <span class="hx">{$title.innovation}</span>
+                                    <p class="jtbh">{$content.innovation}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 jt-pic">
@@ -101,7 +99,7 @@
                                         <div class="jt-picture">
                                         </div>
                                         <div class="jt-frame">
-                                            <img class="img-responsive" src="__PUBLIC__/jt/images/about/3.png">
+                                            <img class="img-responsive" src="{$img.innovation}">
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +113,7 @@
                                         <div class="jt-picture">
                                         </div>
                                         <div class="jt-frame">
-                                            <img class="img-responsive" src="__PUBLIC__/jt/images/about/4.png">
+                                            <img class="img-responsive" src="{$img.honesty}">
                                         </div>
                                     </div>
                                 </div>
@@ -123,13 +121,13 @@
                             <div class="col-md-6">
                                 <div class="system col-md-10">
                                     <span class="num">2</span>
-                                    <span class="hx">诚实守信</span>
-                                    <p class="jtbh">坚守诚信是君太百货集团(Grand Pacific)企业文化的核心特点。</p>
+                                    <span class="hx">{$title.honesty}</span>
+                                    <p class="jtbh">{$content.honesty}</p>
                                 </div>
                                 <div class="system col-md-10">
                                     <span class="num">3</span>
-                                    <span class="hx">致力环保</span>
-                                    <p class="jtbh">君太百货集团(Grand Pacific)是全国最早推行的回收资源再利用及节能减碳的企业之一。</p>
+                                    <span class="hx">{$title.environment}</span>
+                                    <p class="jtbh">{$content.environment}</p>
                                 </div>
                             </div>
                         </div>
@@ -138,13 +136,13 @@
                             <div class="col-md-6">
                                 <div class="system col-md-10">
                                     <span class="num">4</span>
-                                    <span class="hx">关爱员工</span>
-                                    <p class="jtbh">君太百货集团(Grand Pacific)视员工为企业的核心资本，发展成果首先惠及员工，待遇、食宿、医疗、保险有所保障，此外，君太百货集团每年投入高额度预算用于员工培训于国内外考察，使员工在各方面都能有所增长与成长。</p>
+                                    <span class="hx">{$title.care}</span>
+                                    <p class="jtbh">{$content.care}</p>
                                 </div>
                                 <div class="system col-md-10">
                                     <span class="num">5</span>
-                                    <span class="hx">热心公益</span>
-                                    <p class="jtbh">君太百货集团(Grand Pacific)的创办人为虔诚的基督徒，热心公益，企业成立至今，参与的慈善及急难捐助逾亿元，为中国大陆知名的阿拉善公益社团主要赞助成员之一。</p>
+                                    <span class="hx">{$title.welfare}</span>
+                                    <p class="jtbh">{$content.welfare}</p>
                                 </div>
                             </div>
                             <div class="col-md-6 jt-pic">
@@ -153,7 +151,7 @@
                                         <div class="jt-picture">
                                         </div>
                                         <div class="jt-frame">
-                                            <img class="img-responsive" src="__PUBLIC__/jt/images/about/5.png">
+                                            <img class="img-responsive" src="{$img.care}">
                                         </div>
                                     </div>
                                 </div>
