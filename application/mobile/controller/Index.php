@@ -26,7 +26,7 @@ class Index extends Base {
         $this->assign('banner_list',$banner_list);
 
         //活动
-        $act_list = S('Pos:index:act_list');
+        $act_list = S('Pos:mobile:index:act_list');
         if(empty($act_list)){
             $act_list = Db::name('activity')->alias('a')
                 ->field('act_id,act_name,act_img,start_time')
@@ -35,9 +35,9 @@ class Index extends Base {
                 ->where('a.start_time','<',time())
                 ->where('a.end_time','>',time())
                 ->order('act_id desc')
-                ->limit(8)
+                ->limit(4)
                 ->select();
-            S('Pos:index:act_list',$act_list,JT_CACHE_TIME);
+            S('Pos:mobile:index:act_list',$act_list,JT_CACHE_TIME);
         }
         $this->assign('act_list',$act_list);
 
