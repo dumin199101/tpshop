@@ -25,5 +25,6 @@
 .brand-des > h3.cn-name , .brand-des > h3.en-name{color:#ce1621;}
 .brand-des > p{text-align: justify;line-height:1.5;color:#333;}
 .brand-des > h4{margin-bottom:30px;text-align:justify;font-size:14px;line-height:1.5;}
-#letter{color:#fff;background:#ce1621;text-transform:uppercase;}
+#letter{background:#ce1621;text-transform:uppercase;width:0;height:0;}
+#letter span.h3{color:black;}
 #brand-list-container .col-xs-4,#jt-tcr-container.col-sm-4{padding:0 5px;}
