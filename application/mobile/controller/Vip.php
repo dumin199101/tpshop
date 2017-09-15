@@ -37,6 +37,18 @@ class Vip extends Base
             S('Pos:vip:banner_list',$banner_list,JT_CACHE_TIME);
         }
         $this->assign('banner_list', $banner_list);
+
+        $info = Db::name('web_static')->where('id',2)->whereOr('pid',2)->select();
+        $title = $content = $img = [];
+        foreach($info as $v){
+            $title[$v['name']] = $v['title'];
+            $content[$v['name']] = $v['content'];
+            $img[$v['name']] = $v['img'];
+        }
+        $this->assign('img',$img);
+        $this->assign('content',$content);
+        $this->assign('title',$title);
+
         $position = Request::instance()->controller();
         $this->assign('position',$position);
         return $this->fetch();

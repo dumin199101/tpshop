@@ -39,6 +39,18 @@ class System extends Base
                 ->select();
             S('Pos:system:banner_list',$banner_list,JT_CACHE_TIME);
         }
+
+        $info = Db::name('web_static')->where('pid',1)->cache(true,JT_CACHE_TIME)->select();
+        $title = $content = $img = [];
+        foreach($info as $v){
+            $title[$v['name']] = $v['title'];
+            $content[$v['name']] = $v['content'];
+            $img[$v['name']] = $v['img'];
+        }
+        $this->assign('img',$img);
+        $this->assign('content',$content);
+        $this->assign('title',$title);
+
         $position = Request::instance()->controller();
         $this->assign('position',$position);
         $this->assign('banner_list',$banner_list);
@@ -50,6 +62,8 @@ class System extends Base
      */
     public function copyright()
     {
+        $content = Db::name('web_static')->field('content')->where('id',3)->cache(true,JT_CACHE_TIME)->find();
+        $this->assign('content',$content);
         $position = Request::instance()->controller();
         $this->assign('position',$position);
         return $this->fetch();

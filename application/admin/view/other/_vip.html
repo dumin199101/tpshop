@@ -1,4 +1,6 @@
 <include file="public/layout" />
+<link rel="stylesheet" href="/public/plugins/layui/css/layui.css" media="all">
+<script src="/public/plugins/layui/layui.js"></script>
 <!--以下是在线编辑器 代码 -->
 <script type="text/javascript">
     /*
@@ -88,7 +90,7 @@
     <div class="fixed-bar">
         <div class="item-title">
             <div class="subject">
-                <h3> {$info.title}- 修改</h3>
+                <h3> {$title.vip}- 修改</h3>
             </div>
         </div>
     </div>
@@ -96,10 +98,140 @@
         <div class="ncap-form-default">
             <dl class="row">
                 <dt class="tit">
-                    <label for="goods_content">{$info.title}</label>
+                    <label>{$title.card}</label>
+                </dt>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项一</label>
                 </dt>
                 <dd class="opt">
-                    <textarea class="span12 ckeditor" id="goods_content" name="content" title="">{$info.content}</textarea>
+                    <input type="text" value="{$title.discount}" name="discount-title" class="input-txt">
+                    <span class="err" id="err_discount"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="discount" title="">{$content.discount}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test1">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="discount_img"  id="img_url_test1" type="hidden" value="{$img.discount}">
+                    <div class="opt" id="img_preview_test1">
+                        <img src="{$img.discount}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项二</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$title.gift}" name="gift-title" class="input-txt">
+                    <span class="err" id="err_gift"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="gift" title="">{$content.gift}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test2">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="gift_img"  id="img_url_test2" type="hidden" value="{$img.gift}">
+                    <div class="opt" id="img_preview_test2">
+                        <img src="{$img.gift}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项三</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$title.park}" name="park-title" class="input-txt">
+                    <span class="err" id="err_park"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="park" title="">{$content.park}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test3">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="park_img"  id="img_url_test3" type="hidden" value="{$img.park}">
+                    <div class="opt" id="img_preview_test3">
+                        <img src="{$img.gift}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项四</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$title.integration}" name="integration-title" class="input-txt">
+                    <span class="err" id="err_integration"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="integration" title="">{$content.integration}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test4">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="integration_img"  id="img_url_test4" type="hidden" value="{$img.integration}">
+                    <div class="opt" id="img_preview_test4">
+                        <img src="{$img.integration}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项五</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$title.service}" name="service-title" class="input-txt">
+                    <span class="err" id="err_service"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="service" title="">{$content.service}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test5">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="service_img"  id="img_url_test5" type="hidden" value="{$img.service}">
+                    <div class="opt" id="img_preview_test5">
+                        <img src="{$img.service}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label>选项六</label>
+                </dt>
+                <dd class="opt">
+                    <input type="text" value="{$title.news}" name="news-title" class="input-txt">
+                    <span class="err" id="err_news"></span>
+                    <p class="notic"></p>
+                    <textarea class="span12 ckeditor"  name="news" title="">{$content.news}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test6">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="news_img"  id="img_url_test6" type="hidden" value="{$img.news}">
+                    <div class="opt" id="img_preview_test6">
+                        <img src="{$img.news}" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="tit">
+                    <label for="goods_content">{$title.equity}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor" id="goods_content" name="equity" title="">{$content.equity}</textarea>
                     <span class="err" id="err_content" style="color:#F00; display:none;"></span>
                 </dd>
             </dl>
@@ -109,11 +241,134 @@
     </form>
 </div>
 <script>
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test1', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test1").html(img_preview_one);
+                $("#img_url_test1").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test2', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test2").html(img_preview_one);
+                $("#img_url_test2").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test3', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test3").html(img_preview_one);
+                $("#img_url_test3").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test4', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test4").html(img_preview_one);
+                $("#img_url_test4").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test5', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test5").html(img_preview_one);
+                $("#img_url_test5").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test6', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:83px;height:83px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test6").html(img_preview_one);
+                $("#img_url_test6").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
     function verifyForm(){
         $('span.err').show();
         $.ajax({
             type: "POST",
-            url: "{:U('Other/copyrightUpdate')}",
+            url: "{:U('Other/vipUpdate')}",
             data: $('#add_post').serialize(),
             dataType: "json",
             error: function () {
