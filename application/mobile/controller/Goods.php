@@ -87,7 +87,7 @@ class Goods extends Base {
         $this->assign('banner_list',$banner_list);
 
         //活动
-        $act_list = S('Pos:personList:act_list');
+        $act_list = S('Pos:mobile:personList:act_list');
         if(empty($act_list)){
             $act_list = Db::name('activity')->field('act_id,act_name,act_img,start_time')
                 ->where('is_hot',1)
@@ -95,9 +95,9 @@ class Goods extends Base {
                 ->where('start_time','<',time())
                 ->where('end_time','>',time())
                 ->order('act_id desc')
-                ->limit(8)
+                ->limit(4)
                 ->select();
-            S('Pos:personList:act_list',$act_list,JT_CACHE_TIME);
+            S('Pos:mobile:personList:act_list',$act_list,JT_CACHE_TIME);
         }
         $this->assign('act_list',$act_list);
 

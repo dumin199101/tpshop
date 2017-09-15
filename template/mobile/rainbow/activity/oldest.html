@@ -32,7 +32,7 @@
                             <h4 class="act-date">{$vo.start_time|formatActDate}</h4>
                             <span class="date-line"></span>
                             <div class="img">
-                                <img src="{$vo.act_img}" class="img-responsive" alt="">
+                                <img data-original="{$vo.act_img}" width="1200" height="480" class="lazy img-responsive" alt="">
                             </div>
 
                             <div class="col-md-12">
@@ -98,7 +98,7 @@
                                     '<h4 class="act-date">'+val.start_time+'</h4>'+
                                     '<span class="date-line"></span>'+
                                     '<div class="img">'+
-                                    '<img src="'+val.act_img+'" class="img-responsive" alt="">'+
+                                    '<img width="1200" height="480" data-original="'+val.act_img+'" class="lazy img-responsive" alt="">'+
                                     '</div>'+
                                     '<div class="col-md-12">'+
                                     '<div class="row">'+
@@ -123,8 +123,9 @@
                     }
                 },
                 function(newElements, data, url) { //回调函数
-                    //console.log(data);
-                    //alert(url);
+                    $("img.lazy",newElements).lazyload({
+                        effect: "fadeIn",
+                    });
                 });
     </script>
 </block>
