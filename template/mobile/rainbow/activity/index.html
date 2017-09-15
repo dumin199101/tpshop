@@ -133,7 +133,7 @@
                     <foreach name="act_oldest_list" id="vo">
                         <div class="col-xs-12 col-sm-12">
                             <a href="{:url('mobile/activity/info',['id'=>$vo['act_id']])}" >
-                                <img class="img-responsive" src="{$vo.act_id|act_thum_images=2,554,360}" alt="">
+                                <img class="img-responsive lazy"  data-original="{$vo.act_id|act_thum_images=2,554,360}" width="554" height="360"  alt="">
                                 <h4 class="old-act-date">{$vo.start_time|formatActDate}-{$vo.end_time|formatActDate}</h4>
                                 <span class="h4 old-act-title">{$vo.act_name|getSubstr=0,18}</span>
                             </a>
