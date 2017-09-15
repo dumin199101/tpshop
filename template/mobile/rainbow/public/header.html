@@ -52,5 +52,15 @@
         $(this).parent("li").find(".glyphicon-menu-down").removeClass("hide").addClass("show");
         $(this).siblings("ul.child").css("height","0px");
     });
+    window.onscroll=function(){
+        var topScroll = $(window).scrollTop();//滚动的距离,距离顶部的距离
+        if(topScroll > 0){
+            //当滚动距离大于250px时执行下面的东西
+            $("nav").removeClass("navbar-jt").addClass("navbar-fixed-top")
+        }else{
+            //当滚动距离小于250的时候执行下面的内容，也就是让导航栏恢复原状
+            $("nav").removeClass("navbar-fixed-top").addClass("navbar-jt");
+        }
+    }
 </script>
 
