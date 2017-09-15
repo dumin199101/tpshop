@@ -54,4 +54,25 @@ class Uploadify extends Base{
         }
     }
 
+    public function uploadMultiPic(){
+        // 获取表单上传文件 例如上传了001.jpg
+        $file = request()->file('file');
+        $data = [];
+        if($file){
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'upload' . DS . 'webstatic');
+            if($info){
+                // 成功上传后 获取上传信息
+                $data['code'] = 1;
+                $data['msg'] = '上传成功';
+                $data['src'] = '/public/upload/webstatic/' . str_replace('\\', '/', $info->getSaveName());
+            }else{
+                // 上传失败获取错误信息
+                $data['code'] = 0;
+                $data['msg'] = $file->getError();
+                $data['src'] = '';
+            }
+            $this->ajaxReturn($data);
+        }
+    }
+
 }

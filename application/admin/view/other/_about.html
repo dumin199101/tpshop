@@ -1,4 +1,6 @@
 <include file="public/layout" />
+<link rel="stylesheet" href="/public/plugins/layui/css/layui.css" media="all">
+<script src="/public/plugins/layui/layui.js"></script>
 <!--以下是在线编辑器 代码 -->
 <script type="text/javascript">
     /*
@@ -88,7 +90,7 @@
     <div class="fixed-bar">
         <div class="item-title">
             <div class="subject">
-                <h3> {$info.title}- 修改</h3>
+                <h3> {$title.about}- 修改</h3>
             </div>
         </div>
     </div>
@@ -96,24 +98,238 @@
         <div class="ncap-form-default">
             <dl class="row">
                 <dt class="tit">
-                    <label for="goods_content">{$info.title}</label>
+                    <label for="goods_content">{$title.desc}</label>
                 </dt>
                 <dd class="opt">
-                    <textarea class="span12 ckeditor" id="goods_content" name="content" title="">{$info.content}</textarea>
+                    <textarea class="span12 ckeditor" id="goods_content" name="desc" title="">{$content.desc}</textarea>
                     <span class="err" id="err_content" style="color:#F00; display:none;"></span>
                 </dd>
             </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.coreidea}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="coreidea" title="">{$content.coreidea}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test1">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="coreidea_img"  id="img_url_test1" type="hidden" value="{$img.coreidea}">
+                    <div class="opt" id="img_preview_test1">
+                        <img src="{$img.coreidea}" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.mission}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="mission" title="">{$content.mission}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.institutional}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="institutional" title="">{$content.institutional}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test2">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="institutional_img"  id="img_url_test2" type="hidden" value="{$img.institutional}">
+                    <div class="opt" id="img_preview_test2">
+                        <img src="{$img.institutional}" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.innovation}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="innovation" title="">{$content.innovation}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test3">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="innovation_img"  id="img_url_test3" type="hidden" value="{$img.innovation}">
+                    <div class="opt" id="img_preview_test3">
+                        <img src="{$img.innovation}" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.honesty}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="honesty" title="">{$content.honesty}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test4">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="honesty_img"  id="img_url_test4" type="hidden" value="{$img.honesty}">
+                    <div class="opt" id="img_preview_test4">
+                        <img src="{$img.honesty}" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.environment}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="environment" title="">{$content.environment}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.care}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="care" title="">{$content.care}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                    <br>
+                    <button type="button" class="layui-btn" id="test5">
+                        <i class="layui-icon">&#xe67c;</i>更新配图
+                    </button>
+                    <input name="care_img"  id="img_url_test5" type="hidden" value="{$img.care}">
+                    <div class="opt" id="img_preview_test5">
+                        <img src="{$img.care}" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>{$title.welfare}</label>
+                </dt>
+                <dd class="opt">
+                    <textarea class="span12 ckeditor"  name="welfare" title="">{$content.welfare}</textarea>
+                    <span class="err"  style="color:#F00; display:none;"></span>
+                </dd>
+            </dl>
+
 
             <div class="bot"><a href="JavaScript:void(0);" onClick="verifyForm()" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
         </div>
     </form>
 </div>
 <script>
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test1', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test1").html(img_preview_one);
+                $("#img_url_test1").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test2', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test2").html(img_preview_one);
+                $("#img_url_test2").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test3', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test3").html(img_preview_one);
+                $("#img_url_test3").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test4', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test4").html(img_preview_one);
+                $("#img_url_test4").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test5', //绑定元素
+            multiple:true
+            ,url: "{:U('Uploadify/uploadMultiPic')}" //上传接口
+            ,done: function(res){
+                //上传完毕回调
+                var img_preview_one = '<img src="'+res.src+'" style="width:450px;height:300px;float:left;margin:5px 0px;border:1px solid #ccc;">';
+                $("#img_preview_test5").html(img_preview_one);
+                $("#img_url_test5").val(res.src);
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
+
     function verifyForm(){
         $('span.err').show();
         $.ajax({
             type: "POST",
-            url: "{:U('Other/copyrightUpdate')}",
+            url: "{:U('Other/aboutUpdate')}",
             data: $('#add_post').serialize(),
             dataType: "json",
             error: function () {

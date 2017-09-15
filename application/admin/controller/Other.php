@@ -20,12 +20,45 @@ class Other extends Base
     public function aboutUpdate()
     {
         if(request()->isPost()){
+            $result = Db::name('web_static')->where('id',1)->whereOr('pid',1)->select();
+            foreach($result as $val){
+                $temp[$val['name']] = $val['content'];
+            }
             $data = input('post.');
-            Db::name('web_static')->where('id',1)->save($data);
+            //看内容是否有变化:
+            foreach($data as $k=>$v){
+                if(strpos($k,'_')!==false)
+                    continue;
+                $newArr = ['content'=>$v];
+                if($v!=$temp[$k])
+                    Db::name('web_static')->where("name", $k)->save($newArr);//变更新此项
+            }
+            //看图片是否有变化：
+            foreach($result as $val){
+                if(empty($val['img']))
+                    continue;
+                $tmp[$val['name']] = $val['img'];
+            }
+            foreach($data as $k=>$v){
+                if(strpos($k,'_')===false)
+                    continue;
+                $keys = explode('_',$k);
+                $newTmpArr = ['img'=>$v];
+                if($v!=$tmp[$keys[0]])
+                    Db::name('web_static')->where("name", $keys[0])->save($newTmpArr);//变更新此项
+            }
             $this->ajaxReturn(['status'=>1,'msg'=>'操作成功','result'=>'']);
         }else{
-            $info = Db::name('web_static')->where('id',1)->find();
-            $this->assign('info',$info);
+            $info = Db::name('web_static')->where('id',1)->whereOr('pid',1)->select();
+            $title = $content = $img = [];
+            foreach($info as $v){
+                $title[$v['name']] = $v['title'];
+                $content[$v['name']] = $v['content'];
+                $img[$v['name']] = $v['img'];
+            }
+            $this->assign('img',$img);
+            $this->assign('content',$content);
+            $this->assign('title',$title);
             $this->initEditor(); // 编辑器
             return $this->fetch('_about');
         }
