@@ -1,6 +1,7 @@
 <?php
 
 namespace app\admin\controller;
+use app\admin\model\Navigation;
 use think\db;
 use think\Cache;
 use think\Page;
@@ -84,7 +85,9 @@ class System extends Base{
         if (IS_POST) {
             if (I('id')){
                 adminLog("编辑导航");
-                $model->update(I('post.'));
+                $navigation = new Navigation();
+                // save方法第二个参数为更新条件
+                $navigation->save(I('post.'),['id' => I('id')]);
             }else{
                 adminLog("添加导航");
                 $model->add(I('post.'));
