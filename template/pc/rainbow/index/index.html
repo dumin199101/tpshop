@@ -132,15 +132,17 @@
     <!--太潮志-->
     <script type="text/javascript">
         $(function(){
-            var width = $("#jt-tcr-container .thumbnail:first").width()-5;
-            var height = $("#jt-tcr-container .thumbnail:first").height()-6;
-            $(".jt-picture").css({width:width,height:height});
-            $("#jt-tcr-container .thumbnail").mouseenter(function(){
-                $(this).siblings(".jt-picture").show();
+            $("#jt-tcr-container .thumbnail:first > a > img").load(function(){
+                var width = $("#jt-tcr-container .thumbnail:first").width()-5;
+                var height = $("#jt-tcr-container .thumbnail:first").height()-6;
+                $(".jt-picture").css({width:width,height:height});
+                $("#jt-tcr-container .thumbnail").mouseenter(function(){
+                    $(this).siblings(".jt-picture").show();
+                });
+                $("#jt-tcr-container .thumbnail").mouseleave(function(){
+                    $(this).siblings(".jt-picture").hide();
+                });
             });
-            $("#jt-tcr-container .thumbnail").mouseleave(function(){
-                $(this).siblings(".jt-picture").hide();
-            });
-        })
+        });
     </script>
 </block>
