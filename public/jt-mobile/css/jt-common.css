@@ -62,6 +62,7 @@ body{font-family: "PingFangSC-Regular","Microsoft Yahei","微软雅黑"}
 
 
 /*头部导航*/
+nav{box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);}
 .navbar-fixed-top{background:#fff;border:none;}
 .navbar-jt{position:relative;top:0;left:0;right:0;background: #fff;z-index:100000;border-radius:0px;border:none;}
 .navbar-default .navbar-nav > .active > a{color: #ce1621;}
