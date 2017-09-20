@@ -20,6 +20,36 @@ class Person extends Base {
     }
 
     /**
+     * 批量删除、显示、推荐太潮人
+     */
+    public function batchOpPerson()
+    {
+        $type = I('post.type');
+        $selected_id = I('post.selected/a');
+        if(!in_array($type,array('del','show','hide','recommend','no-recommend')) || !$selected_id)
+            $this->error('非法操作');
+        if($type == 'del'){
+            //删除
+            $row = Db::name('person')->where('id','IN',$selected_id[0])->delete();
+        }
+        if($type == 'show'){
+            $row = Db::name('person')->where('id','IN',$selected_id[0])->save(array('is_open'=>1));
+        }
+        if($type == 'hide'){
+            $row = Db::name('person')->where('id','IN',$selected_id[0])->save(array('is_open'=>0));
+        }
+        if($type == 'recommend'){
+            $row = Db::name('person')->where('id','IN',$selected_id[0])->save(array('is_recommend'=>1));
+        }
+        if($type == 'no-recommend'){
+            $row = Db::name('person')->where('id','IN',$selected_id[0])->save(array('is_recommend'=>0));
+        }
+        if(!$row)
+            $this->error('操作失败');
+        $this->success('操作成功');
+    }
+
+    /**
      * 太潮人列表
      * @return mixed
      */

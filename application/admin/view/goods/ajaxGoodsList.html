@@ -1,7 +1,7 @@
 <table>
        <tbody>
             <volist name="goodsList" id="list">
-              <tr>
+              <tr data-id="{$list.id}">
                 <td class="sign" axis="col6">
                   <div style="width: 24px;"><i class="ico-check"></i></div>
                 </td>
@@ -61,6 +61,27 @@
             </volist>             
           </tbody>
         </table>
+        <div class="sDiv" style="float:left;margin-top:10px">
+          <if condition="empty($goodsList) neq true">
+            <div class="sDiv2">
+              <select name="operate" id="operate" class="select">
+                <option value="0">操作选择</option>
+                <option value="show">显示</option>
+                <option value="hide">隐藏</option>
+                <option value="recommend">首页推荐</option>
+                <option value="no-recommend">取消首页推荐</option>
+                <option value="del">删除</option>
+              </select>
+            </div>
+            <div class="sDiv2">
+              <input type="button" onclick="op()"  class="btn" value="确定">
+              <form id="op" action="{:U('Goods/batchOpGoods')}" method="post">
+                <input type="hidden" name="selected">
+                <input type="hidden" name="type">
+              </form>
+            </div>
+          </if>
+        </div>
         <!--分页位置--> {$page}
 		<script>
             // 点击分页触发的事件

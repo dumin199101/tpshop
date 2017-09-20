@@ -15,6 +15,31 @@ class Banner extends Base
 {
 
     /**
+     * 批量删除、显示轮播
+     */
+    public function batchOpBanner()
+    {
+        $type = I('post.type');
+        $selected_id = I('post.selected/a');
+        if(!in_array($type,array('del','show','hide')) || !$selected_id)
+            $this->error('非法操作');
+        if($type == 'del'){
+            //删除banner
+            $row = Db::name('banner')->where('banner_id','IN',$selected_id[0])->delete();
+        }
+        if($type == 'show'){
+            $row = Db::name('banner')->where('banner_id','IN',$selected_id[0])->save(array('enabled'=>1));
+        }
+        if($type == 'hide'){
+            $row = Db::name('banner')->where('banner_id','IN',$selected_id[0])->save(array('enabled'=>0));
+
+        }
+        if(!$row)
+            $this->error('操作失败');
+        $this->success('操作成功');
+    }
+
+    /**
      * 增删改轮播
      */
     public function bannerHandle()
@@ -102,7 +127,7 @@ class Banner extends Base
         }
         $count = $Banner->where($where)->count();// 查询满足要求的总记录数
         $Page = $pager = new Page($count, 10);// 实例化分页类 传入总记录数和每页显示的记录数
-        $res = $Banner->where($where)->order('pid desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
+        $res = $Banner->where($where)->order('banner_id desc')->limit($Page->firstRow . ',' . $Page->listRows)->select();
         $list = array();
         if ($res) {
             $media = array('图片', '文字', 'flash');

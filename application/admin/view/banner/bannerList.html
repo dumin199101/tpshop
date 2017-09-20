@@ -65,10 +65,10 @@
               </th>     
               <th align="center" abbr="article_time" axis="col6" class="">
                 <div style="text-align: center; width: 200px;" class="">轮播链接</div>
-              </th>     
-              <th align="center" abbr="article_time" axis="col6" class="">
-                <div style="text-align: center; width: 50px;" class="">新窗口</div>
               </th>
+              <!--<th align="center" abbr="article_time" axis="col6" class="">
+                <div style="text-align: center; width: 50px;" class="">新窗口</div>
+              </th>-->
               <th align="center" abbr="article_time" axis="col6" class="">
                 <div style="text-align: center; width: 50px;" class="">显示</div>
               </th>
@@ -110,7 +110,7 @@
               </tr>
               <else/>
               <foreach name="list" item="vo" key="k">
-                <tr>
+                <tr data-id="{$vo.banner_id}">
                   <td class="sign">
                     <div style="width: 24px;"><i class="ico-check"></i></div>
                   </td>
@@ -129,7 +129,7 @@
                   <td align="center" class="">
                     <div style="text-align: center; width: 200px;">{$vo.banner_link}</div>
                   </td>
-                  <td align="center" class="">
+                 <!-- <td align="center" class="">
                     <div style="text-align: center; width: 50px;">
                       <if condition='$vo[target] eq 1'>
                         <span class="yes" onClick="changeTableVal('banner','banner_id','{$vo.banner_id}','target',this)"><i class="fa fa-check-circle"></i>是</span>
@@ -137,7 +137,7 @@
                         <span class="no" onClick="changeTableVal('banner','banner_id','{$vo.banner_id}','target',this)"><i class="fa fa-ban"></i>否</span>
                       </if>
                     </div>
-                  </td>
+                  </td>-->
                   <td align="center" class="">
                     <div style="text-align: center; width: 50px;">
                       <if condition='$vo[enabled] eq 1'>
@@ -167,7 +167,26 @@
             </empty>
           </tbody>
         </table>
-	 <!--分页位置--> 
+	 <!--分页位置-->
+        <div class="sDiv" style="float:left;margin-top:10px">
+          <if condition="empty($list) neq true">
+            <div class="sDiv2">
+              <select name="operate" id="operate" class="select">
+                <option value="0">操作选择</option>
+                <option value="show">显示</option>
+                <option value="hide">隐藏</option>
+                <option value="del">删除</option>
+              </select>
+            </div>
+            <div class="sDiv2">
+              <input type="button" onclick="op()"  class="btn" value="确定">
+              <form id="op" action="{:U('Banner/batchOpBanner')}" method="post">
+                <input type="hidden" name="selected">
+                <input type="hidden" name="type">
+              </form>
+            </div>
+          </if>
+        </div>
     {$pager->show()} </div>        
       </div>       
     </div>    
@@ -178,13 +197,55 @@
 	    $('#flexigrid > table>tbody >tr').click(function(){
 		    $(this).toggleClass('trSelected');
 		});
-		
+
+	    //批量选中
+        $('.ico-check ' , '.hDivBox').click(function(){
+            $('tr' ,'.hDivBox').toggleClass('trSelected' , function(index,currentclass){
+                var hasClass = $(this).hasClass('trSelected');
+                $('tr' , '#flexigrid').each(function(){
+                    if(hasClass){
+                        $(this).addClass('trSelected');
+                    }else{
+                        $(this).removeClass('trSelected');
+                    }
+                });
+            });
+        });
+
 		// 点击刷新数据
 		$('.fa-refresh').click(function(){
 			location.href = location.href;
 		});
 		
 	});
+
+
+    function op(){
+        //获取操作
+        var op_type = $('#operate').find('option:selected').val();
+        if(op_type == 0){
+            layer.msg('请选择操作', {icon: 1,time: 1000});   //alert('请选择操作');
+            return;
+        }
+        //获取选择的id
+        //获取选择的id
+        var selected_id = new Array();
+        $('.trSelected' , '#flexigrid').each(function(i){
+            selected_id[i] = $(this).attr('data-id');
+        });
+        console.log(selected_id);
+        if(selected_id.length < 1){
+            layer.msg('请选择项目', {icon: 1,time: 1000}); //            alert('请选择项目');
+            return;
+        }
+
+        $('#op').find('input[name="selected"]').val(selected_id);
+        $('#op').find('input[name="type"]').val(op_type);
+        $('#op').submit();
+    }
+
+
+
     function delfunc(obj){
       layer.confirm('确认删除？', {
                 btn: ['确定','取消'] //按钮
@@ -211,6 +272,7 @@
               }
       );
     }
+
 </script>
 </body>
 </html>

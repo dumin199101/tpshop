@@ -13,6 +13,25 @@ use think\Page;
 use think\Db;
 
 class Goods extends Base {
+
+    /**
+     * 批量删除品牌
+     */
+    public function batchOpBrand()
+    {
+        $type = I('post.type');
+        $selected_id = I('post.selected/a');
+        if(!in_array($type,array('del')) || !$selected_id)
+            $this->error('非法操作');
+        if($type == 'del'){
+            //删除brand
+            $row = Db::name('brand')->where('id','IN',$selected_id[0])->delete();
+        }
+        if(!$row)
+            $this->error('操作失败');
+        $this->success('操作成功');
+    }
+
     /**
      * 品牌列表
      */
@@ -23,7 +42,7 @@ class Goods extends Base {
         $where = $keyword ? " name like '%$keyword%' " : "";
         $count = $model->where($where)->count();
         $Page = $pager = new Page($count,10);
-        $brandList = $model->where($where)->order("`sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
+        $brandList = $model->where($where)->order("`id` desc, `sort` asc")->limit($Page->firstRow.','.$Page->listRows)->select();
         $show  = $Page->show();
         $this->assign('pager',$pager);
         $this->assign('show',$show);
@@ -67,6 +86,37 @@ class Goods extends Base {
         $return_arr = array('status' => 1,'msg' => '操作成功','data'  =>'',);
         $this->ajaxReturn($return_arr);
     }
+
+    /**
+     * 批量删除、显示、推荐太潮志
+     */
+    public function batchOpGoods()
+    {
+        $type = I('post.type');
+        $selected_id = I('post.selected/a');
+        if(!in_array($type,array('del','show','hide','recommend','no-recommend')) || !$selected_id)
+            $this->error('非法操作');
+        if($type == 'del'){
+            //删除
+            $row = Db::name('goods')->where('id','IN',$selected_id[0])->delete();
+        }
+        if($type == 'show'){
+            $row = Db::name('goods')->where('id','IN',$selected_id[0])->save(array('is_open'=>1));
+        }
+        if($type == 'hide'){
+            $row = Db::name('goods')->where('id','IN',$selected_id[0])->save(array('is_open'=>0));
+        }
+        if($type == 'recommend'){
+            $row = Db::name('goods')->where('id','IN',$selected_id[0])->save(array('is_recommend'=>1));
+        }
+        if($type == 'no-recommend'){
+            $row = Db::name('goods')->where('id','IN',$selected_id[0])->save(array('is_recommend'=>0));
+        }
+        if(!$row)
+            $this->error('操作失败');
+        $this->success('操作成功');
+    }
+
 
     /**
      *  商品列表

@@ -3,10 +3,47 @@
 namespace app\admin\controller;
 
 use think\Page;
+use think\Db;
 
 
 class Activity extends Base
 {
+
+    /**
+     * 批量删除、显示、推荐活动
+     */
+    public function batchOpActivity()
+    {
+        $type = I('post.type');
+        $selected_id = I('post.selected/a');
+        if(!in_array($type,array('del','show','hide','recommend','no-recommend','hot','no-hot')) || !$selected_id)
+            $this->error('非法操作');
+        if($type == 'del'){
+            //删除
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->delete();
+        }
+        if($type == 'show'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('enable'=>1));
+        }
+        if($type == 'hide'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('enable'=>0));
+        }
+        if($type == 'recommend'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('is_recommend'=>1));
+        }
+        if($type == 'no-recommend'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('is_recommend'=>0));
+        }
+        if($type == 'hot'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('is_hot'=>1));
+        }
+        if($type == 'no-hot'){
+            $row = Db::name('activity')->where('act_id','IN',$selected_id[0])->save(array('is_hot'=>0));
+        }
+        if(!$row)
+            $this->error('操作失败');
+        $this->success('操作成功');
+    }
 
     /**
      * 活动列表

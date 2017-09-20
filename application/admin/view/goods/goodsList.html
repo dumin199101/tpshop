@@ -116,7 +116,22 @@
 			 var checked = $(this).hasClass('trSelected');	
 			 $(this).find('input[type="checkbox"]').attr('checked',checked); 
 			 //alert('aaa');
-		});		 	
+		});
+
+        //批量选中
+        $('.ico-check ' , '.hDivBox').click(function(){
+            $('tr' ,'.hDivBox').toggleClass('trSelected' , function(index,currentclass){
+                var hasClass = $(this).hasClass('trSelected');
+                $('tr' , '#ajax_return').each(function(){
+                    if(hasClass){
+                        $(this).addClass('trSelected');
+                    }else{
+                        $(this).removeClass('trSelected');
+                    }
+                });
+            });
+        });
+
 		// 刷选条件 鼠标 移动进去 移出 样式
 		$(".hDivBox > table > thead > tr > th").mousemove(function(){
 			$(this).addClass('thOver');
@@ -181,6 +196,33 @@
                     layer.close(index);
                 }
         );
+    }
+
+
+
+
+    function op(){
+        //获取操作
+        var op_type = $('#operate').find('option:selected').val();
+        if(op_type == 0){
+            layer.msg('请选择操作', {icon: 1,time: 1000});   //alert('请选择操作');
+            return;
+        }
+        //获取选择的id
+        //获取选择的id
+        var selected_id = new Array();
+        $('.trSelected' , '#ajax_return').each(function(i){
+            selected_id[i] = $(this).attr('data-id');
+        });
+        console.log(selected_id);
+        if(selected_id.length < 1){
+            layer.msg('请选择项目', {icon: 1,time: 1000}); //            alert('请选择项目');
+            return;
+        }
+
+        $('#op').find('input[name="selected"]').val(selected_id);
+        $('#op').find('input[name="type"]').val(op_type);
+        $('#op').submit();
     }
     
     
