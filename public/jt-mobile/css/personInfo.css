@@ -42,15 +42,17 @@ body{background:#f2f2f2;}
 .container-fluid{padding:0;}
 .person_list{padding:0 5px;}
 .person_list .col-xs-6,.person_list .col-sm-6{padding:0 15px;}
-#jt-tcr-info-container .col-xs-5,#jt-tcr-info-container .col-sm-5,#jt-tcr-info-container .col-xs-7,#jt-tcr-info-container .col-sm-7{padding:0 0 0 15px;}
+#jt-tcr-info-container .col-xs-5,#jt-tcr-info-container .col-sm-5,#jt-tcr-info-container .col-xs-7,#jt-tcr-info-container .col-sm-7{padding:0 15px 0 15px;}
 #jt-tcr-info-container{padding:0 5px;}
 
 /*滚动条效果*/
 .jt-summarys {
-    height:0;
-    overflow: hidden;
+    overflow:hidden;
     overflow-y: auto;
+    height:0;
 }
+
+
 .jt-summarys::-webkit-scrollbar-track-piece {
     background-color: rgba(0, 0, 0, 0);
     border-left: 1px solid rgba(0, 0, 0, 0);
