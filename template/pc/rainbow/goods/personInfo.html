@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div class="container more-tcr">
                 <div class="row">
                     <div class="row">
                         <foreach name="more_list" id="vo">
@@ -91,6 +91,8 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="jt-picture">
+                                </div>
                             </div>
                         </foreach>
                     </div>
@@ -98,5 +100,21 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $(".more-tcr .thumbnail:first > a > img").load(function(){
+                var width = $(".more-tcr .thumbnail:first").width()-5;
+                var height = $(".more-tcr .thumbnail:first").height()-6;
+                $(".jt-picture").css({width:width,height:height});
+                $(".more-tcr .thumbnail").mouseenter(function(){
+                    $(this).siblings(".jt-picture").show();
+                });
+                $(".more-tcr .thumbnail").mouseleave(function(){
+                    $(this).siblings(".jt-picture").hide();
+                });
+            });
+        });
+    </script>
 
 </block>
