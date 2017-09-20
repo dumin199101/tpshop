@@ -23,8 +23,8 @@
                                             <div class="jt-person-box"></div>
                                         </div>
                                         <div class="pull-left">
-                                            <h2>{$person_info.name|getSubstr=0,10}</h2>
-                                            <h4>{$person_info.job|getSubstr=0,10}</h4>
+                                            <h2>{$person_info.name|getSubstr=0,4}</h2>
+                                            <h4>{$person_info.job|getSubstr=0,6}</h4>
                                         </div>
                                         <div class="clearfix"></div>
                                         <div class="text-justify jt-summary">
@@ -85,9 +85,9 @@
                                     <div class="caption">
                                         <h3>{$vo.name|getSubstr=0,5}</h3>
 
-                                        <p><span class="job">{$vo.job|getSubstr=0,7}</span></p>
+                                        <p><span class="job">{$vo.job|getSubstr=0,6}</span></p>
 
-                                        <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,20}</p>
+                                        <p class="text-justify jt-tcr-desc">{$vo.content|getSubstr=0,17}</p>
 
                                         <div class="jt-tcr-line"></div>
                                         <p class="jt-tcr-read">

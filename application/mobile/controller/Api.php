@@ -45,8 +45,8 @@ class Api extends Controller {
         foreach($person_list as &$v){
             $v['thumb'] = person_thum_images($v['id'],280,500);
             $v['name'] = getSubstr($v['name'],0,5);
-            $v['job'] = getSubstr($v['job'],0,7);
-            $v['content'] = getSubstr($v['content'],0,20);
+            $v['job'] = getSubstr($v['job'],0,6);
+            $v['content'] = getSubstr($v['content'],0,17);
         }
         $data = [
             'data'=>$person_list,
