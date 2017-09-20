@@ -78,6 +78,25 @@
     </div>
     <!--轮播图-->
 
+    <script>
+        $(".bs-slider-overlay").click(function(){
+            var href = $(this).parent('.item').find('a').attr('href');
+            if(href!=''){
+                setTimeout(function(){
+                    location.href = href;
+                },500);
+            }
+        });
+        $(".slide-text").click(function(){
+            var href = $(this).parents('.item').find('a').attr('href');
+            if(href!=''){
+                setTimeout(function(){
+                    location.href = href;
+                },500);
+            }
+        });
+    </script>
+
     <div id="jt-act-container" >
         <!--最新活动-->
         <div class="container">
