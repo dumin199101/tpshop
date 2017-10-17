@@ -199,6 +199,12 @@ class Goods extends Base {
       /* $html = $this->fetch();
        S($key,$html);
        return $html;*/
+
+        //更多太潮志：
+        $sql = "SELECT `id`,`name`,`content`,`thumb` FROM `__PREFIX__goods` WHERE `id` >= ((SELECT MAX(`id`) FROM `__PREFIX__goods`)-(SELECT MIN(`id`) FROM __PREFIX__goods)) * RAND() + (SELECT MIN(`id`) FROM `__PREFIX__goods`) AND `id`!=" . $id .  "  AND `is_open`=1 LIMIT 3";
+        $more_list = Db::query($sql);
+        $this->assign('more_list',$more_list);
+
        return $this->fetch();
     }
 

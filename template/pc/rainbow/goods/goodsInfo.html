@@ -24,7 +24,14 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="clearfix"></div>
+
+                        <!--分享-->
+                        <include file="public/share"/>
+
+                        <div class="clearfix"></div>
+
                         <div class="jt-goods-content">
                             {$goods_info.content|htmlspecialchars_decode}
                         </div>
@@ -37,4 +44,43 @@
     <script>
         $(".jt-goods-content img").addClass("img-responsive");
     </script>
+
+    <!--更多太潮志-->
+    <div class="container">
+        <div class="row">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcz-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">更多太潮志</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-bottom:30px;">
+        <div class="row">
+            <div class="row jt-tcz-content" id="items">
+                <volist name="more_list" id="vo">
+                    <div class="col-md-4 item">
+                        <div class="thumbnail">
+                            <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}"  class="img">
+                                <img src="{$vo.id|goods_thum_images=384,253}" alt="">
+                            </a>
+                            <div class="caption">
+                                <span class="h3">{$vo.name|getSubstr=0,10}</span>
+                                <span class="jt-tcz-read">
+                                           <a href="{:url('Goods/goodsInfo',['id'=>$vo['id']])}" >阅读更多<span class="glyphicon glyphicon-menu-right"></span></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+
+    <!--更多太潮志-->
+
 </block>

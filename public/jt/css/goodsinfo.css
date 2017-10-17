@@ -6,7 +6,7 @@ header > .container{padding:0;}
 
 
 /*太潮志信息*/
-#jt-tcz-info-container{margin:40px auto;padding:0;}
+#jt-tcz-info-container{margin:40px auto 0;padding:0;}
 .jt-goods-navigator{padding:10px 0px;}
 .jt-goods-box{background-color: #ce1621;display: inline-block;height: 60px;width:10px;}
 .jt-goods-navigator .pull-left h2{margin-top:0;margin-bottom:0;margin-left:15px;}
@@ -14,3 +14,10 @@ header > .container{padding:0;}
 .ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 .jt-goods-content{margin-top:20px;}
 .jt-goods-content p{color:#333;line-height:2.5;text-align: justify;margin:10px 0;font-size:16px;}
+/*更多太潮志*/
+.jt-navigator span.h1{font-size:24px;}
+.jt-tcz-content .caption{padding:25px 10px;position:relative;}
+.jt-tcz-content .caption .glyphicon{top:2px;}
+.jt-tcz-read{position:absolute;right:30px;top:25px;}
+.jt-tcz-read a{color:#ce1621;font-size:14px;}
+.jt-tcz-content .caption span.h3{font-size:18px;}

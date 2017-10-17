@@ -23,6 +23,10 @@
                     </div>
                 </div>
             </div>
+
+            <!--分享-->
+            <include file="public/share"/>
+
             <div class="container jt-act-info-desc">
                 <div class="row">
                     <div class="col-md-12">
@@ -32,6 +36,31 @@
             </div>
         </div>
     </div>
+
+    <!--更多活动-->
+    <div class="container" style="margin-bottom:50px;">
+        <div class="row">
+            <div class="row jt-nav">
+                <div class="col-md-10 jt-tcr-title">
+                    <div class="jt-navigator">
+                        <div class="jt-box"></div>
+                        <span class="h1 ml-5">更多活动</span>
+                    </div>
+                </div>
+                <div class="jt-latest-act-list">
+                    <foreach name="more_list" id="vo">
+                        <div class="col-md-3">
+                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
+                                <img  src="{$vo.act_id|act_thum_images=2,260,170}"  alt="">
+                                <span class="h4">{$vo.act_name|getSubstr=0,28}</span>
+                            </a>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--更多活动-->
 
 
 </block>

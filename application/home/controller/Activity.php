@@ -128,6 +128,12 @@ class Activity extends Base {
             ->cache(true,JT_CACHE_TIME)
             ->find();
         $this->assign('act_info',$act_info);
+
+        //更多活动：
+        $sql = "SELECT `act_id`,`act_name`,`act_logo` FROM `__PREFIX__activity` WHERE `act_id` >= ((SELECT MAX(`act_id`) FROM `__PREFIX__activity`)-(SELECT MIN(`act_id`) FROM __PREFIX__activity)) * RAND() + (SELECT MIN(`act_id`) FROM `__PREFIX__activity`) AND `act_id`!=" . $id .  "  AND `enable`=1 LIMIT 4";
+        $more_list = Db::query($sql);
+        $this->assign('more_list',$more_list);
+
         return $this->fetch();
     }
 
