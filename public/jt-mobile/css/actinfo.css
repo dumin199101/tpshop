@@ -10,3 +10,11 @@
 .jt-act-info-container .jt-act-info-date span.h3{font-size:18px;}
 .jt-act-info-container .jt-act-info-desc{background:#fff;margin-bottom:50px;font-family:"PingFangSC-Regular"}
 .jt-act-info-container .jt-act-info-desc p{ padding:10px 30px 0;line-height:2.0;font-size:16px;color:#333;text-align:justify }
+
+/*更多活动*/
+.jt-latest-act-list .col-xs-12,.jt-latest-act-list .col-sm-12{padding:0 20px;}
+.jt-navigator span.h1{font-size:24px;}
+.jt-act-more .look-more{font-size:14px;}
+.jt-latest-act-list img{margin-bottom:20px;}
+.jt-latest-act-list span.h4{color:#333;line-height:1.5;font-size:16px;}
+.jt-latest-act-list .col-xs-12,.jt-latest-act-list .col-sm-12{padding:0 20px;margin-bottom:30px;}
