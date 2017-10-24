@@ -1,12 +1,13 @@
 div.share{
     position:absolute;
-    top:55px;
+    top:60px;
     right:0px;
     display:block;
     height:40px;
     width:170px;
     background-color:transparent;
     *border:1px solid #666;
+    display:none;
 }
 s{
     position:absolute;
