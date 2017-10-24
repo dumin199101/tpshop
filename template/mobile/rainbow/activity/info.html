@@ -3,6 +3,8 @@
 <block name="css">
     <!--首页自定义样式-->
     <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/actinfo.css">
+    <link rel="stylesheet" href="__PUBLIC__/jt-mobile/css/share.css">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 </block>
 <block name="plugins">
     <include  file="public/bootstrap-touch-slider"/>
@@ -11,13 +13,68 @@
     <include  file="public/slider"/>
 </block>
 <block name="content">
+    <script>
+        window._bd_share_config = {
+            common : {
+                bdText : document.title,
+                bdDesc : document.title,
+                bdUrl : location.href,
+                bdPic : ''
+            },
+            share : [{
+                "bdSize" : 16
+            }],
+        }
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+    <style type="text/css">
+        .bdshare-button-style0-16 a, .bdshare-button-style0-16 .bds_more{float:left;background:none;color:#9b9b9b;line-height:28px;}
+        .bdshare-button-style0-16 a:hover{color:#ce1621;}
+        div.share{
+            position:absolute;
+            top:100px;
+            right:25px;
+            display:block;
+            height:40px;
+            width:170px;
+            background-color:transparent;
+            *border:1px solid #666;
+        }
+    </style>
     <div class="jt-act-info-container">
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="jt-act-info-title">
-                        <span class="h3">{$act_info.act_name|getSubstr=0,40}</span>
+                    <div class="col-xs-10 col-sm-10">
+                        <div class="jt-act-info-title">
+                            <span class="h3">{$act_info.act_name|getSubstr=0,40}</span>
+                        </div>
                     </div>
+                    <div class="col-xs-2 col-sm-2" id="share-ico">
+                        <div style="margin-top:40px;">
+                            <div style="position:relative;left:3px;">
+                                <i class="fa fa-share-square-o fa-2x" style="color:#9b9b9b;"></i>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div style="margin-top:30px;font-size:12px;">分享</div>
+                        </div>
+                        <div class="row bdsharebuttonbox"  data-tag="share_1" style="background:none;padding-left:30px;">
+                            <div class="share" style="display:none;">
+                                <div class="share_icon" >
+                                    <a class="fa fa-facebook-square fa-1x" style="font-size:2em;" data-cmd="fbook">
+                                    </a>
+                                    <a class="fa fa-weibo fa-1x"  style="font-size:2em;" data-cmd="tsina">
+                                    </a>
+                                    <a class="fa fa-weixin fa-1x" style="font-size:2em;" data-cmd="weixin">
+                                    </a>
+                                </div>
+                                <s>
+                                    <i></i>
+                                </s>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="jt-act-info-date">
                         <span class="h3">{$act_info.start_time|formatActDate}—{$act_info.end_time|formatActDate}</span>
                     </div>
@@ -35,6 +92,11 @@
 
     <script>
         $(".jt-act-info-desc img").addClass("img-responsive");
+        $("#share-ico").hover(function(){
+            $(".share").show();
+        },function(){
+            $(".share").hide();
+        })
     </script>
 
     <!--更多活动-->
@@ -50,7 +112,7 @@
                 <div class="jt-latest-act-list">
                     <foreach name="more_list" id="vo">
                         <div class="col-xs-12 col-sm-12">
-                            <a href="{:url('activity/info',['id'=>$vo['act_id']])}" >
+                            <a href="{:url('mobile/activity/info',['id'=>$vo['act_id']])}" >
                                 <img  class="img-responsive" src="{$vo.act_id|act_thum_images=2,335,219}"  alt="">
                                 <span class="h4">{$vo.act_name|getSubstr=0,18}</span>
                             </a>
