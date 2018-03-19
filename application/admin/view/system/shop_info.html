@@ -137,6 +137,16 @@
                     <p class="notic">具体地址</p>
                 </dd>
             </dl>
+            <dl class="row">
+                <dt class="tit">
+                    <label>网站访问配置</label>
+                </dt>
+                <dd class="opt">
+                    <input  name="site_visitable" value="1"  type="radio" <if condition="$config[site_visitable] eq 1">checked</if> />开启
+                    <input  name="site_visitable" value="0"  type="radio" <if condition="$config[site_visitable] eq 0">checked</if> />关闭
+                    <p class="notic">快捷开启或关闭网站访问</p>
+                </dd>
+            </dl>
             <div class="bot">
                 <input type="hidden" name="inc_type" value="{$inc_type}">
                 <a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" onclick="document.form1.submit()">确认提交</a>

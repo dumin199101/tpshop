@@ -51,6 +51,8 @@ return [
     'oldest' => 'activity/oldest',
     'latest' => 'activity/latest',
     'index'=>'index/index',
+    'stop'=>'web/stop',
+
 
     //移动端
 
@@ -77,6 +79,7 @@ return [
     'm-oldest' => 'mobile/activity/oldest',
     'm-latest' => 'mobile/activity/latest',
     'm-index'=>'mobile/index/index',
+    'm-stop'=>'mobile/web/stop',
 
 
 ];

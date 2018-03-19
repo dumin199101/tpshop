@@ -16,6 +16,7 @@ use think\Controller;
 use think\Db;
 use think\Request;
 use think\Session;
+use think\Url;
 
 class Base extends Controller {
     public $session_id;
@@ -46,6 +47,10 @@ class Base extends Controller {
        $jt_navigation = getTree($jt_navigation,0);
        $this->assign('jt_navigation',$jt_navigation);
        $this->assign('jt_config', $config);
+        //判断网站是否可访问
+        if($config['shop_info_site_visitable']==0){
+            $this->redirect(Url::build('mobile/web/stop'));
+        }
     }
 
     public function ajaxReturn($data)
